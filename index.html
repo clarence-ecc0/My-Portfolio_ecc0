@@ -397,6 +397,69 @@
         }
       }
 
+      /* Scroll-based Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .slide-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .slide-left.visible,
+      .slide-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scale-in {
+        opacity: 0;
+        transform: scale(0.95);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .scale-in.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Section Entry/Exit Animations */
+      .section {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Reverse animations when elements leave viewport */
+      .fade-in.visible.leave,
+      .slide-left.visible.leave,
+      .slide-right.visible.leave,
+      .scale-in.visible.leave,
+      .section.visible.leave {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
       /* Section Styles */
       .section {
         padding: var(--section-padding) 0;
@@ -1076,11 +1139,21 @@
         transform: translateY(0);
       }
 
-      .stagger-1 { transition-delay: 0.1s; }
-      .stagger-2 { transition-delay: 0.2s; }
-      .stagger-3 { transition-delay: 0.3s; }
-      .stagger-4 { transition-delay: 0.4s; }
-      .stagger-5 { transition-delay: 0.5s; }
+      .stagger-1 {
+        transition-delay: 0.1s;
+      }
+      .stagger-2 {
+        transition-delay: 0.2s;
+      }
+      .stagger-3 {
+        transition-delay: 0.3s;
+      }
+      .stagger-4 {
+        transition-delay: 0.4s;
+      }
+      .stagger-5 {
+        transition-delay: 0.5s;
+      }
     </style>
   </head>
   <body>
@@ -1431,7 +1504,7 @@
             </div>
             <div class="project-content">
               <h3>Birthday Celebration</h3>
-              <p>Custom birthday celebration design</p>
+              <p>Custom birthday celebration design for a special occasion</p>
               <div class="project-tags">
                 <span class="tag">Event</span>
                 <span class="tag">Personal</span>
@@ -1442,37 +1515,30 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img
-                src="assets/graphic_design/Mummy_Gaby.jpg"
-                alt="Portrait Design"
+                src="assets/graphic_design/Mum_musa_b'day.jpg"
+                alt="Mummy Musa Birthday Design"
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <div class="project-overlay">
               <a
-                href="assets/graphic_design/Mummy_Gaby.jpg"
+                href="assets/graphic_design/Mum_musa_b'day.jpg"
                 class="project-link view-full-size"
                 target="_blank"
                 >View Full Size</a
               >
             </div>
             <div class="project-content">
-              <h3>Portrait Design</h3>
-              <p>Custom portrait artwork</p>
+              <h3>Birthday Design</h3>
+              <p>Special birthday celebration design for Mummy Musa</p>
               <div class="project-tags">
-                <span class="tag">Portrait</span>
+                <span class="tag">Event</span>
                 <span class="tag">Personal</span>
               </div>
             </div>
           </div>
-
-          <div class="project-card" data-category="graphic">
-            <div class="project-image">
-              <img
-                src="assets/graphic_design/daddy_musa bday_main@1.5x.jpg"
-                alt="Birthday Celebration Design"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+        </div>
       </div>
     </section>
 
@@ -1615,13 +1681,17 @@
 
       // Theme Toggle
       const themeToggle = document.getElementById("themeToggle");
-      let isDarkTheme = true;      function setDarkTheme() {
+      let isDarkTheme = true;
+      function setDarkTheme() {
         document.documentElement.setAttribute("data-theme", "dark");
         localStorage.setItem("theme", "dark");
         themeToggle.textContent = "☀️";
         isDarkTheme = true;
         document.body.classList.add("theme-transition");
-        setTimeout(() => document.body.classList.remove("theme-transition"), 300);
+        setTimeout(
+          () => document.body.classList.remove("theme-transition"),
+          300
+        );
       }
 
       function setLightTheme() {
@@ -1630,7 +1700,10 @@
         themeToggle.textContent = "🌙";
         isDarkTheme = false;
         document.body.classList.add("theme-transition");
-        setTimeout(() => document.body.classList.remove("theme-transition"), 300);
+        setTimeout(
+          () => document.body.classList.remove("theme-transition"),
+          300
+        );
       }
 
       themeToggle.addEventListener("click", () => {
@@ -1657,7 +1730,8 @@
 
       // Mobile Menu Toggle
       const mobileMenu = document.getElementById("mobileMenu");
-      let isMenuOpen = false;      function toggleMobileMenu() {
+      let isMenuOpen = false;
+      function toggleMobileMenu() {
         isMenuOpen = !isMenuOpen;
         const navLinks = document.querySelector(".nav-links");
         if (isMenuOpen) {
@@ -1723,29 +1797,36 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         setTimeout(type, 500);
-      });      // Scroll Animations
+      }); // Scroll Animations
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
+              entry.target.classList.remove("leave");
               // Add stagger animation for child elements
               if (entry.target.classList.contains("stagger-animation")) {
                 entry.target.querySelectorAll("*").forEach((child, index) => {
-                  child.style.animationDelay = `${index * 0.1}s`;
+                  child.style.transitionDelay = `${index * 0.1}s`;
                 });
+              }
+            } else {
+              // Add leave class for exit animations
+              if (entry.target.classList.contains("visible")) {
+                entry.target.classList.add("leave");
               }
             }
           });
         },
         {
           threshold: 0.2,
-          rootMargin: "0px 0px -100px 0px"
+          rootMargin: "-50px 0px -50px 0px",
         }
       );
-
       document
-        .querySelectorAll(".fade-in, .slide-left, .slide-right, .scale-in")
+        .querySelectorAll(
+          ".fade-in, .slide-left, .slide-right, .scale-in, .section"
+        )
         .forEach((el) => {
           observer.observe(el);
         });
