@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
     <title>Omeh Chidi - UI/UX Designer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1086,132 +1089,207 @@
         .skills-grid {
           grid-template-columns: 1fr;
         }
+
+        /* Prevent horizontal scroll */
+        html,
+        body {
+          overflow-x: hidden;
+          width: 100%;
+          position: relative;
+        }
+
+        /* Adjust container padding */
+        .container {
+          padding: 0 1rem;
+          width: 100%;
+          max-width: 100%;
+        }
+
+        /* Adjust grid layouts */
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          margin: 0;
+          padding: 0 1rem;
+        }
+
+        /* Project card mobile adjustments */
+        .project-card {
+          margin: 0;
+          width: 100%;
+        }
+
+        .project-image {
+          height: 200px;
+        }
+
+        /* Form adjustments */
+        .form-grid {
+          padding: 0;
+        }
+
+        /* Button adjustments */
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        /* Filter button adjustments */
+        .portfolio-filter {
+          padding: 0 1rem;
+          gap: 0.5rem;
+        }
+
+        .filter-btn {
+          padding: 0.5rem 1rem;
+          font-size: 0.85rem;
+        }
+
+        /* Skills grid adjustment */
+        .skills-grid {
+          padding: 0 1rem;
+        }
+
+        /* Section padding adjustment */
+        .section {
+          padding: calc(var(--section-padding) * 0.7) 0;
+        }
+
+        /* Navigation adjustments */
+        .nav-container {
+          padding: 0.5rem 1rem;
+        }
+
+        .nav-links.mobile-active {
+          left: 0;
+          right: 0;
+          width: 100%;
+          margin: 0;
+          padding: 1rem;
+        }
       }
 
-      /* Scroll Animations */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Small mobile devices */
+      @media (max-width: 375px) {
+        .hero-name {
+          font-size: clamp(2rem, 6vw, 3rem);
+        }
+
+        .hero-title {
+          font-size: clamp(1.2rem, 4vw, 1.5rem);
+        }
+
+        .section-title {
+          font-size: clamp(2rem, 5vw, 2.5rem);
+        }
+
+        .project-content {
+          padding: 1rem;
+        }
+
+        .project-tags {
+          gap: 0.25rem;
+        }
+
+        .tag {
+          padding: 0.25rem 0.6rem;
+          font-size: 0.7rem;
+        }
       }
 
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      /* Touch Device Optimizations */
+      @media (hover: none) {
+        .project-card {
+          -webkit-tap-highlight-color: transparent;
+        }
 
-      .slide-left {
-        opacity: 0;
-        transform: translateX(-60px);
-        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+        .project-overlay {
+          opacity: 1;
+          background: linear-gradient(
+            180deg,
+            transparent 0%,
+            rgba(0, 0, 0, 0.5) 100%
+          );
+        }
 
-      .slide-left.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
+        .project-link {
+          opacity: 1;
+          transform: translateY(0);
+        }
 
-      .slide-right {
-        opacity: 0;
-        transform: translateX(60px);
-        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+        .btn:active,
+        .filter-btn:active,
+        .project-card:active {
+          transform: scale(0.98);
+        }
 
-      .slide-right.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      .scale-in {
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-
-      .scale-in.visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* Staggered animations */
-      .stagger-1 {
-        transition-delay: 0.1s;
-      }
-      .stagger-2 {
-        transition-delay: 0.2s;
-      }
-      .stagger-3 {
-        transition-delay: 0.3s;
-      }
-      .stagger-4 {
-        transition-delay: 0.4s;
-      }
-      .stagger-5 {
-        transition-delay: 0.5s;
-      }
-      .stagger-6 {
-        transition-delay: 0.6s;
-      }
-
-      /* Light Theme Variables */
-      [data-theme="light"] {
-        --bg-primary: #ffffff;
-        --bg-secondary: #f8f9fa;
-        --bg-tertiary: #e9ecef;
-        --bg-card: #ffffff;
-        --bg-glass: rgba(0, 0, 0, 0.05);
-        --text-primary: #1a1a1a;
-        --text-secondary: #4a5568;
-        --text-muted: #718096;
-        --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        /* Improve touch targets */
+        .nav-link,
+        .filter-btn,
+        .project-link,
+        .social-link {
+          padding: 0.8rem;
+          min-height: 44px;
+          min-width: 44px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
 
       /* Lightbox Styles */
       .lightbox {
-        display: none;
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
         z-index: 9999;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .lightbox.active {
+        display: flex;
         justify-content: center;
         align-items: center;
-        padding: 2rem;
+        opacity: 1;
       }
 
       .lightbox-content {
         position: relative;
         max-width: 90%;
         max-height: 90vh;
+        margin: 2rem;
       }
 
       .lightbox img {
         max-width: 100%;
-        max-height: 90vh;
+        max-height: 85vh;
         object-fit: contain;
         border-radius: 8px;
+        box-shadow: var(--shadow-lg);
       }
 
       .close-lightbox {
         position: absolute;
-        top: -40px;
-        right: -40px;
-        width: 40px;
-        height: 40px;
+        top: -2rem;
+        right: -2rem;
+        width: 2.5rem;
+        height: 2.5rem;
         background: var(--accent-primary);
         border: none;
         border-radius: 50%;
         color: white;
-        font-size: 24px;
+        font-size: 1.5rem;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: var(--transition-smooth);
+        z-index: 10000;
       }
 
       .close-lightbox:hover {
@@ -1221,8 +1299,12 @@
 
       @media (max-width: 768px) {
         .close-lightbox {
-          top: -50px;
+          top: -3rem;
           right: 0;
+        }
+
+        .lightbox-content {
+          margin: 1rem;
         }
       }
     </style>
@@ -1938,45 +2020,54 @@
             }
           });
         });
-      });
-
-      // Optional: Add lightbox functionality for full-size image viewing
+      }); // Lightbox functionality
       const lightbox = document.createElement("div");
       lightbox.className = "lightbox";
       lightbox.innerHTML = `
         <div class="lightbox-content">
-          <img src="" alt="Full size image">
+          <img src="" alt="Full size image" />
           <button class="close-lightbox">×</button>
         </div>
       `;
       document.body.appendChild(lightbox);
 
+      // Function to open lightbox
+      function openLightbox(imgSrc) {
+        const lightboxImg = lightbox.querySelector("img");
+        lightboxImg.src = imgSrc;
+        document.body.style.overflow = "hidden";
+        lightbox.classList.add("active");
+      }
+
+      // Function to close lightbox
+      function closeLightbox() {
+        document.body.style.overflow = "auto";
+        lightbox.classList.remove("active");
+      }
+
+      // Add click handlers to all view-full-size links
       document.querySelectorAll(".view-full-size").forEach((link) => {
         link.addEventListener("click", (e) => {
           e.preventDefault();
           const imgSrc = link.getAttribute("href");
-          const lightboxImg = lightbox.querySelector("img");
-          lightboxImg.src = imgSrc;
-          lightbox.style.display = "flex";
-          document.body.style.overflow = "hidden";
+          openLightbox(imgSrc);
         });
       });
 
+      // Close lightbox when clicking outside image or on close button
       lightbox.addEventListener("click", (e) => {
         if (
           e.target.classList.contains("lightbox") ||
           e.target.classList.contains("close-lightbox")
         ) {
-          lightbox.style.display = "none";
-          document.body.style.overflow = "auto";
+          closeLightbox();
         }
       });
 
       // Close lightbox with Escape key
       document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && lightbox.style.display === "flex") {
-          lightbox.style.display = "none";
-          document.body.style.overflow = "auto";
+        if (e.key === "Escape" && lightbox.classList.contains("active")) {
+          closeLightbox();
         }
       });
     </script>
