@@ -1874,6 +1874,31 @@
         });
       });
 
+      // Update active nav link based on scroll position
+      const sections = document.querySelectorAll("section[id]");
+      const scrollObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
+              document.querySelectorAll(".nav-link").forEach((link) => {
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                } else {
+                  link.classList.remove("active");
+                }
+              });
+            }
+          });
+        },
+        {
+          rootMargin: "-50% 0px",
+          threshold: 0,
+        }
+      );
+
+      sections.forEach((section) => scrollObserver.observe(section));
+
       // Theme Toggle
       const themeToggle = document.getElementById("themeToggle");
       let isDarkTheme = true;
