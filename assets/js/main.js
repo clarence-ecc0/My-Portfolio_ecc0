@@ -1,6 +1,22 @@
+// Email handling function
+function sendEmail(e) {
+  e.preventDefault();
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const subject = document.getElementById('subject').value;
+  const projectType = document.getElementById('project_type').value;
+  const message = document.getElementById('message').value;
+  
+  const mailtoLink = `mailto:chidiecc0@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    `Name: ${name}\nEmail: ${email}\nProject Type: ${projectType}\n\nMessage:\n${message}`
+  )}`;
+  
+  window.location.href = mailtoLink;
+}
+
 // Portfolio Filter with Animation
-const mainFilter = document.querySelector('.main-filter');
-const subFilter = document.getElementById('graphicDesignFilter');
+const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
 function showCard(card) {
