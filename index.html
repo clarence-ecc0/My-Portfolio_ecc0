@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -38,11 +38,10 @@
 
         /* Spacing */
         --section-padding: clamp(4rem, 8vw, 8rem);
-        --container-padding: clamp(1rem, 4vw, 2rem);
-
-        /* Typography */
-        --font-primary: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-        --font-mono: "JetBrains Mono", monospace;
+        --container-padding: clamp(1rem, 4vw, 2rem); /* Typography */
+        --font-primary: "Quicksand", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        --font-mono: "Quicksand", monospace;
 
         /* Effects */
         --blur-sm: blur(8px);
@@ -86,9 +85,7 @@
       ::-webkit-scrollbar-thumb {
         background: var(--accent-primary);
         border-radius: 3px;
-      }
-
-      /* Navigation */
+      } /* Navigation */
       .navbar {
         position: fixed;
         top: 0;
@@ -96,9 +93,23 @@
         z-index: 1000;
         padding: 1rem 0;
         backdrop-filter: var(--blur-md);
-        background: rgba(10, 10, 10, 0.8);
+        background: rgba(0, 0, 0, 0.8);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         transition: var(--transition-smooth);
+      }
+
+      [data-theme="light"] .navbar {
+        background: rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      [data-theme="light"] .nav-links a {
+        color: var(--text-secondary);
+      }
+
+      [data-theme="light"] .nav-links a:hover,
+      [data-theme="light"] .nav-links a.active {
+        color: var(--accent-primary);
       }
 
       .navbar.scrolled {
@@ -242,19 +253,20 @@
         max-width: 900px;
         padding: 0 var(--container-padding);
       }
-
       .hero-greeting {
         font-size: clamp(1rem, 2vw, 1.2rem);
         color: var(--text-secondary);
         margin-bottom: 1rem;
-        font-family: var(--font-mono);
+        font-family: var(--font-primary);
+        font-weight: 500;
+        letter-spacing: 0.5px;
         opacity: 0;
         animation: slideUp 1s ease 0.2s forwards;
       }
 
       .hero-name {
         font-size: clamp(3rem, 8vw, 7rem);
-        font-weight: 900;
+        font-weight: 700;
         line-height: 0.9;
         margin-bottom: 1rem;
         background: var(--accent-gradient);
@@ -263,6 +275,7 @@
         background-clip: text;
         opacity: 0;
         animation: slideUp 1s ease 0.4s forwards;
+        letter-spacing: -1px;
       }
 
       .hero-title {
@@ -272,6 +285,7 @@
         color: var(--text-primary);
         opacity: 0;
         animation: slideUp 1s ease 0.6s forwards;
+        letter-spacing: -0.5px;
       }
 
       .typing-text {
@@ -377,22 +391,24 @@
         text-align: center;
         margin-bottom: 4rem;
       }
-
       .section-title {
         font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 800;
+        font-weight: 700;
         margin-bottom: 1rem;
         background: var(--accent-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        letter-spacing: -1px;
       }
 
       .section-subtitle {
         font-size: 1.2rem;
+        font-weight: 400;
         color: var(--text-secondary);
         max-width: 600px;
         margin: 0 auto;
+        letter-spacing: 0.2px;
       }
 
       /* About Section */
@@ -414,19 +430,33 @@
         aspect-ratio: 1;
         margin: 0 auto;
       }
-
       .about-photo {
         width: 100%;
         height: 100%;
         border-radius: 20px;
-        background: var(--accent-gradient);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 8rem;
+        background: wheat;
         box-shadow: var(--shadow-lg);
         position: relative;
         overflow: hidden;
+      }
+
+      .about-photo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/mypic.jpg") center/cover;
+        filter: blur(12px) brightness(0.8);
+        z-index: 0;
+      }
+
+      .about-photo img {
+        width: 80%;
+        height: 100%;
+        object-fit: contain;
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+        display: block;
       }
 
       .about-photo::after {
@@ -451,19 +481,22 @@
           transform: translateX(100%);
         }
       }
-
       .about-content h3 {
         font-size: 2.5rem;
-        font-weight: 700;
+        font-weight: 600;
+        font-style: italic;
         margin-bottom: 1.5rem;
         color: var(--text-primary);
+        letter-spacing: -0.5px;
       }
 
       .about-content p {
         font-size: 1.1rem;
+        font-weight: 400;
         line-height: 1.8;
         color: var(--text-secondary);
         margin-bottom: 1.5rem;
+        letter-spacing: 0.2px;
       }
 
       .about-stats {
@@ -481,18 +514,21 @@
         backdrop-filter: var(--blur-sm);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }
-
       .stat-number {
         font-size: 2rem;
-        font-weight: 800;
+        font-weight: 700;
         color: var(--accent-primary);
         display: block;
+        letter-spacing: -0.5px;
       }
 
       .stat-label {
         color: var(--text-secondary);
         font-size: 0.9rem;
+        font-weight: 500;
         margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
       }
 
       /* Skills Section */
@@ -728,11 +764,9 @@
           opacity: 1;
           transform: translateY(0);
         }
-      }
-
-      /* Loading optimization */
+      } /* Image optimization */
       .project-image img {
-        loading: lazy;
+        will-change: transform;
       }
 
       /* Contact Section */
@@ -1212,7 +1246,9 @@
 
         <div class="about-grid">
           <div class="about-image slide-left">
-            <div class="about-photo">👨‍💻</div>
+            <div class="about-photo">
+              <img src="assets/mypic.jpg" alt="Omeh Chidi" />
+            </div>
           </div>
 
           <div class="about-content slide-right">
@@ -1302,6 +1338,34 @@
         </div>
 
         <div class="portfolio-grid fade-in">
+          <!-- UI/UX Design Projects -->
+          <div class="project-card" data-category="ui-ux">
+            <div class="project-image">
+              <img
+                src="assets/ui-ux/WhatsApp Image 2025-02-22 at 01.04.30_edaf1cb6.jpg"
+                alt="UI/UX Design Project"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="project-overlay">
+              <a
+                href="assets/ui-ux/WhatsApp Image 2025-02-22 at 01.04.30_edaf1cb6.jpg"
+                class="project-link view-full-size"
+                target="_blank"
+                >View Full Size</a
+              >
+            </div>
+            <div class="project-content">
+              <h3>Modern UI/UX Design</h3>
+              <p>Innovative interface design with focus on user experience</p>
+              <div class="project-tags">
+                <span class="tag">UI/UX</span>
+                <span class="tag">Design System</span>
+              </div>
+            </div>
+          </div>
+
           <!-- Graphic Design Projects -->
           <div class="project-card" data-category="graphic">
             <div class="project-image">
@@ -1500,6 +1564,33 @@
               <p>Custom portrait artwork</p>
               <div class="project-tags">
                 <span class="tag">Portrait</span>
+                <span class="tag">Personal</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img
+                src="assets/graphic_design/daddy_musa bday_main@1.5x.jpg"
+                alt="Birthday Celebration Design"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="project-overlay">
+              <a
+                href="assets/graphic_design/daddy_musa bday_main@1.5x.jpg"
+                class="project-link view-full-size"
+                target="_blank"
+                >View Full Size</a
+              >
+            </div>
+            <div class="project-content">
+              <h3>Birthday Celebration</h3>
+              <p>Custom birthday celebration design for a special occasion</p>
+              <div class="project-tags">
+                <span class="tag">Event</span>
                 <span class="tag">Personal</span>
               </div>
             </div>
