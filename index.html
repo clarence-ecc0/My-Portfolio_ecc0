@@ -352,21 +352,22 @@
         opacity: 0;
         animation: slideUp 1s ease 1s forwards;
       }
-
       .btn {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.5rem;
         padding: 1rem 2rem;
         border-radius: 12px;
         text-decoration: none;
         font-weight: 600;
         font-size: 1rem;
-        transition: var(--transition-bounce);
-        border: 2px solid transparent;
+        font-family: var(--font-primary);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
         cursor: pointer;
         position: relative;
-        overflow: hidden;
+        background: transparent;
       }
 
       .btn-primary {
@@ -376,15 +377,14 @@
       }
 
       .btn-primary:hover {
-        transform: var(--hover-lift);
-        box-shadow: var(--shadow-lg), var(--shadow-glow);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
       }
 
       .btn-secondary {
         background: var(--bg-glass);
         color: var(--text-primary);
-        border-color: rgba(255, 255, 255, 0.2);
-        backdrop-filter: var(--blur-sm);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
       .btn-secondary:hover {
@@ -993,10 +993,10 @@
         background: var(--bg-secondary);
         text-align: center;
       }
-
       .contact-form {
         max-width: 600px;
         margin: 0 auto;
+        font-family: var(--font-primary);
       }
 
       .form-grid {
@@ -1021,6 +1021,7 @@
         border-radius: 12px;
         color: var(--text-primary);
         font-size: 1rem;
+        font-family: var(--font-primary);
         transition: var(--transition-smooth);
         backdrop-filter: var(--blur-sm);
       }
@@ -1056,10 +1057,10 @@
       .form-input::placeholder {
         color: var(--text-muted);
       }
-
       .form-textarea {
         resize: vertical;
         min-height: 120px;
+        font-family: var(--font-primary);
       }
 
       /* Footer */
@@ -1725,7 +1726,11 @@
               ></textarea>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            style="font-family: var(--font-primary)"
+          >
             Send Message
             <span>✉️</span>
           </button>
