@@ -7,8 +7,7 @@ function sendEmail(e) {
   const subject = document.getElementById('subject').value;
   const projectType = document.getElementById('project_type').value;
   const message = document.getElementById('message').value;
-  
-  const mailtoLink = `mailto:chidiecc0@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:clarence135.official@gmail.com?subject=${encodeURIComponent('Request from portfolio website')}&body=${encodeURIComponent(
     `Name: ${name}\nEmail: ${email}\nProject Type: ${projectType}\n\nMessage:\n${message}`
   )}`;
   
@@ -124,6 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize tooltips
     initTooltips();
+
+    // Initialize active section highlighting
+    updateActiveSection();
 });
 
 // Scroll Progress Bar
@@ -164,3 +166,26 @@ function initTooltips() {
         });
     });
 }
+
+// Scroll Spy for Navigation
+function updateActiveSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100; // Offset for navbar
+        const sectionId = section.getAttribute('id');
+        
+        const navLink = document.querySelector(`.nav-links a[href*=${sectionId}]`);
+        if (!navLink) return;
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            navLink.classList.add('active');
+        }
+    });
+}
+
+// Update active section on scroll
+window.addEventListener('scroll', updateActiveSection);
