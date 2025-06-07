@@ -643,6 +643,8 @@
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid rgba(255, 255, 255, 0.1);
         position: relative;
+        display: flex;
+        flex-direction: column;
       }
 
       .project-card:hover {
@@ -655,6 +657,7 @@
         position: relative;
         height: 220px;
         overflow: hidden;
+        flex: 0 0 auto;
       }
 
       .project-image img {
@@ -668,7 +671,6 @@
       .project-card:hover .project-image img {
         transform: scale(1.05);
       }
-
       .project-overlay {
         position: absolute;
         inset: 0;
@@ -684,10 +686,17 @@
         transition: all 0.3s ease;
       }
 
+      [data-theme="light"] .project-overlay {
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.9) 100%
+        );
+      }
+
       .project-card:hover .project-overlay {
         opacity: 1;
       }
-
       .project-link {
         padding: 0.5rem 1rem;
         color: white;
@@ -702,6 +711,12 @@
         transition: all 0.3s ease;
       }
 
+      [data-theme="light"] .project-link {
+        color: var(--text-primary);
+        background: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
       .project-card:hover .project-link {
         transform: translateY(0);
         opacity: 1;
@@ -712,24 +727,27 @@
         border-color: rgba(255, 255, 255, 0.3);
         transform: scale(1.05);
       }
-
       .project-content {
         padding: 1.25rem;
         background: var(--bg-glass);
         backdrop-filter: blur(8px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
       }
 
       .project-content h3 {
         font-size: 1.1rem;
         font-weight: 600;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.75rem;
         color: var(--text-primary);
       }
 
       .project-content p {
         font-size: 0.9rem;
         color: var(--text-secondary);
-        margin-bottom: 1rem;
+        margin-bottom: auto;
         line-height: 1.5;
       }
 
@@ -737,6 +755,7 @@
         display: flex;
         gap: 0.5rem;
         flex-wrap: wrap;
+        margin-top: 1rem;
       }
 
       .tag {
@@ -794,7 +813,6 @@
       .form-group.full-width {
         grid-column: 1 / -1;
       }
-
       .form-input {
         width: 100%;
         padding: 1.25rem 1.5rem;
@@ -805,6 +823,27 @@
         font-size: 1rem;
         transition: var(--transition-smooth);
         backdrop-filter: var(--blur-sm);
+      }
+
+      select.form-input {
+        appearance: none;
+        background-image: linear-gradient(
+            45deg,
+            transparent 50%,
+            var(--text-secondary) 50%
+          ),
+          linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+        background-position: calc(100% - 20px) calc(1.5em + 2px),
+          calc(100% - 15px) calc(1.5em + 2px);
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+
+      select.form-input option {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        padding: 1rem;
       }
 
       .form-input:focus {
@@ -1807,8 +1846,8 @@
       const typingText = document.getElementById("typingText");
       const textArray = [
         "UI/UX Designer",
-        "Front-end Developer",
-        "Creative Coder",
+        "Front-end Web Developer",
+        "Graphic Designer",
       ];
       let textIndex = 0;
       let charIndex = 0;
