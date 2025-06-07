@@ -1,0 +1,369 @@
+/* Modern Animation Effects */
+:root {
+    --transition-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scroll Animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s var(--transition-smooth);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s var(--transition-smooth);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s var(--transition-smooth);
+}
+
+.slide-in-left.visible,
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.8s var(--transition-bounce);
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Custom Cursor */
+.custom-cursor {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--accent-primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: all 0.15s var(--transition-smooth);
+    transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+    transition: all 0.1s var(--transition-smooth);
+    transform: translate(-50%, -50%);
+}
+
+.cursor-hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+/* Modern Card Effects */
+.project-card {
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--accent-gradient);
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-radius: inherit;
+    z-index: -1;
+}
+
+.project-card:hover::after {
+    opacity: 0.1;
+    transform: scale(1.05);
+}
+
+/* Image Hover Effects */
+.project-image img {
+    transition: transform 0.5s var(--transition-smooth);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.1);
+}
+
+.project-overlay {
+    opacity: 0;
+    backdrop-filter: blur(4px);
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+/* Button Animations */
+.btn {
+    transition: all 0.3s var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+    width: 300%;
+    height: 300%;
+}
+
+/* Skill Card Animations */
+.skill-card {
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.skill-card:hover {
+    transform: translateY(-5px) scale(1.02);
+}
+
+.skill-icon {
+    transition: all 0.3s var(--transition-bounce);
+}
+
+.skill-card:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Form Input Animations */
+.form-input {
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.form-input:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.2);
+}
+
+/* Loading Animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    animation: spin 0.8s linear infinite;
+}
+
+/* Text Gradient Animation */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.gradient-text {
+    background: var(--accent-gradient);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 8s linear infinite;
+}
+
+/* Page Transition */
+.page-transition {
+    animation: pageOut 0.5s ease forwards;
+}
+
+@keyframes pageOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
+
+/* Theme Transition */
+.theme-transition * {
+    transition: background-color 0.5s ease,
+                color 0.5s ease,
+                border-color 0.5s ease,
+                box-shadow 0.5s ease;
+}
+
+/* Stagger Animations */
+.stagger-animation > * {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stagger-animation.visible > * {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stagger-animation > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-animation > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-animation > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-animation > *:nth-child(4) { transition-delay: 0.4s; }
+.stagger-animation > *:nth-child(5) { transition-delay: 0.5s; }
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--accent-gradient);
+    z-index: 9999;
+    transition: width 0.1s ease;
+}
+
+/* Tooltip Animation */
+.tooltip {
+    position: fixed;
+    background: var(--bg-glass);
+    color: var(--text-primary);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    pointer-events: none;
+    opacity: 0;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform-origin: bottom;
+    transform: translateY(-5px);
+    transition: all 0.2s var(--transition-smooth);
+    z-index: 9999;
+}
+
+.tooltip.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* UI/UX Project Preview Styles */
+.ui-ux-preview {
+    width: 100%;
+    height: 250px;
+    background: var(--bg-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.ui-ux-preview.placeholder::before {
+    content: 'UI/UX';
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    color: var(--text-muted);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ui-ux-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s var(--transition-smooth);
+}
+
+/* Project Card Hover Refinements */
+.project-card:hover .project-image img,
+.project-card:hover .ui-ux-preview img {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2rem;
+}
+
+/* Enhanced Tag Styles */
+.tag {
+    background: linear-gradient(
+        45deg,
+        rgba(139, 92, 246, 0.1),
+        rgba(6, 182, 212, 0.1)
+    );
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    transition: all 0.3s var(--transition-smooth);
+}
+
+.tag:hover {
+    background: linear-gradient(
+        45deg,
+        rgba(139, 92, 246, 0.2),
+        rgba(6, 182, 212, 0.2)
+    );
+    border-color: rgba(139, 92, 246, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Grid Layout Refinements */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+}
