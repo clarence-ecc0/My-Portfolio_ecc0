@@ -1,8 +1,8 @@
 // Intersection Observer for scroll animations
 const observerOptions = {
     root: null,
-    rootMargin: '50px',
-    threshold: 0.1
+    rootMargin: '100% 0px',
+    threshold: 0
 };
 
 // Create different observers for different animation types
