@@ -1,7 +1,9 @@
 // Intersection Observer for scroll animations
+// Create more aggressive observer options for mobile
+const isMobile = window.innerWidth <= 768;
 const observerOptions = {
     root: null,
-    rootMargin: '100% 0px',
+    rootMargin: isMobile ? '200% 0px' : '100% 0px',
     threshold: 0
 };
 
@@ -169,4 +171,31 @@ if (themeToggle) {
             document.body.classList.remove('theme-transition');
         }, 500);
     });
+}
+
+// Add mobile-specific optimizations
+if (window.innerWidth <= 768) {
+    // Preload work section images when about section becomes visible
+    const aboutSection = document.querySelector('#about');
+    if (aboutSection) {
+        const workImagesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Preload work section images
+                    const workSection = document.querySelector('#work');
+                    if (workSection) {
+                        const images = workSection.getElementsByTagName('img');
+                        Array.from(images).forEach(img => {
+                            if (img.dataset.src) {
+                                const preloadImg = new Image();
+                                preloadImg.src = img.dataset.src;
+                            }
+                        });
+                    }
+                    workImagesObserver.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '100% 0px' });
+        workImagesObserver.observe(aboutSection);
+    }
 }
