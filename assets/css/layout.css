@@ -10,9 +10,20 @@
     padding: var(--section-spacing) 0;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     box-sizing: border-box;
     padding-top: var(--navbar-height);
+}
+
+@media (max-width: 768px) {
+    .section {
+        min-height: auto;
+        padding: calc(var(--section-spacing) / 2) 0;
+    }
+    
+    #portfolio {
+        margin-top: -50px;
+    }
 }
 
 /* Hero Section */
