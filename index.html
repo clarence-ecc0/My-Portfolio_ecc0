@@ -1235,9 +1235,9 @@
 
       .lightbox-content {
         position: relative;
-        max-width: 90%;
-        max-height: 90vh;
-        margin: 2rem;
+        max-width: 95%;
+        max-height: 95vh;
+        margin: 1rem;
         transform: scale(0.9);
         transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -1246,12 +1246,27 @@
         transform: scale(1);
       }
 
-      .lightbox img {
+      .lightbox-viewer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lightbox-viewer img {
         max-width: 100%;
         max-height: 85vh;
         object-fit: contain;
         border-radius: 8px;
         box-shadow: var(--shadow-lg);
+      }
+
+      .lightbox-viewer iframe {
+        width: 90vw;
+        height: 85vh;
+        border: none;
+        border-radius: 8px;
+        box-shadow: var(--shadow-lg);
+        background: #fff;
       }
 
       .close-lightbox {
@@ -2358,21 +2373,30 @@
             }
           });
         });
-      }); // Lightbox functionality
+      }); // Enhanced Lightbox functionality
       const lightbox = document.createElement("div");
       lightbox.className = "lightbox";
       lightbox.innerHTML = `
         <div class="lightbox-content">
-          <img src="" alt="Full size image" />
+          <div class="lightbox-viewer"></div>
           <button class="close-lightbox">×</button>
         </div>
       `;
       document.body.appendChild(lightbox);
 
       // Function to open lightbox
-      function openLightbox(imgSrc) {
-        const lightboxImg = lightbox.querySelector("img");
-        lightboxImg.src = imgSrc;
+      function openLightbox(fileSrc) {
+        const viewer = lightbox.querySelector(".lightbox-viewer");
+        viewer.innerHTML = ""; // Clear previous content
+        
+        if (fileSrc.toLowerCase().endsWith(".pdf")) {
+          // PDF file
+          viewer.innerHTML = `<iframe src="${fileSrc}#toolbar=0" type="application/pdf"></iframe>`;
+        } else {
+          // Image file
+          viewer.innerHTML = `<img src="${fileSrc}" alt="Full size image" />`;
+        }
+        
         document.body.style.overflow = "hidden";
         lightbox.classList.add("active");
       }
