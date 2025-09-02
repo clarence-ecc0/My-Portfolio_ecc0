@@ -1,0 +1,66 @@
+{{text:[A&#93; CLOSE OUT DOCUMENTATION&#58;
+The work that was done so far to be handed over as at the last stage. Functionality as at the last stage to be confirmed. Should be deposited in my cloud storage server.
+
+A formal document showing what was given and the task concluded to be provided
+
+A formal payment document showing what was asked and what was paid to be provided. I can put it together as well 
+
+A pledge that if anything is unclear or I meet a restriction in the work they have done, they will address it without any further payment.
+
+To provide clarification wherever/whenever it is required on the work they have done.
+
+All that I need (or the next IT person that will takeover will should be handed over to me. Discuss this with Emmanuel)
+
+A commitment that my intellectual property will not be sold to anyone or used by Chronicles or anybody their privies that worked on the project 
+
+[B&#93; MEETING WITH CEO AT IKEA OFFICE ON 29TH AUG 2024
+
+Met with the CEO and an intern who recorded our discussion.
+The CEO recited the journey so far and stated that based on information available to him, the work was being delayed because I was introducing two many frequent changes. I clarified the situation that that was far from the truth. I explained all that happened, how I sought out the company from church platform
+and all I submitted which contains my thoughts. I stayed that if we should look at the materials I shared, the things I was being up were contained, implied therein. 
+
+Eventually, I made the declaration that I came to collect my work from them no matter its state. The work has three components&#58; the web-based platform, the mobile and the desktop. Not even the web-based version has been concluded. 
+
+In the CEO's response, he gave me the option that he would take charge of the work and they could still complete it but I rejected the offer. He declared then that he would ensure that the Web-based version will be completed (within 1-2 weeks depending on feedback from Samuel) and it would be fully functional when it is handed over to me. He also offered to do a series of voice-over video for me (to share with people, to show its utility) when the web-based platform is completed which I accepted.
+
+I told him that I have opened a  GitHub account where my work can be stored and I will give chronicle access so that the work can be completed there. 
+
+Solomon will send me a mail that shows what he discussed with Samuel (based on what I shared with Samuel) and if I confirm it to be the undone work in the web-based platform, then they will proceed to address it. The CEO told Solomon that he will pay for that extra cost that Samuel is asking for.
+Once I get the mail from Solomon, I will then send them a formal invite to GitHub to drop the work that they have done along with the sort code.
+
+[C&#93; MEETING (VIRTUAL) ON 30TH AUGUST
+
+agenda&#58; 
+1. Close out report. When will it be ready. Share a draft
+
+2. Reconciliation of account. Any refund? 
+    Billed N3225,500&#58;00 + N1.5M
+    Total cost = N4,725,500
+
+    Paid&#58; N1.5M + N1.8M = N3.3M
+
+    Balance&#58; N1,425,500
+
+3. The work with Samuel. Will be concluded in one 
+     week or two?
+
+4. Migration of work and src codes to GitHub&#58; I am 
+    meeting with my directors and will send the 
+    GitHub invite after the internal meeting.
+
+5. 
+    send the invite after the directors meeting on 
+    Sunday. 
+
+
+
+
+
+
+
+
+
+
+
+
+]text_span:[{"a":"bold","b":2852,"c":2860},{"a":"italic","b":2852,"c":2860},{"a":"bold","b":888,"c":941},{"a":"bold","b":0,"c":28},{"a":"bold","b":2814,"c":2850}]}}

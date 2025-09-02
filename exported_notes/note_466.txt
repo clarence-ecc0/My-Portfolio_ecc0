@@ -1,0 +1,4 @@
+{{text:        TO START THE SERVER, 
+Just go to document and click on pemmdis. In the URL that shows up type cmd. This will bring you to the python window. Type php then, space,  artisan, then space, and serve
+
+Document>>pemmdis>>url>>cmd>>php artisan serve]text_span:[{"a":"bold","b":154,"c":157},{"a":"underline","b":154,"c":157},{"a":"bold","b":197,"c":202},{"a":"underline","b":197,"c":202},{"a":"bold","b":172,"c":179},{"a":"underline","b":172,"c":179},{"a":"bold","b":79,"c":82},{"a":"underline","b":79,"c":82},{"a":"bold","b":41,"c":49},{"a":"underline","b":41,"c":49},{"a":"bold","b":63,"c":70},{"a":"underline","b":63,"c":70},{"a":"underline","b":102,"c":106},{"a":"bold","b":102,"c":106},{"a":"bold","b":8,"c":29},{"a":"underline","b":8,"c":29}]}}

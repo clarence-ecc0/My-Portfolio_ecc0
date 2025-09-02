@@ -1,0 +1,28 @@
+{{text:THE TIME TAKERS
+
+[1&#93; Howard's work (Monday to Friday - 8 hours daily)
+
+ [2&#93; Pharmacy work (Saturdays, Night)
+
+[3&#93; Software's work (Saturdays, Nights) 
+
+[4&#93; Ministry work (Sunday, Monday,  Tuesday,   
+     Thursday, Nights, CSY, as key days & time)
+
+[5&#93; Fati
+
+
+To succeed, these are necessary&#58;
+
+✓My wife must hold her ground at the pharmacy. Help her to address the children's needs.
+
+✓ I must have adequate pharmacy personnel 
+
+✓ Ensure adequate and sustained support for Fati in terms of house help & funding from the siblings. 
+
+✓ Quality quiet time is necessary for successful CSY work
+
+
+ 
+
+]text_span:[{"a":"bold","b":260,"c":292},{"a":"underline","b":260,"c":292},{"a":"bold","b":0,"c":15},{"a":"underline","b":0,"c":15}]}}

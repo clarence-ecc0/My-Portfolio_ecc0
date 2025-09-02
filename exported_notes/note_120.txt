@@ -1,0 +1,86 @@
+{{text:Plan&#58;
+Generate list of workers (by profession)
+
+Generate list of instruments
+
+Make arrangements for some drugs (antihypertensives & anti diabetics)
+
+FU with bro Peter on the Accuchek stripes
+
+Get batteries for the Accuchek in my office (2)
+
+Get the pharmacy sphigmomanometer with the two stethoscopes
+
+Check the viability of the drugs at ACO
+
+Carry The drugs from Ofante crusade
+
+Follow up with the Admin at ACO and make arrangements for tables (at least, 15)
+
+Find out who has a health talk
+
+
+
+[A&#93; MEDICATION MANAGEMENT TIPS
+
+1. Drugs that should be discontinued or continued after we feel better.
+
+2. Go to the hospital or pharmacy with all the drugs you are using and show the health workers there (doctor, pharmacist, nurse)
+
+3. Keep unused drugs safe from children
+
+4a. Do not stop taking drugs for chronic ailments (HTN, DM, Anti-psychotic medications, etc.) by yourself. Seek counsel.
+
+4b. Monitor the effects of the drugs you are taking. The doses may be changed depending on your body's response to it. 
+
+5. Do not take drugs without the advice of a health professional (or with the advice of a lay person ). It can be dangerous  
+
+6. Do not mix orthodox medicines with herbs. Everything we take in become chemical and they can interact
+
+7. If you are taking your drugs and are not getting better, go back to the hospital. The drugs or the dosage can be changed if necessary
+
+
+[B&#93; DM (type -1&#58; insulin dependent; type-2&#58; non 
+      insulin dependent)
+
+[C&#93; HTN
+
+[D&#93; ULCER
+
+Discussion points&#58;
+1. What do they mean?
+2. What are their signs?
+3. What makes them worse?
+3. How can we prevent them?
+4. How do we manage them&#58; with drugs and with our drugs?
+
+
+
+People coming
+Nurse- Sr Blessing Oparah
+Nurse- Sr Peace
+Nurse -Esther Ogbaji
+Pharmacist - Bro Oghani Jacob
+Pharmacist - Omokhide
+Lab - Bro Fashion Joseph
+Radiographer- Mitzy Ochumba
+CHEW- Bitrus
+Nurse- Esther Ohiri
+Nurse-Rejoice Sunday
+
+Equipment coming
+Sphigmomanometer & stethoscope (Sr Blessing)
+Sphigmomanometer & stethoscope (bro Omeh)
+Sphigmomanometer & stethoscope (church has)
+Sphigmomanometer (Oghani)
+Sphigmomanometer (Esther)
+Stethoscope (Akeem)
+Stethoscope (bro Omeh)
+Glucometer (Esther. May not be working)
+Glucometer (Omeh x2)
+
+
+
+
+
+]text_span:[{"a":"bold","b":1898,"c":1914},{"a":"italic","b":1898,"c":1914},{"a":"bold","b":1661,"c":1674},{"a":"italic","b":1661,"c":1674},{"a":"bold","b":494,"c":525},{"a":"bold","b":1386,"c":1460},{"a":"bold","b":1461,"c":1468},{"a":"bold","b":1470,"c":1479}]}}

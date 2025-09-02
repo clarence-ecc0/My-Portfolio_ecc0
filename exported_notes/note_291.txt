@@ -1,0 +1,14 @@
+{{text:The software will be divided into two portions.
+The part that goes to the cloud will not have any client identifier (name, email, phone #, gender, age).
+
+All these will be in part-1 of the design
+
+All the other details that include drugs and diseases and all other information will be in the cloud.
+
+This will be part-2 of the design.
+
+The common connector between part-1 and part-2 will be the unique alphanumeric identifier  synthesized from extracts of the clients name, phone # and serial number. The part-1 design will have a module that automatically synthesizes the alphanumeric unique identifier. 
+
+There will be a part-3 that allows  part- and part-2 to interact through the unique alphanumeric identifier such that once a subscriber keys in the identifier, he gains access to the cloud and can do his work in the environment (framework) hosted in the cloud and part-2, through the help of part-3 connect the two parts together. 
+
+Discuss with Sam, Emmanuel.]text_span:[]}}

@@ -1,0 +1,26 @@
+{{text:Jeroboam and kings of the Northern Israel
+
+Jeroboam  (22years) (1 Kg 14&#58;20)
+
+
+Nadab (2years) (1 Kg 15&#58;25)
+
+
+Baasha (24 years) (1 Kg 15&#58;33)
+
+
+Elah (2years) (1 Kg 16&#58;8)
+
+
+Zimri (7days) (1 Kg 16&#58;15)
+
+
+Omri (12years) (1 Kg 16&#58;23)
+
+
+Ahab (22years) (1 Kg 16&#58;29)
+
+From Jeroboam to Omri was 62 years &, 7 days. After that, King Ahab took over and Elijah was the prophet in his time. 
+
+
+]text_span:[{"a":"underline","b":262,"c":278},{"a":"bold","b":257,"c":375},{"a":"italic","b":257,"c":375}]}}

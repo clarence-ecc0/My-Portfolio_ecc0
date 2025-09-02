@@ -1,0 +1,18 @@
+{{text:
+
+
+
+
+5. Contact Information
+Phone Number&#58; A primary phone number for users or customers to contact the pharmacy for support or inquiries.
+Email Address&#58; An email address for general inquiries or support related to the platform.
+Social Media Links&#58; Links to the company’s social media profiles if they wish to display them on the welcome page.
+
+6. Call to Action (CTA)
+Button Text&#58; Decide on the call-to-action button text (e.g., "Get Started", "Login", "Register", etc.).
+Link/CTA Destination&#58; Determine where the CTA button should lead—whether it’s the login page, a registration page, or a section for more information.
+
+
+7. Compliance & Certifications
+Regulatory Certifications&#58; If applicable, any certifications or compliance seals (e.g., for healthcare data privacy, or pharmacy regulations) that should be displayed on the welcome page for added trustworthiness.
+Privacy Policy&#58; The company’s privacy policy, especially since the system deals with sensitive patient records.]text_span:[]}}

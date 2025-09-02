@@ -1,0 +1,28 @@
+{{text:✓ The PHO meetings is revealing there are some issues arising from pharmacy services (EAC, DSD and to an extent, COT/IIT). We are used to having an excellent report sheet after visitations. The situation is changing.
+
+✓ The desire is to find out if operational procedures are implemented as expected and are failing or they are not implemented as designed and what could be the problem.
+
+✓ Visited GH Calabar, Maxicare pharmacy, GH Akamkpa, Ma efa PHC, 
+ # Good practice, documentation, VS with three clients in CP unsuppressed. Followed up
+# Store has AC & no regular light, Dispensary has inverter no AC but fan. Temp differential from the Temp chart. 
+
+✓ There is better compliance with the procedure at GH Calabar than at Akamkpa.
+
+
+
+✓ Pharmacy consultants appear demotivated 
+
+✓ 
+
+RECEIVED FROM UCTH.
+Salicylic acid 45.5G; (55.5 G with bottle)
+Paraffin wax 161G with container.]text_span:[{"a":"bold","b":786,"c":805},{"a":"underline","b":786,"c":805}]}{rec:/storage/emulated/0/Android/data/com.transsion.notebook/files/Record/note_05022025_120603.amr}{text:
+
+
+Debrief on UCTH
+✓ Client VL results sometimes are not in the folder
+✓ Planning to have fast track at UCTH
+✓ The validation checklist is not enough. A CP said this. UCTH has the form but not enough is given out. Recommended enough form to be out to CPs based on TX_ CURR.
+✓ Last DTC meeting was in January this year. Has been having CQI meeting.
+✓ Wrong procedure in documenting unsuppressed clients in the EAC monitoring register. Takes data from RADET.
+✓  Morning and evening dosing of ABC/3TC and DTG.]text_span:[]}}

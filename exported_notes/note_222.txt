@@ -1,0 +1,2 @@
+{{text:Quantity per dose can be volume, IU, etc.
+Qty per dose cannot have a negative #. Address it]text_span:[]}}

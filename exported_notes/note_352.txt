@@ -1,0 +1,23 @@
+{{text:
+TOPIC&#58; LIVING TO LABOR ONLY FOR GOD'S GLORY 
+
+1 Peter 2&#58;11,12
+There is a warfare against my soul but I will not perish in Jesus name. The Lord has made me have dominion over the mighty. When the Lord visits me, it will be mercy and encouragement to serve the Lord better
+
+Point-1&#58; 
+
+
+
+
+
+
+Point-2&#58;
+
+
+
+
+
+Point-3&#58;
+
+
+]text_span:[{"a":"bold","b":47,"c":62},{"a":"bold","b":273,"c":282},{"a":"italic","b":273,"c":282},{"a":"bold","b":289,"c":297},{"a":"italic","b":289,"c":297},{"a":"bold","b":303,"c":311},{"a":"italic","b":303,"c":311},{"a":"bold","b":1,"c":45}]}}

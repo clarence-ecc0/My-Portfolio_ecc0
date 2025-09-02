@@ -1,0 +1,17 @@
+{{text:# I got the name of a young Barrister and had discussions with him.
+
+# He works in a firm that has a data management legal unit. 
+
+# He advised that the average lawyer on the street cannot handle legal matters that may arise from a breach of relevant data protection laws. A firm is better
+
+# He advised that if someone like him is taken on board, he will need to table his limitations and that he can only do so little even as there is much to be done. When it comes to data protection issues, health and finance are held very high up by the law, health because it deals with life and people's key privacy areas.
+
+# Organizations need data protection officer (a Lawyer to guide on what to avoid in order to stay on the right side of the law and an IT officer who helps to put the necessary architecture that protects people's data).
+
+# On billing, it could be one-off, or it could be on an agreement basis where an agreed percentage of earnings is taken by the law firm. 
+
+# Firms that collect the data (e.g., hospitals, pharmacy, etc.) are referred to as 'Data Collector's by the law while the clients are referred to as 'Data Subject '. The data subject enjoy great protection and are awarded high relief for a breach of their data. 
+It is the responsibility the data collector to protect the data subject. The Software owner can help the data collector by making his software brech-proof
+
+# 
+]text_span:[]}}

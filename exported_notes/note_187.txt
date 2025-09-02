@@ -1,0 +1,17 @@
+{{text:Sample messages to clients.
+
+Greetings 
+Thanks for registering with us
+Thanks for visiting today with us
+Happy Christmas, sallah, etc.
+
+FU messages
+How do you feel?
+Are the complaints still there.
+List the problem still persisting
+
+Requests
+Please, come back. I need to see you today, tomorrow's 
+Please, stop drug .... and see me, visit the hospital, etc
+
+]text_span:[]}}

@@ -1,0 +1,6 @@
+{{text:Transform the data DONE
+Remove duplicates DONE
+Arrange for concatination
+Concatenate 
+Copy & paste as values in Emma's template 
+Take note of the number of brands that each API has. It will be useful during the update of the list]text_span:[]}}

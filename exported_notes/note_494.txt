@@ -1,0 +1,197 @@
+{{text:SEPTEMBER 2025
+[A&#93; DEBT
+MARK Project (1.5M)
+SUM&#58; N1.5M
+
+
+[B&#93; HELP
+Fati/Paul support (0.0M)
+Indigent in DLBC (0.0M)
+SUM&#58; N0.0M
+ 
+[C&#93; DOMESTIC
+Home/church tithe (N0.75M); 
+My/Dear upkeep (0.2M)
+XXXXX (0.0M)
+SUM&#58; N0.95M
+
+
+[D&#93; INVESTMENT 
+XXXXX (0.0M)
+Win-Win pharmacy Chizzy sch debt (N0.0K)
+Emmanuel (N80K)
+SUM&#58; N0.08M
+
+
+[E&#93; RECURRENT (EDUCATION)
+Chizzy/Onyinye (0.3M)
+Anchor
+DLHS
+NUTM N.5
+Sch feeding (Ossy/Chidi) N0.15
+SUM&#58; N0.95M
+
+
+[GCK&#93;
+SUM&#58; 0.0M
+
+
+[F&#93; CONTINGENT
+Home renovation phase (0.0M) 
+Cupboards for books (0.0M)
+
+SUM&#58; N0.0M
+
+Total&#58; 1.5 + 0.0 + 0.95 + 0.08 + 0.95 + 0.0 + 0.0 = N3.48M
+
+(wiggle room&#58; NUTM by half)
+---------------------------------------------------------------------------------
+
+OCTOBER 2025
+[A&#93; DEBT
+MARK Project (1.5M)
+NUTM (0.0M)
+DLHS (0.0M)
+SUM&#58; N1.5M
+
+
+[B&#93; HELP
+Indigent in DLBC (0.0M)
+Paul/Fati (N500K)
+SUM&#58; N0.5M
+ 
+[C&#93; DOMESTIC
+Home/church tithe (N0.75M); 
+My/Dear upkeep (0.2M)
+SUM&#58; N0.95M
+
+
+[D&#93; INVESTMENT 
+XXXXX (0.0M)
+Win-Win pharmacy (NK)
+Beulah (NK); 
+Emmanuel (N80K)
+SUM&#58; N0.08M
+
+
+[E&#93; RECURRENT (EDUCATION)
+Chizzy/Onyinye (0.0M)
+Anchor
+DLHS N0.0
+Sch Feeding (Ossy/Chidi) N0.15M
+SUM&#58; N0.15M
+
+
+[GCK&#93;
+SUM&#58; 0.0M
+
+
+[F&#93; CONTINGENT
+Home renovation phase (0.0M) 
+
+SUM&#58; N0.0M
+
+Total&#58; 1.5 + 0.05+ 0.95 + 0.08 + 0.15 + 0.2 + 0.5 = N3.43M
+
+(wiggle room&#58; Paul/Fati; Sch feeding)
+---------------------------------------------------------------------------------
+
+
+NOVEMBER 2025
+[A&#93; DEBT
+MARK Project (1.5M)
+SUM&#58; N1.5M
+
+
+[B&#93; HELP
+XXXXX (0.0M)
+Indigent in DLBC (0.2M)
+SUM&#58; N0.2M
+
+ 
+[C&#93; DOMESTIC
+Home/church tithe (N0.75M); 
+My/Dear upkeep (0.2M)
+SUM&#58; N0.95M
+
+
+[D&#93; INVESTMENT 
+XXXXX (0.0M)
+Win-Win pharmacy (NK)
+Beulah (); 
+Emmanuel (N80K)
+SUM&#58; N0.08M
+
+
+[E&#93; RECURRENT (EDUCATION)
+Chizzy/Onyinye (0.3M)
+Anchor (0.0M)
+DLHS (0.0M)
+School feeding (0.15M)
+SUM&#58; N0.45M
+
+
+[GCK&#93;
+SUM&#58; 0.0M
+
+
+[F&#93; CONTINGENT
+Home furnishing (0.0M)
+
+SUM&#58; N1.5M
+
+Total&#58; 1.5 + 0.2 + 0.95 + 0.08 + 0.45 + 0.0 + 0.= N3.18M
+(wiggle room&#58; Sch feeding)
+---------------------------------------------------------------------------------
+
+
+DECEMBER 2025
+[A&#93; DEBT
+MARK Project (1.5M)
+SUM&#58; N1.5M
+
+
+[B&#93; HELP
+???? (0.0M)
+Indigent in DLBC (0.0M)
+SUM&#58; N0.0M
+ 
+[C&#93; DOMESTIC
+Home/church tithe (N0.75M); 
+My/Dear upkeep (0.2M)
+SUM&#58; N0.95M
+
+
+[D&#93; INVESTMENT 
+XXXXX (0.0M)
+Win-Win pharmacy (NK)
+Beulah (NK); 
+Emmanuel (N80K)
+SUM&#58; N0.08M
+
+
+[E&#93; RECURRENT (EDUCATION)
+Chizzy/Onyinye (0.0M)
+Anchor
+DLHS (0.0M)
+School feeding (0.15M)
+SUM&#58; N0.15M
+
+
+[GCK&#93;
+SUM&#58; 0.0M
+
+
+[F&#93; CONTINGENT
+Ofante/Igogoro crusade (2.5M)
+
+SUM&#58; N1.5M
+
+Total&#58; 1.5 + 0.0 + 0.95 + 0.08 + 0.15 + 0.0 + 1.5 = N4.18M
+(wiggle room&#58; Can pharmacy support?)
+---------------------------------------------------------------------------------
+
+
+
+
+]text_span:[{"a":"bold","b":597,"c":609},{"a":"italic","b":597,"c":609},{"a":"bold","b":1271,"c":1282},{"a":"italic","b":1271,"c":1282},{"a":"bold","b":1917,"c":1928},{"a":"italic","b":1917,"c":1928},{"a":"bold","b":2554,"c":2565},{"a":"italic","b":2554,"c":2565},{"a":"italic","b":1284,"c":1306},{"a":"italic","b":1930,"c":1941},{"a":"italic","b":2567,"c":2588}]}}

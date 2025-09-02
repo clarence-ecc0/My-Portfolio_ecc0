@@ -1,0 +1,8 @@
+{{text:Deduplicate products by sorting by manufacturers. Remove brand names that are duplicated by same manufacturer.
+
+As a continuation of the building up of the registered brands in Nigeria, the next step after the clean up is to start taking the generics one by one and using AI to find out the registered generics. It's amazing but NAFDAC list missed out much (e.g., procaine penicillin brands)
+
+Anything that is not a drug (even syringes, etc) should be on the non-drug list. I need to separate them like that. Subscribers can add unto the non-drug list that I send to them through the global list. Must it show on my SW? Ask Emma for the implication. 
+HINT&#58; All the NAFDAC items (with NAFDAC #) are drugs. Can use that to sort out the non-drug items
+
+Drug display should show manufacturer, brand name, strength & dosage form]text_span:[]}}

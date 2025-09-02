@@ -1,0 +1,8 @@
+{{text:July 6th = N413,740(New Health)
+
+July 13th = N1,187, 150 (New Health)
+July 13th = N64, 717 (Klen)
+July 16th = N185, 320 (New Health)
+July 18th = N240,600 (Chisalo)
+July 21st = N151,950 (Chisalo)
+July 22nd = N258,487 (New Health)]text_span:[]}}

@@ -1,0 +1,4 @@
+{{text:Ticket 276000
+Airport Taxi 70000
+Accom 280000
+Pd 135000]text_span:[]}}

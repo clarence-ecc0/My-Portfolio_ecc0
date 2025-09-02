@@ -1,0 +1,4 @@
+{{text:Attend to a minimum of 20 clients in the SW as a subscriber (registered pharmacy)
+These clients came in requesting for drugs to buy without prescription, some came with a prescription from a hospital, some came a month ago for malaria and came again today, for typhoid or get antihypertensive medications, etc. 
+
+Go through assessment, laboratory, diagnosis, prescription, dispensing, follow up, analytics, etc. ]text_span:[]}}

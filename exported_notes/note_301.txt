@@ -1,0 +1,12 @@
+{{text:First, we need to ensure the web version is okay and running
+Then, we need to get a UI/UX for the mobile version and the desktop version.
+
+The Remote developer currently earns 100K and above for 24 hours remote support. See the functions he will be performing in the contract document.
+The agreement will capture that the terms can be negotiated every 6 months by him or us based on performance. 
+
+The license must have categories e.g., a bronze plan for  shop/facility that has 100 clients and has 1000 diverse products. And how many service providers will be using the system (pharmacists, doctors, etc.).
+
+As the patients load, drug list and HCWs increase, the category a subscriber applies for changes.
+
+There will be a super admin table where people's plans can be switched.
+]text_span:[]}}

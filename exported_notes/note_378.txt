@@ -1,0 +1,12 @@
+{{text:Two licenses running concurrently is wrong. To be changed so that a single premises will not have two or more licenses running at the same time.
+
+A license can be upgraded to a higher grade and an existing license can be extended to more # of days. That means the subscription module will make it possible to&#58;
+A. Buy a new license
+B. Upgrade an existing license to a higher grade
+C. Extend the length of days of a new license
+
+This will be considered after the MVP has been completed and rolled out. 
+
+Next steps 
+Disallow duplicate names when creating a pharmacy
+Allow editing of an existing name, e.g., Malux to Malux-1]text_span:[]}}

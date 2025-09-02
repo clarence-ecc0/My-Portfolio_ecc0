@@ -1,0 +1,7 @@
+{{text:Lisinopril 10mg
+Amlodipine 10mg
+Clopidogrel
+Moduretic
+Neurovite forte
+Ramipril
+]text_span:[]}}

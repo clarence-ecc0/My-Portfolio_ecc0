@@ -1,0 +1,95 @@
+{{text:List of drugs for medical outreach by Akoji's friend 
+ANALGESICS (adults & children)
+Adults&#58;
+PCM x1000 (1)✓
+Ibuprofen x100 (2)✓
+
+Children&#58;
+Syrup PCM M&B (10)✓
+Syrup Ibuprofen AFRAB (10)✓
+
+ANTIBIOTICS&#58; BACTERIAL/FUNGAL (adults & children)
+Adults&#58;
+Emtrin x1000 (1)✓
+Ampiclox x100 (2)
+Emgyl x1000 (1)
+Ultraflox Cipro x10 (5)
+
+Children&#58;
+Syrup Septrin (10)✓
+Syrup Ampiclox (5)✓
+Syrup Loxagyl (15)✓
+
+COUGH SYRUP (adults & children)
+Adults&#58;
+2 brands (20 each)
+
+Children&#58;
+2 brands (10 each)
+
+MALARIA (adults & children)
+Adults&#58;
+Arenax x24 (40)✓
+
+Children&#58;
+Tab Arenax x6 DISPERSIBLE (10)✓
+
+ANTI-HELMINTHICS (adults & children)
+Adults & Children&#58;
+Syrup Wormzap (20)✓
+
+VITAMINS (adults & children)
+Adults&#58;
+Becombion tablet x100 (10)✓
+Multivitamin capsules x30 (5)✓
+Vitamin C
+
+
+Children&#58;
+Syrup Novavite (12 )✓
+
+ANEMIA (adults & children)
+Adults&#58;
+Fesolate x1000 (1)✓
+Folic acid x1000 (1)✓
+
+Children&#58;
+Ranferon syrup, etc. (10)✓
+
+EYE DROPS (itching, discharges)
+Adults & Children&#58;
+Chloramphenicol eye drop MCA (10)✓
+Beoptic eye drop, etc. (5)x
+
+DIARRHEA
+Adults
+Buscopan tablet x100 (2)✓
+
+Children
+Syrup Colipan, etc. (5)
+
+
+DERMATOLOGICALS
+Tri-bact cream (5)✓
+Zetgel (5)✓
+
+COLD, URTICARIA (adults & children)
+Chrlorpheniramine 1x1000✓
+
+ANTIDIABETIC 
+Accu-check test strips
+
+WOUND DRESSING
+T.T injection (5)x
+Gauze (1 pack)✓
+Spirit (1)✓
+Syringe (2mll)x
+Cicatrin powder (1)✓
+Hydrogen peroxide (1)✓
+Cotton wool x300G (1)✓
+Povidone iodine ointment (1)x
+
+MISCELLANEOUS 
+1. Dispensing envelopes (5 packs)✓
+
+]text_span:[{"a":"bold","b":85,"c":92},{"a":"italic","b":85,"c":92},{"a":"bold","b":129,"c":138},{"a":"italic","b":129,"c":138},{"a":"bold","b":238,"c":245},{"a":"italic","b":238,"c":245},{"a":"bold","b":323,"c":332},{"a":"italic","b":323,"c":332},{"a":"bold","b":426,"c":433},{"a":"italic","b":426,"c":433},{"a":"bold","b":454,"c":463},{"a":"italic","b":454,"c":463},{"a":"bold","b":512,"c":519},{"a":"italic","b":512,"c":519},{"a":"bold","b":538,"c":547},{"a":"italic","b":538,"c":547},{"a":"bold","b":618,"c":636},{"a":"italic","b":618,"c":636},{"a":"bold","b":687,"c":694},{"a":"italic","b":687,"c":694},{"a":"bold","b":766,"c":775},{"a":"italic","b":766,"c":775},{"a":"bold","b":826,"c":833},{"a":"italic","b":826,"c":833},{"a":"bold","b":877,"c":886},{"a":"italic","b":877,"c":886},{"a":"bold","b":947,"c":965},{"a":"italic","b":947,"c":965},{"a":"bold","b":1073,"c":1081},{"a":"italic","b":1073,"c":1081},{"a":"bold","b":1039,"c":1045}]}}

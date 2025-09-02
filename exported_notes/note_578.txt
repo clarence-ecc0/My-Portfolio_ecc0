@@ -1,0 +1,34 @@
+{{text:✓ Sister's health and the trip of Shade
+Decision&#58; We have to wait until Shade comes back
+
+
+✓ The decision of Theresa to leave by Saturday because of Divine
+Decision&#58; Nothing can be said about Divine's situation.   Just find out from Omachoko if it is possible to return Divine back. 
+
+Talk to Akoji on Theresa's leaving and the need to get a replacement through the agent.
+
+
+✓ The biz stuff (shoes/clothes) at the plaza
+Decision&#58; Move sister things to her house.
+Sister to call her contacts to help her in the sale of the items
+
+
+✓ Any feedback on Lere
+Decision&#58; Lere made a profit of N60K. Dale will meet with him when he comes to Abuja and provide more feedback.
+
+
+✓ Court case
+Decision&#58; withdraw the case from court. Talk to Omachoko.
+
+
+✓ Need for Emma as he goes back to School
+Decision&#58; Start considering Miracle to stay close to her mother and help her. We need to look for  day school for him. Discuss with Omachoko & Mrs Negedu to help
+
+
+✓ The lesson fees incurred on Divine & Favour
+Decision&#58; We need to raise money to pay the debt of N50K.
+
+
+✓ The children's school as resumption pends
+Decision&#58; We need to move the children to a school that is more affordable. Discuss with Omachoko & Mrs Negedu to help
+]text_span:[{"a":"italic","b":420,"c":527},{"a":"bold","b":527,"c":528},{"a":"bold","b":377,"c":419},{"a":"bold","b":664,"c":666},{"a":"italic","b":553,"c":664},{"a":"bold","b":532,"c":552},{"a":"bold","b":669,"c":679},{"a":"italic","b":680,"c":737},{"a":"italic","b":156,"c":373},{"a":"bold","b":93,"c":155},{"a":"bold","b":2,"c":39},{"a":"italic","b":40,"c":88},{"a":"bold","b":373,"c":373},{"a":"italic","b":782,"c":943},{"a":"italic","b":992,"c":1049},{"a":"italic","b":1096,"c":1214},{"a":"bold","b":742,"c":781},{"a":"bold","b":948,"c":991},{"a":"bold","b":1054,"c":1095}]}}

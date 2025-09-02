@@ -1,0 +1,31 @@
+{{text:Time for the program&#58;
+
+Registration&#58; 8&#58;30-900am
+
+Opening prayer (congregational)&#58; 9&#58;00-9&#58;15 am
+
+Congregational praise & worship 9&#58;15-9&#58;25 am
+
+Opening remarks (objective of meeting) 9&#58;25-9&#58;30 am
+
+Review of "Program of Events" 9&#58;30-9&#58;35 am
+
+Hymn-9&#58;35-9&#58;40 am
+
+Message-1 (45 minutes) 9&#58;40-10&#58;25 am
+
+Prayer after message-1 10&#58;25-10&#58;40 am
+
+Music interlude (mobile speaker) 10&#58;40-10&#58;45 am
+
+Hymn-2 10&#58;45-10&#58;50 am
+
+Message-2 10&#58;50-11&#58;35 am
+
+Prayer after message-2 11&#58;35-11&#58;50 am
+
+Refreshment 11&#58;50-12&#58;20 pm
+
+Music interlude (mobile speaker) 12&#58;20-12&#58;25 pm
+
+Film show 12&#58;25- 3&#58;25 pm]text_span:[]}}

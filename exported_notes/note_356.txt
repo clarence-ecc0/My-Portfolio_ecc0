@@ -1,0 +1,64 @@
+{{text:NSU per pack, normalized UCP
+Mixagrip
+Procold
+Face mask
+Krismotil (loperamide)
+
+
+Which wellkid syrup was bought? For infants or 4-12 yrs? Confirm and enter
+
+Fix alpenliebe price. It is N100 each
+
+Establish the NSU per pack for all the products. (check past procurements)
+Link up new USP to the normalized USP. It will require&#58;
+a. New column titled "NEW USP" to be inserted in front of all the USP columns in the Tally sheet.
+
+b. The new USP price determined after each procurement (in the procurement sheet) is linked to the "normalized USP" column on the sheet. 
+
+c. It is the "normalized USP" on the procurement sheet that feeds the newly created "NEW USP" on the Tally sheet
+
+d. The "NEW USP" on the Tally sheet can be copied into the "normalized USP" column on the Tally sheet where sales have not been entered. This replicates to all the "USP" columns ahead as usual.
+
+Address the dettol issue with Klen
+
+NOVEMBER 16TH NEW TASKS
+
+
+3. All the canulla have no input in the database. Find and put them back
+
+4. 
+
+5. Note that the quantities of all the cotton wools were not inserted. Insert when seen at rows 306-30..
+
+6. Exiplon cough syrup for children appeared twice in the database (rows 435 & 436). Delete one
+
+7. 
+
+8.  
+
+9.  Lasix 40mg is on the database twice (rows 619 & 620). Delete one
+
+10. Maxiquin suspension & syrup both available at rows 690 & 691. Delete one
+
+11. Do we have melotears and metrotears (5 each) or is it a mistake? See rows 699 & 721. Delete one if an error 
+
+12. Odomos (8) and odomos cream (9) are different. See rows 819 & 820
+
+13. Once a day pregnan multi & Once a day pregnan multi caplet on rows 838 & 839. Duplicate? Delete one.
+
+14. Check plaster and fill all. Rows 915 - 917
+
+
+15. No Rexifen 200 & 400mg? See rows 1006 & 1007
+
+16. Remember to collect your Rostreck from New Health. Also, the dettol exchange with Klen. 
+
+18. Sure PCM by Fidson appears to be in two places. Check and delete one if it is so.
+
+19. Check how many times we have ulcerdex. We have at row 1143
+
+20. Nature's vitamin C 1000mg x100 can't be up to 10. Check it is not the card type. See row 1183
+
+21. Insert TX into the database 
+
+]text_span:[]}}

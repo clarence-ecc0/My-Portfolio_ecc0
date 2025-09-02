@@ -1,0 +1,134 @@
+{{text:OCTOBER 2024
+
+[A&#93; DEBT
+mPharma (N0.75M) DONE
+GTB loan (0.17) DONE
+SUM&#58; N0.92M
+
+
+[B&#93; HELP
+
+SUM&#58; N0.0M
+ 
+[C&#93; DOMESTIC
+Home/church tithe (N700K); DONE 
+Vehicle repair (N30K); 
+Jennifer salary (20K) DONE
+SUM&#58; N0.75M
+
+[D&#93; INVESTMENT 
+Win-Win pharmacy (N1.47M)
+Beulah (N50K); NA
+Emmanuel (N80K) DONE
+SUM N1.6M
+
+
+[E&#93; EDUCATION 
+
+SUM&#58; N0.0M
+
+[F&#93; GCK
+
+
+[G&#93; CONTINGENT
+Limited home repair (1.0M). Only if the loan from the co-operative is feasible. NOT DONE
+
+Total&#58; 0.92 + 0.0 + 0.75 + 1.6 + 0.0 + 0.0 = N3.27M
+
+Hint&#58; Consider taking 1M loan from the cooperative after payment. Invest in pharmacy & pay back in bits. 
+
+Hint&#58; Abuja rental if 13th month is paid NOT DONE
+--------------------------------------------------------------------------
+
+NOVEMBER 2024
+[A&#93; DEBT
+mPharma (N0.755M) DONE(N500K)
+GTB loan (0.17)DONE
+SUM&#58; N0.925M
+
+
+[B&#93; HELP
+Sopuru 0.1M PUSHED TO JAN 
+Ofante/Igogoro crusade (N1.2M) DONE
+DCLM Retreat (N150K) DONE
+SUM&#58; N1.45M
+ 
+[C&#93; DOMESTIC
+Home/church tithe (N750K); DONE
+Vehicle repair (N100K); DONE
+Jennifer salary (20K)
+SUM&#58; N0.87M
+
+[D&#93; INVESTMENT 
+Win-Win pharmacy (N0.2K) DONE
+Beulah (N50K); ????  NOT TO BE DONE
+Emmanuel (N80K) 
+Lumos electricity (200K) ???? PUSHED TO JAN 
+SUM&#58; N0.53M
+
+[E&#93; RECURRENT 
+
+SUM&#58; N0.0M
+
+[F&#93; GCK
+
+[G&#93; CONTINGENT
+Home repair (0.5M) ????? +(b/f) = 1.5 NOT DONE
+SUM&#58; 0.5M
+
+Total&#58; 0.925 + 1.25 + 0.87 + 0.53+ 0.0 + 0.0 + 0.5= N3.975M
+-------------------------------------------------------------------------
+
+DECEMBER 2024
+[A&#93; DEBT
+mPharma (N0.755M) DONE
+Fati (0.3M) 
+GTB loan (0.17) DONE
+SUM&#58; N1.225M
+
+
+[B&#93; HELP
+Methodist Church Ofante,UEC, Igbo-Eze North pastor (0.1M)DONE
+[GCK&#93;/Indigent in DLBC (0.2M) DONE
+Printing of tract (30K) ND
+Bro Blessed baby (20K) DONE
+Emmanuel Umoru (40K) DONE
+SUM&#58; N0.4M
+ 
+[C&#93; DOMESTIC
+Home/church tithe (N0.75M); DONE
+Jennifer salary (20K) DONE
+School feeding (0.1M) DONE
+SUM&#58; N0.87M
+
+[D&#93; INVESTMENT 
+Win-Win pharmacy (300NK) DONE
+Beulah (N50K); DONE 
+Emmanuel (N80K)
+SUM&#58; N0.43M
+
+[E&#93; RECURRENT 
+Chizzy/Onyinye (0.5M) ND
+SUM&#58; N0.5M
+
+
+[GCK&#93;
+SUM&#58; 0.0M
+
+
+[F&#93; CONTINGENT
+Support to in-laws (0.3M) ND
+Fish for Ozzy (100K) ND
+SUM&#58; N0.4M
+
+Total&#58; 1.425 + 0.4 + 0.87 + 0.43 + 0.5 + 0.0 + 0.4 = N3.825M
+
+
+
+
+
+
+
+
+
+]text_span:[{"a":"bold","b":0,"c":12},{"a":"bold","b":14,"c":22},{"a":"bold","b":66,"c":77},{"a":"bold","b":90,"c":93},{"a":"bold","b":200,"c":203},{"a":"bold","b":213,"c":228},{"a":"bold","b":294,"c":297},{"a":"bold","b":307,"c":320},{"a":"bold","b":322,"c":325},{"a":"bold","b":449,"c":454},{"a":"bold","b":735,"c":757},{"a":"bold","b":808,"c":811},{"a":"bold","b":823,"c":831},{"a":"bold","b":921,"c":924},{"a":"bold","b":934,"c":947},{"a":"bold","b":1031,"c":1034},{"a":"bold","b":1188,"c":1191},{"a":"bold","b":1202,"c":1215},{"a":"bold","b":1311,"c":1316},{"a":"bold","b":1446,"c":1468},{"a":"bold","b":1526,"c":1529},{"a":"bold","b":1728,"c":1731},{"a":"bold","b":1841,"c":1844},{"a":"bold","b":2004,"c":2007},{"a":"bold","b":103,"c":115},{"a":"bold","b":80,"c":89},{"a":"bold","b":1217,"c":1220},{"a":"bold","b":1300,"c":1309},{"a":"bold","b":1855,"c":1869},{"a":"bold","b":1952,"c":1964},{"a":"bold","b":1229,"c":1236},{"a":"bold","b":1239,"c":1252},{"a":"bold","b":335,"c":341},{"a":"bold","b":1937,"c":1948},{"a":"bold","b":2089,"c":2099},{"a":"bold","b":1733,"c":1738},{"a":"bold","b":1742,"c":1753},{"a":"bold","b":1846,"c":1852},{"a":"bold","b":1990,"c":2000},{"a":"bold","b":2022,"c":2035},{"a":"bold","b":2101,"c":2109},{"a":"bold","b":344,"c":358},{"a":"italic","b":502,"c":607},{"a":"italic","b":387,"c":439},{"a":"bold","b":609,"c":650},{"a":"bold","b":1045,"c":1059},{"a":"bold","b":2009,"c":2018},{"a":"bold","b":1542,"c":1549}]}}

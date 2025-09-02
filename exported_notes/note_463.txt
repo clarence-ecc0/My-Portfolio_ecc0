@@ -1,0 +1,49 @@
+{{text:Bring all the about 20 Message that we're prepared for Ofante/Igogoro crusades.
+
+Find below the crusade messages
+
+EXHORTATIONS-#1&#58; The relationship between God and man and the interloping spoiler
+
+EXHORTATIONS-#2 RIGHTEOUSNESS & TRANSGRESSIONS
+
+EXHORTATIONS-#3&#58; The rocket & it's satellite compared with the body and its spirit 
+
+EXHORTATIONS-#4&#58; Our great promises are anchored on our abiding in righteousness
+
+EXHORTATIONS-#5&#58; The source of idolatry and God's salvation plan for the gentiles
+
+EXHORTATIONS-#6&#58; The powerlessness of idols.
+
+EXHORTATIONS-#7&#58; Unrighteousness in leadership
+
+EXHORTATIONS-#8&#58; Lessons on dream interpretations AND the sweetness/bitterness of life 
+
+EXHORTATIONS-#9&#58; Sundry life lessons -2 on SHARING, SUFFERING & UNFORGIVENESS
+
+EXHORTATIONS-#10&#58;  For ministers only (True believers boldness during threats AND how to grow our faith).
+
+EXHORTATIONS-#11&#58; Sundry life's lesson-1 on wisdom, foolishness & sinners half-cleverness 
+
+EXHORTATIONS-#12&#58; Life, Death & Salvation
+
+EXHORTATIONS-#13&#58; Wealth of this world 
+
+EXHORTATIONS-#14&#58; On alcohol and alcoholism
+
+EXHORTATIONS-#15 SINNERS IN THE CHURCH- THEIR DESTRUCTION & DESOLATION
+
+EXHORTATIONS-#16&#58; The dual nature of man
+
+EXHORTATIONS-#17&#58; God, the promise keeper
+
+EXHORTATIONS-#18&#58; The indescribable love and sacrifice of Christ for us
+
+EXHORTATIONS-#19&#58; What does it mean to fear the Lord?
+
+EXHORTATIONS-#20&#58; Bitterness of heart with unforgiving spirit
+
+EXHORTATIONS-#&#58; Unsorted messages (1).
+
+EXHORTATIONS-#&#58; Unsorted (2)
+
+]text_span:[{"a":"underline","b":81,"c":112},{"a":"bold","b":81,"c":112},{"a":"italic","b":81,"c":112},{"a":"bold","b":114,"c":129},{"a":"bold","b":245,"c":260},{"a":"bold","b":330,"c":345},{"a":"bold","b":412,"c":427},{"a":"bold","b":495,"c":510},{"a":"bold","b":541,"c":556},{"a":"bold","b":589,"c":604},{"a":"bold","b":678,"c":693},{"a":"bold","b":757,"c":773},{"a":"bold","b":864,"c":880},{"a":"bold","b":956,"c":972},{"a":"bold","b":999,"c":1015},{"a":"bold","b":1040,"c":1056},{"a":"bold","b":1085,"c":1101},{"a":"bold","b":1157,"c":1173},{"a":"bold","b":1199,"c":1215},{"a":"bold","b":1242,"c":1258},{"a":"bold","b":1315,"c":1331},{"a":"bold","b":1370,"c":1386},{"a":"bold","b":1473,"c":1488},{"a":"bold","b":1433,"c":1448},{"a":"bold","b":197,"c":212}]}}
