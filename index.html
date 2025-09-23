@@ -14,6 +14,15 @@
         };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
+    <style>
+      img, .lightbox img {
+        pointer-events: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    </style>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -1361,9 +1370,9 @@
           <a
             href="https://drive.google.com/file/d/1_TqfhmbBZw_PLK-Ppu7XCIU2aSPCSSiy/view?usp=sharing"
             class="btn btn-secondary"
-            download
+            target="_blank"
           >
-            Download Resume
+            View Resume
             <span>📄</span>
           </a>
         </div>
@@ -2645,7 +2654,7 @@
         
         if (fileSrc.toLowerCase().endsWith(".pdf")) {
           // PDF file
-          viewer.innerHTML = `<iframe src="${fileSrc}#toolbar=0" type="application/pdf"></iframe>`;
+          viewer.innerHTML = `<iframe src="${fileSrc}#toolbar=0&download=0&print=0" type="application/pdf" style="pointer-events: none;"></iframe>`;
         } else {
           // Image file
           viewer.innerHTML = `<img src="${fileSrc}" alt="Full size image" />`;
