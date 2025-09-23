@@ -2654,7 +2654,7 @@
         
         if (fileSrc.toLowerCase().endsWith(".pdf")) {
           // PDF file
-          viewer.innerHTML = `<iframe src="${fileSrc}#toolbar=0&download=0&print=0" type="application/pdf" style="pointer-events: none;"></iframe>`;
+          viewer.innerHTML = `<iframe src="${fileSrc}#toolbar=0&download=0&print=0" type="application/pdf"></iframe>`;
         } else {
           // Image file
           viewer.innerHTML = `<img src="${fileSrc}" alt="Full size image" />`;
