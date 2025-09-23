@@ -1,5 +1,0 @@
-{{text:ATTENTION!! ATTENTION!!
-
-If your phone is hacked quickly dialled *#61 the number that appeared is the number that hacked your phone.
-
-Then dial ##002# to knock the hacker off permanently.]text_span:[{"a":"bold","b":24,"c":132},{"a":"bold","b":134,"c":187},{"a":"italic","b":134,"c":187},{"a":"bold","b":0,"c":23}]}}

@@ -1,3 +1,0 @@
-{{text:The "IF" question around our confession. If our confession and repentance are genuine, they will be accepted otherwise , they will not be. 
-See Acts 8&#58;22 concerning Simon the false prophet,  trying to buy the Holy Ghost.
-]text_span:[{"a":"italic","b":5,"c":7},{"a":"underline","b":5,"c":7},{"a":"bold","b":5,"c":7},{"a":"bold","b":144,"c":153}]}}

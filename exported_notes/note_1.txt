@@ -1,7 +1,0 @@
-{{text:Welcome! Capture anything with Notes on the go.
-
-Create a note by tapping "+" in the bottom-right corner of the home page.
-
-Add photos, recordings, to-do lists, and more to your notes and share them with anyone.
-
-Feel free to tell us your comments or suggestions on TECNO SPOT.]text_span:[]}}

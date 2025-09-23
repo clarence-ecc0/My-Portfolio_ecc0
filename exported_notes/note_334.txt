@@ -1,7 +1,0 @@
-{{text:1. Renew the vehicle papers DONE
-2. Collect the Driver's license 
-3. Service the car. DONE
-4. Attend to Chemonics request DONE
-5. Respond to the SW request by Emmanuel DONE
-6. Check up on Enechojo DONE
-7. Talk to Dr Emeka]text_span:[]}}

@@ -1,4 +1,0 @@
-{{text:1. What can we do to improve
-
-2. Suggested structural review if necessary
-]text_span:[]}}

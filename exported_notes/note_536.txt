@@ -1,2 +1,0 @@
-{{text:1 John 1&#58;5
-This then is the message that we have heard, ......]text_span:[]}}

@@ -1,6 +1,0 @@
-{{text:Spendings after the withdrawal of N100,000 was N176,699
-
-Balance after the withdrawal of N100,000 was N234,139.24.
-Difference is N57,441
-
-]text_span:[]}}

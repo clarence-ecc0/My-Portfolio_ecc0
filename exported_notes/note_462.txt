@@ -1,5 +1,0 @@
-{{text:In the subscription template, decimal points like $1.5 are not acceptable. It has to be the whole number.
-
-In the medication planning, it is possible to select negative quantities which shouldn't be. Same with frequencies, etc.
-
-]text_span:[]}}

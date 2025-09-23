@@ -1,1 +1,0 @@
-{{text:Review the work plan and arrange them in clusters of activities that can go together. This will ensure that such activities are implemented together without missing any one. A job aid can actually be designed for this to ensure that if activity A has been done, activities H, N, O & S that are complimentary must be done alongside.]text_span:[]}}

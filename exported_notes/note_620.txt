@@ -1,5 +1,0 @@
-{{text:Northern cluster 11 HF
-Central cluster 13 HF
-Southern cluster 40HF
-
-]text_span:[]}}

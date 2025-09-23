@@ -1,6 +1,0 @@
-{{text:Flight tickets&#58; N280660
-
-Hotel accomodations&#58; 275,000
-
-PD&#58;                     N165,000
-Taxi&#58;                   N36,000]text_span:[]}}
