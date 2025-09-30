@@ -158,13 +158,49 @@
       }
 
       .logo {
-        font-size: 1.75rem;
-        font-weight: 800;
-        background: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        font-family: var(--font-heading);
+        display: flex;
+        align-items: center;
+        padding: 8px 0;
+      }
+      
+      .logo img {
+        height: 60px;  /* Increased from 40px to 60px */
+        width: auto;
+        transition: all 0.3s ease;
+        display: block;
+        max-width: none;
+        pointer-events: none;
+      }
+
+      .logo .logo-light {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-dark {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-light {
+        display: block;
+      }
+
+      /* Debug styles */
+      .logo {
+        min-width: 100px;
+        min-height: 40px;
+        border: 1px solid transparent;
+      }
+
+      .logo .logo-light {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-dark {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-light {
+        display: block;
       }
 
       .nav-links {
@@ -1330,7 +1366,10 @@
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
       <div class="nav-container">
-        <div class="logo">ecc0</div>
+        <div class="logo">
+          <img src="my_logo.png" alt="ecc0 logo" class="logo-dark">
+          <img src="my_logo_dark.png" alt="ecc0 logo" class="logo-light">
+        </div>
         <ul class="nav-links">
           <li><a href="#home" class="nav-link active">Home</a></li>
           <li><a href="#about" class="nav-link">About</a></li>
@@ -2357,7 +2396,7 @@
         ></a>
       </div>
       <div class="footer-text">
-        &copy; 2025 Omeh Chidi. All rights reserved. Crafted with ❤️ and ☕
+        &copy; 2025 ecc0. All rights reserved. Crafted with ❤️ and ☕
       </div>
     </footer>
     <!-- Optional JavaScript (for mobile nav toggle, typing animation, etc.) -->
