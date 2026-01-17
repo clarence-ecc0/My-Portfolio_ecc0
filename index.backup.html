@@ -269,6 +269,7 @@
         </div>
       </div>
     </section>
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="section portfolio">
       <div class="container">
@@ -287,40 +288,15 @@
           <button class="filter-btn" data-filter="frontend">Front-end</button>
         </div>
 
-        <!-- Slideshow Gallery Container -->
         <div class="portfolio-grid fade-in">
-          <!-- Navigation Arrows -->
-          <button class="slideshow-nav prev" aria-label="Previous slide">‹</button>
-          <button class="slideshow-nav next" aria-label="Next slide">›</button>
-          
-          <!-- Slide Counter -->
-          <div class="slide-counter">
-            <span class="current-slide">1</span> / <span class="total-slides">20</span>
-          </div>
-          
-          <!-- Pagination Dots -->
-          <div class="slideshow-pagination"></div>
-          
-          <!-- Slides Wrapper -->
-          <div class="portfolio-slides-wrapper">
           <!-- Graphic Design Projects -->
 
           <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img
-                src="assets/graphic_design/Numie_0.5.jpg"
-                alt="Architectural agency flyer"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="project-overlay">
-              <a
-                href="assets/graphic_design/Numie_0.5.jpg"
-                class="project-link view-full-size"
-                target="_blank"
-                >View Full Size</a
-              >
+              <img src="assets/graphic_design/Numie_0.5.jpg" alt="Architectural agency flyer" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/Numie_0.5.jpg" class="project-link lightbox-trigger">View Full Size</a>
+              </div>
             </div>
             <div class="project-content">
               <h3>Numie Projects Ltd. design</h3>
@@ -335,10 +311,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/2026_design_with texture@2x.jpg" alt="New year celebration" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/2026_design_with texture@2x.jpg" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/2026_design_with texture@2x.jpg" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>New year celebration</h3>
               <p>Celebration flyer for 2026</p>
@@ -352,10 +328,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/David's logo_mockup_small.png" alt="Logo design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/David's logo_mockup_small.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/David's logo_mockup_small.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Logo Design</h3>
               <p>Logo design for DMACHINE Visuals</p>
@@ -369,10 +345,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/Unc_Chambers_collage.jpeg" alt="Traditional celebration" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/Unc_Chambers_collage.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/Unc_Chambers_collage.jpeg" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Traditional celebration</h3>
               <p>Celebration flyer for a traditional conferment</p>
@@ -386,10 +362,1487 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/EduConnect.jpeg" alt="EduConnect" />
+        padding: 1rem 0;
+        backdrop-filter: var(--blur-md);
+        background: rgba(0, 0, 0, 0.8);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition-smooth);
+      }
+
+      [data-theme="light"] .navbar {
+        background: rgba(255, 255, 255, 0.8);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      [data-theme="light"] .nav-links a {
+        color: var(--text-secondary);
+      }
+
+      [data-theme="light"] .nav-links a:hover,
+      [data-theme="light"] .nav-links a.active {
+        color: var(--accent-primary);
+      }
+
+      .navbar.scrolled {
+        background: rgba(10, 10, 10, 0.95);
+        box-shadow: var(--shadow-md);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 var(--container-padding);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        padding: 8px 0;
+      }
+      
+      .logo img {
+        height: 60px;  /* Increased from 40px to 60px */
+        width: auto;
+        transition: all 0.3s ease;
+        display: block;
+        max-width: none;
+        pointer-events: none;
+      }
+
+      .logo .logo-light {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-dark {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-light {
+        display: block;
+      }
+
+      /* Debug styles */
+      .logo {
+        min-width: 100px;
+        min-height: 40px;
+        border: 1px solid transparent;
+      }
+
+      .logo .logo-light {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-dark {
+        display: none;
+      }
+
+      [data-theme="light"] .logo .logo-light {
+        display: block;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: var(--transition-smooth);
+        position: relative;
+        padding: 0.5rem 0;
+      }
+
+      .nav-links a:hover {
+        color: var(--text-primary);
+      }
+
+      .nav-links a.active::after,
+      .nav-links a:hover::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--accent-gradient);
+        border-radius: 1px;
+        transition: var(--transition-smooth);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--accent-gradient);
+        border-radius: 1px;
+        transition: var(--transition-smooth);
+      }
+
+      /* Theme Toggle */
+      .theme-toggle {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: var(--bg-glass);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: var(--transition-bounce);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1.2rem;
+        margin-right: 1rem;
+      }
+
+      .theme-toggle:hover {
+        background: var(--accent-primary);
+        transform: var(--hover-lift);
+      }
+
+      /* Theme Transition */
+      .theme-transition,
+      .theme-transition *,
+      .theme-transition *:before,
+      .theme-transition *:after {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
+
+      [data-theme="light"] {
+        --bg-primary: #ffffff;
+        --bg-secondary: #f8f9fa;
+        --bg-tertiary: #f1f3f5;
+        --bg-card: #ffffff;
+        --bg-glass: rgba(0, 0, 0, 0.05);
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a4a4a;
+        --text-muted: #6b7280;
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        background: var(--bg-primary);
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(139, 92, 246, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(6, 182, 212, 0.15) 0%,
+            transparent 50%
+          );
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(30px, -30px) rotate(2deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(-2deg);
+        }
+      }
+
+      .hero-content {
+        text-align: center;
+        z-index: 1;
+        max-width: 900px;
+        padding: 0 var(--container-padding);
+      }
+      .hero-greeting {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        font-family: var(--font-heading);
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        opacity: 0;
+        animation: slideUp 1s ease 0.2s forwards;
+      }
+
+      .hero-name {
+        font-size: clamp(3rem, 8vw, 7rem);
+        font-weight: 700;
+        line-height: 0.9;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        opacity: 0;
+        animation: slideUp 1s ease 0.4s forwards;
+        letter-spacing: -1px;
+      }
+
+      .hero-title {
+        font-size: clamp(1.5rem, 4vw, 3rem);
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: var(--text-primary);
+        opacity: 0;
+        animation: slideUp 1s ease 0.6s forwards;
+        letter-spacing: -0.5px;
+      }
+
+      .typing-text {
+        border-right: 3px solid var(--accent-primary);
+        animation: blink 1s infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        50% {
+          border-color: var(--accent-primary);
+        }
+        51%,
+        100% {
+          border-color: transparent;
+        }
+      }
+
+      .hero-description {
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0;
+        animation: slideUp 1s ease 0.8s forwards;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: slideUp 1s ease 1s forwards;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        font-family: var(--font-heading);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: none;
+        cursor: pointer;
+        position: relative;
+        background: transparent;
+      }
+
+      .btn-primary {
+        background: var(--accent-gradient);
+        color: white;
+        box-shadow: var(--shadow-md);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .btn-secondary {
+        background: var(--bg-glass);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: var(--hover-lift);
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Scroll-based Animations */
+      .fade-in {
+        opacity: 1;
+        transform: none;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .slide-left {
+        opacity: 1;
+        transform: none;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .slide-right {
+        opacity: 1;
+        transform: none;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .fade-in > *,
+      .slide-left > *,
+      .slide-right > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .fade-in.visible > *,
+      .slide-left.visible > *,
+      .slide-right.visible > * {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .fade-in,
+        .slide-left,
+        .slide-right,
+        .scale-in,
+        .section,
+        .fade-in > *,
+        .slide-left > *,
+        .slide-right > * {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+
+      /* Section Entry/Exit Animations */
+      .section {
+        opacity: 1;
+        transform: none;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .section > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .section.visible > * {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* Reverse animations when elements leave viewport */
+      .fade-in.visible.leave,
+      .slide-left.visible.leave,
+      .slide-right.visible.leave,
+      .scale-in.visible.leave,
+      .section.visible.leave {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: var(--section-padding) 0;
+        position: relative;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 var(--container-padding);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+      .section-title {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+        font-family: var(--font-heading);
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        letter-spacing: 0.2px;
+      }
+
+      /* About Section */
+      .about {
+        background: var(--bg-secondary);
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      @media (max-width: 768px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .about-image {
+          max-width: 280px;
+          margin: 0 auto 2rem;
+        }
+
+        .about-content {
+          text-align: center;
+        }
+
+        .about-stats {
+          grid-template-columns: 1fr;
+          max-width: 300px;
+          margin: 2rem auto 0;
+        }
+      }
+
+      .about-image {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        aspect-ratio: 1;
+        margin: 0 auto;
+      }
+      .about-photo {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        background: wheat;
+        box-shadow: var(--shadow-lg);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about-photo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("assets/mypic.jpg") center/cover;
+        filter: blur(12px) brightness(0.8);
+        z-index: 0;
+      }
+
+      .about-photo img {
+        width: 80%;
+        height: 100%;
+        object-fit: contain;
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+        display: block;
+      }
+
+      .about-photo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.1) 50%,
+          transparent 70%
+        );
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(100%);
+        }
+      }
+      .about-content h3 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+        letter-spacing: -0.5px;
+      }
+
+      .about-content p {
+        font-size: 1.1rem;
+        font-weight: 400;
+        line-height: 1.8;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.2px;
+      }
+      .about-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem auto;
+        max-width: 1000px;
+        width: 100%;
+        padding: 0 1rem;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--bg-glass);
+        border-radius: 16px;
+        backdrop-filter: var(--blur-sm);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition-smooth);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 120px;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-primary);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .stat-number {
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 700;
+        color: var(--accent-primary);
+        display: block;
+        letter-spacing: -0.5px;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: var(--text-secondary);
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+        max-width: 150px;
+        margin: 0 auto;
+      }
+
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .skill-card {
+        background: var(--bg-card);
+        padding: 2.5rem 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition-bounce);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .skill-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent-gradient);
+        transform: scaleX(0);
+        transition: var(--transition-smooth);
+      }
+
+      .skill-card:hover {
+        transform: var(--hover-lift) var(--hover-scale);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(139, 92, 246, 0.3);
+      }
+
+      .skill-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .skill-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--accent-gradient);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: var(--shadow-md);
+      }
+
+      .skill-card h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      .skill-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+      }
+
+      /* Portfolio Section */
+      .portfolio {
+        background: var(--bg-primary);
+      }
+
+      .portfolio-filter {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 0.75rem 1.5rem;
+        background: var(--bg-glass);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        color: var(--text-secondary);
+        cursor: pointer;
+        transition: var(--transition-smooth);
+        font-size: 0.9rem;
+        backdrop-filter: var(--blur-sm);
+      }
+
+      .filter-btn.active,
+      .filter-btn:hover {
+        background: var(--accent-primary);
+        color: white;
+        border-color: var(--accent-primary);
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      @media (max-width: 768px) {
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+          padding: 0 1rem;
+          opacity: 1;
+          animation: none;
+          transform: none;
+        }
+
+        .portfolio-grid .project-card {
+          opacity: 1;
+          transform: none;
+          animation: none;
+          transition: none;
+        }
+
+        /* Load next row of projects when previous is visible */
+        .portfolio-grid .project-card:nth-child(n + 1) {
+          transition: none;
+        }
+
+        .project-card {
+          max-width: 100%;
+          margin: 0;
+          border-radius: 16px;
+        }
+
+        .project-image {
+          height: 200px;
+        }
+
+        .project-content {
+          padding: 1rem;
+        }
+
+        .project-content h3 {
+          font-size: 1rem;
+        }
+
+        .project-content p {
+          font-size: 0.85rem;
+        }
+
+        .project-tags {
+          margin-top: 0.75rem;
+        }
+
+        .tag {
+          padding: 0.25rem 0.6rem;
+          font-size: 0.7rem;
+        }
+
+        .project-overlay {
+          background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(0, 0, 0, 0.8) 100%
+          );
+        }
+
+        .project-link {
+          padding: 0.5rem 1rem;
+          font-size: 0.8rem;
+        }
+      }
+
+      .project-card {
+        background: var(--bg-glass);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .project-image {
+        position: relative;
+        height: 220px;
+        overflow: hidden;
+        flex: 0 0 auto;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.05);
+      }
+      .project-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      [data-theme="light"] .project-overlay {
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.9) 100%
+        );
+      }
+
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+      .project-link {
+        padding: 0.5rem 1rem;
+        color: white;
+        font-size: 0.9rem;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        backdrop-filter: blur(4px);
+        transform: translateY(10px);
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      [data-theme="light"] .project-link {
+        color: var(--text-primary);
+        background: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .project-card:hover .project-link {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .project-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: scale(1.05);
+      }
+      .project-content {
+        padding: 1.25rem;
+        background: var(--bg-glass);
+        backdrop-filter: blur(8px);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 auto;
+      }
+
+      .project-content h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary);
+      }
+
+      .project-content p {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: auto;
+        line-height: 1.5;
+      }
+
+      .project-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .tag {
+        padding: 0.3rem 0.8rem;
+        background: var(--bg-glass);
+        border-radius: 50px;
+        font-size: 0.75rem;
+        color: var(--accent-primary);
+        border: 1px solid var(--accent-primary);
+        backdrop-filter: blur(4px);
+        transition: all 0.3s ease;
+      }
+
+      .tag:hover {
+        background: var(--accent-primary);
+        color: white;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      } /* Image optimization */
+      .project-image img {
+        will-change: transform;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: var(--bg-secondary);
+        text-align: center;
+      }
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        font-family: var(--font-body);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group {
+        position: relative;
+      }
+
+      .form-group.full-width {
+        grid-column: 1 / -1;
+      }
+      .form-input {
+        width: 100%;
+        padding: 1.25rem 1.5rem;
+        background: var(--bg-glass);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-family: var(--font-body);
+        transition: var(--transition-smooth);
+        backdrop-filter: var(--blur-sm);
+      }
+
+      select.form-input {
+        appearance: none;
+        background-image: linear-gradient(
+            45deg,
+            transparent 50%,
+            var(--text-secondary) 50%
+          ),
+          linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+        background-position: calc(100% - 20px) calc(1.5em + 2px),
+          calc(100% - 15px) calc(1.5em + 2px);
+        background-size: 5px 5px, 5px 5px;
+        background-repeat: no-repeat;
+        cursor: pointer;
+      }
+
+      select.form-input option {
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        padding: 1rem;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: var(--accent-primary);
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 0 0 4px var(--accent-glow);
+      }
+
+      .form-input::placeholder {
+        color: var(--text-muted);
+      }
+      .form-textarea {
+        resize: vertical;
+        min-height: 120px;
+        font-family: var(--font-body);
+      }
+
+      /* Footer */
+      .footer {
+        background: var(--bg-primary);
+        padding: 3rem 0 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+      }
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .social-link {
+        width: 50px;
+        height: 50px;
+        border-radius: 12px;
+        background: var(--bg-glass);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: var(--text-secondary);
+        font-size: 1.2rem;
+        transition: var(--transition-bounce);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: var(--blur-sm);
+      }
+
+      .social-link:hover {
+        background: var(--accent-primary);
+        color: white;
+        transform: var(--hover-lift);
+        border-color: var(--accent-primary);
+      }
+
+      .social-link::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--accent-gradient);
+        border-radius: inherit;
+        opacity: 0;
+        transition: var(--transition-smooth);
+        z-index: -1;
+      }
+
+      .social-link:hover::before {
+        opacity: 1;
+      }
+
+      .footer-text {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        padding: 0.5rem;
+        border-radius: 8px;
+        transition: var(--transition-smooth);
+        z-index: 1001;
+      }
+
+      .mobile-menu span {
+        width: 24px;
+        height: 2px;
+        background: var(--text-primary);
+        margin: 2px 0;
+        transition: var(--transition-smooth);
+        transform-origin: center;
+      }
+
+      .mobile-menu.open span:first-child {
+        transform: translateY(6px) rotate(45deg);
+      }
+
+      .mobile-menu.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .mobile-menu.open span:last-child {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+      @media (max-width: 768px) {
+        .mobile-menu {
+          display: flex;
+          z-index: 1002;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(10, 10, 10, 0.95);
+          flex-direction: column;
+          justify-content: center;
+          gap: 2rem;
+          transform: translateX(100%);
+          opacity: 0;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          pointer-events: none;
+          z-index: 1001;
+          backdrop-filter: blur(10px);
+        }
+
+        .nav-links.open {
+          transform: translateX(0);
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+
+      /* Lightbox Styles */
+      .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        z-index: 9999;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lightbox.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .lightbox-content {
+        position: relative;
+        max-width: 95%;
+        max-height: 95vh;
+        margin: 1rem;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .lightbox.active .lightbox-content {
+        transform: scale(1);
+      }
+
+      .lightbox-viewer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .lightbox-viewer img {
+        max-width: 100%;
+        max-height: 85vh;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: var(--shadow-lg);
+      }
+
+      .lightbox-viewer iframe {
+        width: 90vw;
+        height: 85vh;
+        border: none;
+        border-radius: 8px;
+        box-shadow: var(--shadow-lg);
+        background: #fff;
+      }
+
+      .close-lightbox {
+        position: absolute;
+        top: -2rem;
+        right: -2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: var(--accent-primary);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-smooth);
+        z-index: 10000;
+      }
+
+      /* Stagger Animations */
+      .stagger-animation > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .stagger-animation.visible > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stagger-1 {
+        transition-delay: 0.1s;
+      }
+      .stagger-2 {
+        transition-delay: 0.2s;
+      }
+      .stagger-3 {
+        transition-delay: 0.3s;
+      }
+      .stagger-4 {
+        transition-delay: 0.4s;
+      }
+      .stagger-5 {
+        transition-delay: 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <div class="logo">
+          <img src="my_logo.png" alt="ecc0 logo" class="logo-dark">
+          <img src="my_logo_dark.png" alt="ecc0 logo" class="logo-light">
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#portfolio" class="nav-link">Work</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+        <div class="theme-toggle" id="themeToggle">🌙</div>
+        <div class="mobile-menu" id="mobileMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <div class="hero-greeting">👋 Hello, I'm</div>
+        <h1 class="hero-name">Omeh Chidi</h1>
+        <h2 class="hero-title">
+          <span class="typing-text" id="typingText">UI/UX Designer</span>
+        </h2>
+        <p class="hero-description">
+          Aspiring frontend developer and designer with skills in HTML, CSS,
+          UI/UX, and graphic design.
+        </p>
+        <div class="hero-cta">
+          <a href="#portfolio" class="btn btn-primary">
+            View My Work
+            <span>→</span>
+          </a>
+          <a href="#contact" class="btn btn-secondary">
+            Let's Talk
+            <span>💬</span>
+          </a>
+          <a
+            href="https://drive.google.com/file/d/1_TqfhmbBZw_PLK-Ppu7XCIU2aSPCSSiy/view?usp=sharing"
+            class="btn btn-secondary"
+            target="_blank"
+          >
+            View Resume
+            <span>📄</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">
+            I'm a creative learner exploring frontend development and design,
+            with hands-on skills in HTML, CSS, UI/UX (Figma), and graphic design
+            using Canva and Adobe tools.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-image slide-left">
+            <div class="about-photo">
+              <img src="assets/mypic.jpg" alt="Omeh Chidi" />
             </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/EduConnect.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+          </div>
+
+          <div class="about-content slide-right">
+            <h3>
+              Design is not just what it looks like — design is how it works.
+            </h3>
+            <p>
+              With a passion for UI/UX design, I create intuitive interfaces and
+              prototypes using tools like Figma and Adobe XD. I focus on
+              user-centered design and enjoy solving real-world problems through
+              simple, elegant solutions.
+            </p>
+            <p>
+              As a Graphic Designer, I craft visual content such as logos,
+              social media designs, and marketing materials using Adobe
+              Photoshop, Illustrator, and InDesign. I aim to blend creativity
+              with clear communication in every project.
+            </p>
+            <p>
+              I’m an aspiring Frontend Web Developer with a strong foundation in
+              HTML and CSS, currently learning JavaScript and other modern
+              tools. I enjoy bringing web designs to life with clean, responsive
+              layouts. When I'm not designing, you can find me exploring new
+              design trends.
+            </p>
+          </div>
+        </div>
+
+        <div class="about-stats fade-in">
+          <div class="stat-item scale-in stagger-1">
+            <span class="stat-number">30+</span>
+            <span class="stat-label">Projects Completed</span>
+          </div>
+          <div class="stat-item scale-in stagger-2">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Years Experience</span>
+          </div>
+          <div class="stat-item scale-in stagger-3">
+            <span class="stat-number">20+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card scale-in stagger-1">
+            <div class="skill-icon">🎨</div>
+            <h3>Visual Design</h3>
+            <p>
+              Creating stunning interfaces with attention to typography, color
+              theory, and modern design principles
+            </p>
+          </div>
+          <div class="skill-card scale-in stagger-2">
+            <div class="skill-icon">📱</div>
+            <h3>Interaction Design</h3>
+            <p>
+              Designing seamless interactions and intuitive flows to enhance
+              usability across devices
+            </p>
+          </div>
+          <div class="skill-card scale-in stagger-3">
+            <div class="skill-icon">🧪</div>
+            <h3>Prototyping</h3>
+            <p>
+              Turning ideas into interactive visuals through prototyping, using
+              tools like Figma to create wireframes and clickable mockups
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">My Works</h2>
+          <p class="section-subtitle">
+            A selection of projects I've worked on recently
+          </p>
+        </div>
+        <div class="portfolio-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="ui-ux">UI/UX Design</button>
+          <button class="filter-btn" data-filter="graphic">
+            Graphic Design
+          </button>
+          <button class="filter-btn" data-filter="frontend">Front-end</button>
+        </div>
+
+        <div class="portfolio-grid fade-in">
+          <!-- Graphic Design Projects -->
+
+          <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img src="assets/graphic_design/Numie_0.5.jpg" alt="Architectural agency flyer" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/Numie_0.5.jpg" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
+            <div class="project-content">
+              <h3>Numie Projects Ltd. design</h3>
+              <p>Design for architectural agency</p>
+              <div class="project-tags">
+                <span class="tag">Graphic Design</span>
+                <span class="tag">Welcome</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img src="assets/graphic_design/2026_design_with texture@2x.jpg" alt="New year celebration" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/2026_design_with texture@2x.jpg" class="project-link lightbox-trigger">View Full Size</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>New year celebration</h3>
+              <p>Celebration flyer for 2026</p>
+              <div class="project-tags">
+                <span class="tag">Graphic Design</span>
+                <span class="tag">Welcome</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img src="assets/graphic_design/David's logo_mockup_small.png" alt="Logo design" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/David's logo_mockup_small.png" class="project-link lightbox-trigger">View Full Size</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Logo Design</h3>
+              <p>Logo design for DMACHINE Visuals</p>
+              <div class="project-tags">
+                <span class="tag">Logo Design</span>
+                <span class="tag">Welcome</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img src="assets/graphic_design/Unc_Chambers_collage.jpeg" alt="Traditional celebration" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/Unc_Chambers_collage.jpeg" class="project-link lightbox-trigger">View Full Size</a>
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Traditional celebration</h3>
+              <p>Celebration flyer for a traditional conferment</p>
+              <div class="project-tags">
+                <span class="tag">Church Design</span>
+                <span class="tag">Welcome</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img src="assets/graphic_design/EduConnect.jpeg" alt="EduConnect" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/EduConnect.jpeg" class="project-link lightbox-trigger">View Full Size</a>
+              </div>
+            </div>
             <div class="project-content">
               <h3>Team introduction</h3>
               <p>Meet-our-team design for EduConnect</p>
@@ -403,10 +1856,10 @@
            <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/platform_1.jpeg" alt="Platform design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/platform_1.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/platform_1.jpeg" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Product design</h3>
               <p>Shoe on an elevated platform</p>
@@ -420,10 +1873,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/dynasty_december.jpeg" alt="New Month celebration" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/dynasty_december.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/dynasty_december.jpeg" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>New Month celebration</h3>
               <p>Celebration flyer for new month</p>
@@ -568,20 +2021,10 @@
 
            <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img
-                src="assets/graphic_design/kano-tech-conference_Mr. Lucky WU.png"
-                alt="Kano tech conference"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="project-overlay">
-              <a
-                href="assets/graphic_design/kano-tech-conference_Mr. Lucky WU.png"
-                class="project-link view-full-size"
-                target="_blank"
-                >View Full Size</a
-              >
+              <img src="assets/graphic_design/kano-tech-conference_Mr. Lucky WU.png" alt="Kano tech conference" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/kano-tech-conference_Mr. Lucky WU.png" class="project-link lightbox-trigger">View Full Size</a>
+              </div>
             </div>
             <div class="project-content">
               <h3>Advertisment flyer</h3>
@@ -595,24 +2038,11 @@
 
           <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img
-                src="assets/graphic_design/WU_2k followers-LinkedIn.png"
-                alt="WU LinkedIn 2k followers"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="project-overlay">
-              <a
-                href="assets/graphic_design/WU_2k followers-LinkedIn.png"
-                class="project-link view-full-size"
-                target="_blank"
-                >View Full Size</a
-              >
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/WU_2k followers-LinkedIn.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <img src="assets/graphic_design/WU_2k followers-LinkedIn.png" alt="WU LinkedIn 2k followers" />
+              <div class="project-overlay">
+                <a href="assets/graphic_design/WU_2k followers-LinkedIn.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Followers celebration</h3>
               <p>Celebration flyer for WU social media followers</p>
@@ -626,10 +2056,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/WU_RUI1-anticipation.png" alt="WU_RUI1-anticipation" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/WU_RUI1-anticipation.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/WU_RUI1-anticipation.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Anticipation flyer</h3>
               <p>Anticipation flyer for Wale University</p>
@@ -643,10 +2073,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/berachah2025_blink.png" alt="berachah2025 display graphic" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/berachah2025_blink.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/berachah2025_blink.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Berachah 2025 graphic</h3>
               <p>Display graphic for Berachah2025</p>
@@ -661,10 +2091,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/CSY_thumbnail1.1.png" alt="CSY Thumbnail Design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/CSY_thumbnail1.1.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/CSY_thumbnail1.1.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>CSY Thumbnail Design</h3>
               <p>Thumbnail design for CSY audio tape</p>
@@ -705,10 +2135,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/newcomers_dlbc2.png" alt="DLBC Newcomers Design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/newcomers_dlbc2.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/newcomers_dlbc2.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>DLBC Newcomers Welcome</h3>
               <p>Welcome design for new church members</p>
@@ -722,10 +2152,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/testimonial-redone_WU1.2.png" alt="WU Testimonial Design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/testimonial-redone_WU1.2.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/testimonial-redone_WU1.2.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>WU Testimonial design</h3>
               <p>Testimonial layout for Wale University</p>
@@ -739,10 +2169,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/WU_mentor flyer-redone1.1.png" alt="Special Event Design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/WU_mentor flyer-redone1.1.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/WU_mentor flyer-redone1.1.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Mentorship flyer</h3>
               <p>Call for Mentorship graphic</p>
@@ -756,10 +2186,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/WU_Article-Violet.png" alt="WU Article Design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/WU_Article-Violet.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/WU_Article-Violet.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Wale University graphic</h3>
               <p>Poster design for Wale University</p>
@@ -773,10 +2203,10 @@
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/WU_Report4.png" alt="WU Report Design" />
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/WU_Report4.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+              <div class="project-overlay">
+                <a href="assets/graphic_design/WU_Report4.png" class="project-link lightbox-trigger">View Full Size</a>
               </div>
+            </div>
             <div class="project-content">
               <h3>Wale University report graphic</h3>
               <p>Corporate report design for Wale University</p>
@@ -1186,7 +2616,6 @@
               </div>
             </div>
           </div>
-          </div><!-- End portfolio-slides-wrapper -->
         </div>
       </div>
     </section>
@@ -1597,222 +3026,6 @@
           observer.observe(el);
         });
 
-      // Portfolio Slideshow Gallery
-      const slidesWrapper = document.querySelector('.portfolio-slides-wrapper');
-      const slides = document.querySelectorAll('.project-card');
-      const prevBtn = document.querySelector('.slideshow-nav.prev');
-      const nextBtn = document.querySelector('.slideshow-nav.next');
-      const currentSlideSpan = document.querySelector('.current-slide');
-      const totalSlidesSpan = document.querySelector('.total-slides');
-      const paginationContainer = document.querySelector('.slideshow-pagination');
-      
-      let currentSlide = 0;
-      let filteredSlides = Array.from(slides);
-      
-      // Get designs per page based on screen size
-      function getDesignsPerPage() {
-        const width = window.innerWidth;
-        if (width <= 768) return 1;  // Mobile: 1 design per page
-        if (width <= 1024) return 2; // Tablet: 2 designs per page
-        return 3;                     // Desktop: 3 designs per page
-      }
-      
-      // Initialize pagination dots
-      function initPagination() {
-        const designsPerPage = getDesignsPerPage();
-        const totalPages = Math.ceil(filteredSlides.length / designsPerPage);
-        paginationContainer.innerHTML = '';
-        for (let i = 0; i < totalPages; i++) {
-          const dot = document.createElement('div');
-          dot.className = 'pagination-dot';
-          if (i === 0) dot.classList.add('active');
-          dot.addEventListener('click', () => goToSlide(i * designsPerPage));
-          paginationContainer.appendChild(dot);
-        }
-      }
-      
-      // Update slide position
-      function updateSlidePosition(instant = false) {
-        // Calculate which page we're on based on screen size
-        const designsPerPage = getDesignsPerPage();
-        const currentPage = Math.floor(currentSlide / designsPerPage);
-        const offset = -currentPage * 100;
-        
-        if (instant) {
-          slidesWrapper.style.transition = 'none';
-        }
-        
-        slidesWrapper.style.transform = `translateX(${offset}%)`;
-        
-        if (instant) {
-          // Force reflow
-          slidesWrapper.offsetHeight;
-          slidesWrapper.style.transition = '';
-        }
-        
-        // Update counter to show page numbers (ignoring clones)
-        const totalPages = Math.ceil(filteredSlides.length / designsPerPage);
-        const displayPage = ((currentPage % totalPages) + totalPages) % totalPages;
-        currentSlideSpan.textContent = displayPage + 1;
-        totalSlidesSpan.textContent = totalPages;
-        
-        // Update pagination dots for pages, not individual slides
-        document.querySelectorAll('.pagination-dot').forEach((dot, index) => {
-          dot.classList.toggle('active', index === displayPage);
-        });
-        
-        // Update active card
-        const actualSlide = filteredSlides[currentSlide % filteredSlides.length];
-        slides.forEach((slide) => {
-          slide.classList.toggle('active', slide === actualSlide);
-        });
-      }
-      
-      // Initialize pagination for pages
-      function initPagination() {
-        const designsPerPage = 3;
-        const totalPages = Math.ceil(filteredSlides.length / designsPerPage);
-        paginationContainer.innerHTML = '';
-        for (let i = 0; i < totalPages; i++) {
-          const dot = document.createElement('div');
-          dot.className = 'pagination-dot';
-          if (i === 0) dot.classList.add('active');
-          dot.addEventListener('click', () => goToSlide(i * designsPerPage));
-          paginationContainer.appendChild(dot);
-        }
-      }
-      
-      // Go to specific slide
-      function goToSlide(index) {
-        currentSlide = Math.max(0, Math.min(index, filteredSlides.length - 1));
-        updateSlidePosition();
-      }
-      
-      // Next slide - move to next page
-      function nextSlide() {
-        const designsPerPage = getDesignsPerPage();
-        const totalPages = Math.ceil(filteredSlides.length / designsPerPage);
-        const currentPage = Math.floor(currentSlide / designsPerPage);
-        
-        currentSlide = (currentPage + 1) * designsPerPage;
-        updateSlidePosition();
-        
-        // After transition, check if we need to loop back
-        setTimeout(() => {
-          const newPage = Math.floor(currentSlide / designsPerPage);
-          if (newPage >= totalPages) {
-            currentSlide = 0;
-            updateSlidePosition(true); // Instant jump without animation
-          }
-        }, 600); // Match the CSS transition duration
-      }
-      
-      // Previous slide - move to previous page
-      function prevSlide() {
-        const designsPerPage = getDesignsPerPage();
-        const totalPages = Math.ceil(filteredSlides.length / designsPerPage);
-        const currentPage = Math.floor(currentSlide / designsPerPage);
-        
-        if (currentPage <= 0) {
-          // Jump to the end instantly
-          currentSlide = (totalPages - 1) * designsPerPage;
-          updateSlidePosition(true);
-        } else {
-          currentSlide = (currentPage - 1) * designsPerPage;
-          updateSlidePosition();
-        }
-      }
-      
-      // Auto-advance slideshow
-      let autoPlayInterval;
-      
-      function startAutoPlay() {
-        stopAutoPlay(); // Clear any existing interval
-        autoPlayInterval = setInterval(() => {
-          nextSlide();
-        }, 5000); // Change slide every 5 seconds
-      }
-      
-      function stopAutoPlay() {
-        if (autoPlayInterval) {
-          clearInterval(autoPlayInterval);
-        }
-      }
-      
-      function resetAutoPlay() {
-        stopAutoPlay();
-        startAutoPlay();
-      }
-      
-      // Event listeners
-      prevBtn.addEventListener('click', () => {
-        prevSlide();
-        resetAutoPlay();
-      });
-      
-      nextBtn.addEventListener('click', () => {
-        nextSlide();
-        resetAutoPlay();
-      });
-      
-      // Keyboard navigation
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') {
-          prevSlide();
-          resetAutoPlay();
-        }
-        if (e.key === 'ArrowRight') {
-          nextSlide();
-          resetAutoPlay();
-        }
-      });
-      
-      // Touch/swipe support
-      let touchStartX = 0;
-      let touchEndX = 0;
-      
-      slidesWrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      });
-      
-      slidesWrapper.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      });
-      
-      function handleSwipe() {
-        const swipeThreshold = 50;
-        if (touchEndX < touchStartX - swipeThreshold) {
-          nextSlide();
-          resetAutoPlay();
-        }
-        if (touchEndX > touchStartX + swipeThreshold) {
-          prevSlide();
-          resetAutoPlay();
-        }
-      }
-      
-      // Pause on hover
-      slidesWrapper.addEventListener('mouseenter', stopAutoPlay);
-      slidesWrapper.addEventListener('mouseleave', startAutoPlay);
-      
-      // Initialize
-      initPagination();
-      updateSlidePosition();
-      startAutoPlay();
-      
-      // Recalculate on window resize
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-          currentSlide = 0; // Reset to first page
-          initPagination();
-          updateSlidePosition(true);
-          resetAutoPlay();
-        }, 250);
-      });
-
       // Portfolio Filter with Animation
       const filterButtons = document.querySelectorAll(".filter-btn");
       const projectCards = document.querySelectorAll(".project-card");
@@ -1825,29 +3038,26 @@
           button.classList.add("active");
 
           const filterValue = button.getAttribute("data-filter");
-          
-          // Filter slides - update filteredSlides array
-          filteredSlides = Array.from(slides).filter(card => {
-            const category = card.getAttribute('data-category');
-            return filterValue === 'all' || filterValue === category;
-          });
-          
-          // Mark slides as filtered or not (don't use display:none!)
-          slides.forEach(slide => {
-            const category = slide.getAttribute('data-category');
-            const isVisible = filterValue === 'all' || filterValue === category;
-            
-            if (isVisible) {
-              slide.classList.remove('filtered-out');
+
+          projectCards.forEach((card) => {
+            const category = card.getAttribute("data-category");
+
+            if (filterValue === "all" || filterValue === category) {
+              // Show card with animation
+              card.style.display = "block";
+              setTimeout(() => {
+                card.style.opacity = "1";
+                card.style.transform = "scale(1)";
+              }, 10);
             } else {
-              slide.classList.add('filtered-out');
+              // Hide card with animation
+              card.style.opacity = "0";
+              card.style.transform = "scale(0.8)";
+              setTimeout(() => {
+                card.style.display = "none";
+              }, 300);
             }
           });
-          
-          // Reset to first slide of filtered set
-          currentSlide = 0;
-          initPagination();
-          updateSlidePosition();
         });
       }); // Enhanced Lightbox functionality
       const lightbox = document.createElement("div");

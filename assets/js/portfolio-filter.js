@@ -4,19 +4,13 @@ const subFilter = document.getElementById('graphicDesignFilter');
 const projectCards = document.querySelectorAll('.project-card');
 
 function showCard(card) {
-    card.style.display = 'block';
-    setTimeout(() => {
-        card.style.opacity = '1';
-        card.style.transform = 'scale(1)';
-    }, 10);
+    card.classList.remove('filtered-hidden');
+    card.style.opacity = '1';
 }
 
 function hideCard(card) {
+    card.classList.add('filtered-hidden');
     card.style.opacity = '0';
-    card.style.transform = 'scale(0.8)';
-    setTimeout(() => {
-        card.style.display = 'none';
-    }, 300);
 }
 
 function filterProjects(mainCategory, subCategory = null) {
