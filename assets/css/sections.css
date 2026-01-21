@@ -471,9 +471,17 @@
   filter: blur(70px) brightness(1.3) saturate(1);
 }
 
-/* Hide filtered slides - completely remove from layout */
+/* Smooth filter animation for project cards */
+.project-card {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 .project-card.filtered-out {
-  display: none;
+  opacity: 0;
+  transform: scale(0.9);
+  pointer-events: none;
+  position: absolute;
+  left: -9999px;
 }
 
 .project-card::before {
@@ -780,11 +788,6 @@
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-  font-family: var(--font-family-mono);
-  font-size: var(--font-size-xs);
-  letter-spacing: var(--letter-spacing-wider);
-  z-index: 10;
-}
 
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
@@ -918,8 +921,6 @@
     width: 40px;
     height: 40px;
     font-size: 16px;
-  }
-}
   }
   
   .slideshow-nav.prev {

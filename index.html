@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omeh Chidi - UI/UX Designer & Frontend Developer Portfolio</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Omeh Chidi - UI/UX Designer, Graphic Designer & Frontend Developer. Creating intuitive interfaces, stunning graphics, and responsive web experiences with Figma, Adobe Suite, HTML, CSS & JavaScript." />
+    <meta name="keywords" content="UI/UX Designer, Graphic Designer, Frontend Developer, Web Designer, Figma, Adobe Photoshop, Illustrator, HTML, CSS, JavaScript, Portfolio" />
+    <meta name="author" content="Omeh Chidi" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Omeh Chidi - UI/UX Designer & Frontend Developer" />
+    <meta property="og:description" content="Creating intuitive interfaces, stunning graphics, and responsive web experiences. View my portfolio of design and development projects." />
+    <meta property="og:url" content="https://omeh-chidi-portfolio.vercel.app" />
+    <meta property="og:image" content="assets/mypic.jpg" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Omeh Chidi - UI/UX Designer & Frontend Developer" />
+    <meta name="twitter:description" content="Creating intuitive interfaces, stunning graphics, and responsive web experiences." />
+    <meta name="twitter:image" content="assets/mypic.jpg" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="my_logo.png" />
+    <link rel="apple-touch-icon" href="my_logo.png" />
+    
     <!-- Vercel Analytics -->
     <script>
       window.va =
@@ -50,7 +72,7 @@
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.95);
+        background: var(--color-bg-overlay, rgba(0, 0, 0, 0.95));
         z-index: var(--z-max, 9999);
         backdrop-filter: var(--blur-xl, blur(40px));
         -webkit-backdrop-filter: var(--blur-xl, blur(40px));
@@ -76,6 +98,7 @@
         object-fit: contain;
         border-radius: var(--radius-xl, 20px);
         box-shadow: var(--shadow-2xl, 0 30px 80px rgba(0, 0, 0, 0.5));
+        pointer-events: none;
       }
       
       .lightbox-close {
@@ -88,19 +111,150 @@
         backdrop-filter: var(--blur-md, blur(16px));
         border: 1px solid var(--color-border-medium, rgba(255, 255, 255, 0.2));
         border-radius: 50%;
-        color: white;
+        color: var(--color-text-primary, white);
         font-size: 1.5rem;
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         transition: var(--transition-all, all 0.3s ease);
-        z-index: 1;
+        z-index: 10000;
+        pointer-events: auto;
       }
       
       .lightbox-close:hover {
         background: var(--color-accent-primary, #8b5cf6);
         transform: rotate(90deg);
+      }
+      
+      /* Gallery Navigation */
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 56px;
+        height: 56px;
+        background: var(--color-glass-strong, rgba(255, 255, 255, 0.1));
+        backdrop-filter: var(--blur-md, blur(16px));
+        border: 1px solid var(--color-border-medium, rgba(255, 255, 255, 0.2));
+        border-radius: 50%;
+        color: var(--color-text-primary, white);
+        font-size: 2rem;
+        cursor: pointer;
+        display: none;
+        pointer-events: auto;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition-all, all 0.3s ease);
+        z-index: 10000;
+      }
+      
+      .lightbox-prev {
+        left: 2rem;
+      }
+      
+      .lightbox-next {
+        right: 2rem;
+      }
+      
+      .lightbox-nav:hover:not(:disabled) {
+        background: var(--color-accent-primary, #8b5cf6);
+        transform: translateY(-50%) scale(1.1);
+      }
+      
+      .lightbox-nav:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
+      
+      .lightbox-counter {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--color-glass-strong, rgba(0, 0, 0, 0.6));
+        backdrop-filter: var(--blur-md, blur(16px));
+        border: 1px solid var(--color-border-medium, rgba(255, 255, 255, 0.2));
+        border-radius: 24px;
+        color: var(--color-text-primary, white);
+        padding: 0.5rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: none;
+        z-index: 10000;
+        pointer-events: none;
+      }
+      
+      /* Skip to Content Link */
+      .skip-to-content {
+        position: absolute;
+        top: -100px;
+        left: 0;
+        background: var(--color-accent-primary, #8b5cf6);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        font-weight: 600;
+        z-index: 100000;
+        border-radius: 0 0 8px 0;
+        transition: top 0.3s;
+      }
+      
+      .skip-to-content:focus {
+        top: 0;
+      }
+      
+      /* Focus Visible Styles */
+      a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+        outline: 3px solid var(--color-accent-primary, #8b5cf6);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+      
+      .nav-link:focus-visible {
+        outline-offset: 4px;
+      }
+      
+      /* Back to Top Button */
+      .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: var(--color-accent-primary, #8b5cf6);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        z-index: 1000;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+      }
+      
+      .back-to-top:hover {
+        background: var(--color-accent-secondary, #7c3aed);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+      }
+      
+      .back-to-top.show {
+        display: flex;
+      }
+      
+      /* Project Filter Animation */
+      .project-card {
+        transition: all 0.5s ease, opacity 0.5s ease, transform 0.5s ease;
+      }
+      
+      .project-card.filtered-out {
+        opacity: 0;
+        transform: scale(0.8);
+        pointer-events: none;
       }
       
       @keyframes fadeIn {
@@ -126,21 +280,24 @@
   </head>
 
   <body data-theme="dark">
+    <!-- Skip to Content Link for Accessibility -->
+    <a href="#home" class="skip-to-content">Skip to main content</a>
+    
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
       <div class="nav-container container">
         <div class="logo">
           <img src="my_logo.png" alt="ecc0 logo" class="logo-dark">
           <img src="my_logo_dark.png" alt="ecc0 logo" class="logo-light">
         </div>
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#portfolio" class="nav-link">Work</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+        <ul class="nav-links" role="list">
+          <li><a href="#home" class="nav-link active" aria-label="Navigate to home section">Home</a></li>
+          <li><a href="#about" class="nav-link" aria-label="Navigate to about section">About</a></li>
+          <li><a href="#portfolio" class="nav-link" aria-label="Navigate to portfolio section">Work</a></li>
+          <li><a href="#contact" class="nav-link" aria-label="Navigate to contact section">Contact</a></li>
         </ul>
-        <div class="theme-toggle" id="themeToggle">🌙</div>
-        <div class="mobile-menu" id="mobileMenu">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        <button class="mobile-menu" id="mobileMenu" aria-label="Toggle mobile menu" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -172,8 +329,7 @@
           <a
             href="https://drive.google.com/file/d/1_TqfhmbBZw_PLK-Ppu7XCIU2aSPCSSiy/view?usp=sharing"
             class="btn btn-secondary"
-            target="_blank"
-          >
+            >
             View Resume
             <span>📄</span>
           </a>
@@ -196,7 +352,7 @@
         <div class="about-grid">
           <div class="about-image slide-left">
             <div class="about-photo">
-              <img src="assets/mypic.jpg" alt="Omeh Chidi" />
+              <img src="assets/mypic.jpg" alt="Omeh Chidi - UI/UX Designer and Frontend Developer" loading="lazy" />
             </div>
           </div>
 
@@ -287,25 +443,25 @@
             <div class="tech-items">
               <div class="tech-item">
                 <div class="tech-icon">
-                  <img src="assets/logos/icons8-figma-48.png" alt="Figma" />
+                  <img src="assets/logos/icons8-figma-48.png" alt="Figma" loading="lazy" />
                 </div>
                 <span class="tech-name">Figma</span>
               </div>
               <div class="tech-item">
                 <div class="tech-icon">
-                  <img src="assets/logos/icons8-adobe-xd-48.png" alt="Adobe XD" />
+                  <img src="assets/logos/icons8-adobe-xd-48.png" alt="Adobe XD" loading="lazy" />
                 </div>
                 <span class="tech-name">Adobe XD</span>
               </div>
               <div class="tech-item">
                 <div class="tech-icon">
-                  <img src="assets/logos/icons8-photoshop-100.png" alt="Photoshop" />
+                  <img src="assets/logos/icons8-photoshop-100.png" alt="Photoshop" loading="lazy" />
                 </div>
                 <span class="tech-name">Photoshop</span>
               </div>
               <div class="tech-item">
                 <div class="tech-icon">
-                  <img src="assets/logos/icons8-illustrator-48.png" alt="Illustrator" />
+                  <img src="assets/logos/icons8-illustrator-48.png" alt="Illustrator" loading="lazy" />
                 </div>
                 <span class="tech-name">Illustrator</span>
               </div>
@@ -429,6 +585,32 @@
           <div class="portfolio-slides-wrapper">
           <!-- Graphic Design Projects -->
 
+         <!-- EXAMPLE: Multi-image gallery project (Brochure/PDF) -->
+          <!-- Only the blink/cover image shows in the portfolio -->
+          <!-- Clicking it opens a gallery with all pages -->
+          <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img src="assets/graphic_design/9stack brochure/1.png" alt="9Stack Limited company brochure cover design" loading="lazy" />
+            </div>
+            <div class="project-overlay">
+              <a 
+                href="#" 
+                class="project-link gallery-trigger" 
+                data-gallery="assets/graphic_design/9stack brochure/1.png, assets/graphic_design/9stack brochure/2.png, assets/graphic_design/9stack brochure/3.png, assets/graphic_design/9stack brochure/4.png, assets/graphic_design/9stack brochure/5.png, assets/graphic_design/9stack brochure/6.png, assets/graphic_design/9stack brochure/7.png, assets/graphic_design/9stack brochure/8.png, assets/graphic_design/9stack brochure/9.png, assets/graphic_design/9stack brochure/10.png, assets/graphic_design/9stack brochure/11.png"
+              >View Gallery (11 images)</a>
+            </div>
+            
+            <div class="project-content">
+              <h3>Brochure Design for 9Stack Limited</h3>
+              <p>Multi-page brochure with interactive gallery</p>
+              <div class="project-tags">
+                <span class="tag">Brochure</span>
+                <span class="tag">Multi-page</span>
+              </div>
+            </div>
+          </div>
+
+
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img
@@ -442,7 +624,6 @@
               <a
                 href="assets/graphic_design/Numie_0.5.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -458,10 +639,10 @@
 
           <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img src="assets/graphic_design/2026_design_with texture@2x.jpg" alt="New year celebration" />
+              <img src="assets/graphic_design/2026_design_with texture@2x.jpg" alt="2026 New Year celebration flyer design" loading="lazy" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/2026_design_with texture@2x.jpg" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/2026_design_with texture@2x.jpg" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>New year celebration</h3>
@@ -475,10 +656,10 @@
 
           <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img src="assets/graphic_design/David's logo_mockup_small.png" alt="Logo design" />
+              <img src="assets/graphic_design/David's logo_mockup_small.png" alt="DMACHINE Visuals logo design mockup" loading="lazy" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/David's logo_mockup_small.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/David's logo_mockup_small.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Logo Design</h3>
@@ -492,10 +673,10 @@
 
           <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img src="assets/graphic_design/Unc_Chambers_collage.jpeg" alt="Traditional celebration" />
+              <img src="assets/graphic_design/Unc_Chambers_collage.jpeg" alt="Uncle Chambers traditional celebration collage design" loading="lazy" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/Unc_Chambers_collage.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/Unc_Chambers_collage.jpeg" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Traditional celebration</h3>
@@ -509,10 +690,10 @@
 
           <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img src="assets/graphic_design/EduConnect.jpeg" alt="EduConnect" />
+              <img src="assets/graphic_design/EduConnect.jpeg" alt="EduConnect educational platform branding design" loading="lazy" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/EduConnect.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/EduConnect.jpeg" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Team introduction</h3>
@@ -526,10 +707,10 @@
 
            <div class="project-card" data-category="graphic">
             <div class="project-image">
-              <img src="assets/graphic_design/platform_1.jpeg" alt="Platform design" />
+              <img src="assets/graphic_design/platform_1.jpeg" alt="Digital platform interface design concept" loading="lazy" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/platform_1.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/platform_1.jpeg" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Product design</h3>
@@ -546,7 +727,7 @@
               <img src="assets/graphic_design/dynasty_december.jpeg" alt="New Month celebration" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/dynasty_december.jpeg" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/dynasty_december.jpeg" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>New Month celebration</h3>
@@ -571,7 +752,6 @@
               <a
                 href="assets/graphic_design/Nigeria@65_compressed.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -597,7 +777,6 @@
               <a
                 href="assets/graphic_design/fish_flyer1.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -623,7 +802,6 @@
               <a
                 href="assets/graphic_design/my_advert@1.25x.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -649,7 +827,6 @@
               <a
                 href="assets/graphic_design/Module 2.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -676,7 +853,6 @@
               <a
                 href="assets/graphic_design/BlackPride brand proposal_1_compressed.pdf"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -703,7 +879,6 @@
               <a
                 href="assets/graphic_design/kano-tech-conference_Mr. Lucky WU.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -727,15 +902,7 @@
               />
             </div>
             <div class="project-overlay">
-              <a
-                href="assets/graphic_design/WU_2k followers-LinkedIn.png"
-                class="project-link view-full-size"
-                target="_blank"
-                >View Full Size</a
-              >
-            </div>
-            <div class="project-overlay">
-                <a href="assets/graphic_design/WU_2k followers-LinkedIn.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/WU_2k followers-LinkedIn.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Followers celebration</h3>
@@ -752,7 +919,7 @@
               <img src="assets/graphic_design/WU_RUI1-anticipation.png" alt="WU_RUI1-anticipation" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/WU_RUI1-anticipation.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/WU_RUI1-anticipation.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Anticipation flyer</h3>
@@ -769,7 +936,7 @@
               <img src="assets/graphic_design/berachah2025_blink.png" alt="berachah2025 display graphic" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/berachah2025_blink.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/berachah2025_blink.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Berachah 2025 graphic</h3>
@@ -787,7 +954,7 @@
               <img src="assets/graphic_design/CSY_thumbnail1.1.png" alt="CSY Thumbnail Design" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/CSY_thumbnail1.1.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/CSY_thumbnail1.1.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>CSY Thumbnail Design</h3>
@@ -812,7 +979,6 @@
               <a
                 href="assets/graphic_design/khadijah's work - side dish 1.3.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -831,7 +997,7 @@
               <img src="assets/graphic_design/newcomers_dlbc2.png" alt="DLBC Newcomers Design" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/newcomers_dlbc2.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/newcomers_dlbc2.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>DLBC Newcomers Welcome</h3>
@@ -843,12 +1009,14 @@
             </div>
           </div>
 
+ 
+
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/testimonial-redone_WU1.2.png" alt="WU Testimonial Design" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/testimonial-redone_WU1.2.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/testimonial-redone_WU1.2.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>WU Testimonial design</h3>
@@ -865,7 +1033,7 @@
               <img src="assets/graphic_design/WU_mentor flyer-redone1.1.png" alt="Special Event Design" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/WU_mentor flyer-redone1.1.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/WU_mentor flyer-redone1.1.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Mentorship flyer</h3>
@@ -882,7 +1050,7 @@
               <img src="assets/graphic_design/WU_Article-Violet.png" alt="WU Article Design" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/WU_Article-Violet.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/WU_Article-Violet.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Wale University graphic</h3>
@@ -899,7 +1067,7 @@
               <img src="assets/graphic_design/WU_Report4.png" alt="WU Report Design" />
             </div>
             <div class="project-overlay">
-                <a href="assets/graphic_design/WU_Report4.png" class="project-link view-full-size" target="_blank">View Full Size</a>
+                <a href="assets/graphic_design/WU_Report4.png" class="project-link view-full-size">View Full Size</a>
               </div>
             <div class="project-content">
               <h3>Wale University report graphic</h3>
@@ -925,7 +1093,6 @@
               <a
                 href="assets/ui-ux/Ecommerce_collabo.pdf"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -952,7 +1119,6 @@
               <a
                 href="assets/ui-ux/WhatsApp Image 2025-02-22 at 01.04.30_edaf1cb6.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -979,7 +1145,6 @@
               <a
                 href="assets/ui-ux/logo_new.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1006,7 +1171,6 @@
               <a
                 href="assets/ui-ux/ui1.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1033,7 +1197,6 @@
               <a
                 href="assets/ui-ux/ui2.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1062,7 +1225,6 @@
               <a
                 href="assets/graphic_design/NUTM_Women_International_Day@1.5x.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1089,7 +1251,6 @@
               <a
                 href="assets/graphic_design/WALE_wk1.1.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1116,7 +1277,6 @@
               <a
                 href="assets/graphic_design/WALE_July.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1141,7 +1301,6 @@
               <a
                 href="assets/graphic_design/WU_Report2.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1166,7 +1325,6 @@
               <a
                 href="assets/graphic_design/WU_Report1_redone.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1191,7 +1349,6 @@
               <a
                 href="assets/graphic_design/streamsoflife_Jesus_crucified main@2x.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1216,7 +1373,6 @@
               <a
                 href="assets/graphic_design/streamsoflife_palm sunday.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1241,7 +1397,6 @@
               <a
                 href="assets/graphic_design/hikers@1.25x.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1269,7 +1424,6 @@
               <a
                 href="assets/graphic_design/Mum_musa_b'day.jpg"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1296,7 +1450,6 @@
               <a
                 href="assets/graphic_design/NUTML_logo.png"
                 class="project-link view-full-size"
-                target="_blank"
                 >View Full Size</a
               >
             </div>
@@ -1453,6 +1606,12 @@
         &copy; 2025 ecc0. All rights reserved. Crafted with ❤️ and ☕
       </div>
     </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+      ↑
+    </button>
+    
     <!-- Optional JavaScript (for mobile nav toggle, typing animation, etc.) -->
     <script>
       // Initialize EmailJS
@@ -1606,10 +1765,12 @@
         if (isMenuOpen) {
           mobileMenu.classList.add("open");
           navLinks.classList.add("open");
+          mobileMenu.setAttribute("aria-expanded", "true");
           document.body.style.overflow = "hidden";
         } else {
           mobileMenu.classList.remove("open");
           navLinks.classList.remove("open");
+          mobileMenu.setAttribute("aria-expanded", "false");
           document.body.style.overflow = "auto";
         }
       }
@@ -1625,6 +1786,24 @@
         ) {
           toggleMobileMenu();
         }
+      });
+      
+      // Back to Top Button
+      const backToTopButton = document.getElementById("backToTop");
+      
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          backToTopButton.classList.add("show");
+        } else {
+          backToTopButton.classList.remove("show");
+        }
+      });
+      
+      backToTopButton.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
       });
 
       // Typing Animation
@@ -1996,132 +2175,14 @@
           initPagination();
           updateSlidePosition();
         });
-      }); // Enhanced Lightbox functionality
-      const lightbox = document.createElement("div");
-      lightbox.className = "lightbox";
-      lightbox.innerHTML = `
-        <div class="lightbox-content">
-          <div class="lightbox-viewer"></div>
-          <button class="close-lightbox">×</button>
-        </div>
-      `;
-      document.body.appendChild(lightbox);
-
-      // Function to open lightbox
-      function openLightbox(fileSrc) {
-        const viewer = lightbox.querySelector(".lightbox-viewer");
-        viewer.innerHTML = ""; // Clear previous content
-        
-        if (fileSrc.toLowerCase().endsWith(".pdf")) {
-          // PDF file
-          viewer.innerHTML = `<iframe src="${fileSrc}#toolbar=0&download=0&print=0" type="application/pdf"></iframe>`;
-        } else {
-          // Image file
-          viewer.innerHTML = `<img src="${fileSrc}" alt="Full size image" />`;
-        }
-        
-        document.body.style.overflow = "hidden";
-        lightbox.classList.add("active");
-      }
-
-      // Function to close lightbox
-      function closeLightbox() {
-        document.body.style.overflow = "auto";
-        lightbox.classList.remove("active");
-      }
-
-      // Add click handlers to all view-full-size links
-      document.querySelectorAll(".view-full-size").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          const imgSrc = link.getAttribute("href");
-          openLightbox(imgSrc);
-        });
-      });
-
-      // Close lightbox when clicking outside image or on close button
-      lightbox.addEventListener("click", (e) => {
-        if (
-          e.target.classList.contains("lightbox") ||
-          e.target.classList.contains("close-lightbox")
-        ) {
-          closeLightbox();
-        }
-      });
-
-    </script>
-    <script>
-      // Lightbox functionality
-      document.addEventListener('DOMContentLoaded', () => {
-        // Create lightbox elements if they don't exist
-        let lightbox = document.querySelector('.lightbox');
-        if (!lightbox) {
-          lightbox = document.createElement('div');
-          lightbox.className = 'lightbox';
-          
-          const lightboxContent = document.createElement('div');
-          lightboxContent.className = 'lightbox-content';
-          
-          const lightboxViewer = document.createElement('div');
-          lightboxViewer.className = 'lightbox-viewer';
-          
-          const closeButton = document.createElement('button');
-          closeButton.className = 'close-lightbox';
-          closeButton.innerHTML = '×';
-          
-          lightboxContent.appendChild(lightboxViewer);
-          lightboxContent.appendChild(closeButton);
-          lightbox.appendChild(lightboxContent);
-          document.body.appendChild(lightbox);
-          
-          // Close lightbox when clicking close button or outside the image
-          closeButton.addEventListener('click', closeLightbox);
-          lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-              closeLightbox();
-            }
-          });
-        }
-
-        // Get all lightbox trigger elements
-        const lightboxTriggers = document.querySelectorAll('.lightbox-trigger');
-        const lightboxViewer = lightbox.querySelector('.lightbox-viewer');
-        
-        // Function to open lightbox
-        function openLightbox(imageSrc) {
-          const img = document.createElement('img');
-          img.src = imageSrc;
-          lightboxViewer.innerHTML = '';
-          lightboxViewer.appendChild(img);
-          lightbox.classList.add('active');
-          document.body.style.overflow = 'hidden';
-        }
-        
-        // Function to close lightbox
-        function closeLightbox() {
-          lightbox.classList.remove('active');
-          document.body.style.overflow = '';
-          setTimeout(() => {
-            lightboxViewer.innerHTML = '';
-          }, 300);
-        }
-        
-        // Add click event to all trigger elements
-        lightboxTriggers.forEach(trigger => {
-          trigger.addEventListener('click', (e) => {
-            e.preventDefault();
-            const imageSrc = trigger.getAttribute('href');
-            openLightbox(imageSrc);
-          });
-        });
-        
-        // Close lightbox with escape key
-        document.addEventListener('keydown', (e) => {
-          if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
-          }
-        });
       });
     </script>
+    
+    <!-- External JavaScript Files -->
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/image-loader.js"></script>
   </body>
 </html>
+
+
