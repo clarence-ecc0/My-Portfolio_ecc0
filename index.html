@@ -301,7 +301,7 @@
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </nav>
 
@@ -1763,19 +1763,28 @@
         isMenuOpen = !isMenuOpen;
         const navLinks = document.querySelector(".nav-links");
         if (isMenuOpen) {
-          mobileMenu.classList.add("open");
-          navLinks.classList.add("open");
+          mobileMenu.classList.add("active");
+          navLinks.classList.add("active");
           mobileMenu.setAttribute("aria-expanded", "true");
           document.body.style.overflow = "hidden";
         } else {
-          mobileMenu.classList.remove("open");
-          navLinks.classList.remove("open");
+          mobileMenu.classList.remove("active");
+          navLinks.classList.remove("active");
           mobileMenu.setAttribute("aria-expanded", "false");
-          document.body.style.overflow = "auto";
+          document.body.style.overflow = "";
         }
       }
 
       mobileMenu.addEventListener("click", toggleMobileMenu);
+      
+      // Close mobile menu when clicking nav links
+      document.querySelectorAll(".nav-link").forEach(link => {
+        link.addEventListener("click", () => {
+          if (isMenuOpen) {
+            toggleMobileMenu();
+          }
+        });
+      });
 
       // Close mobile menu when clicking outside
       document.addEventListener("click", (e) => {

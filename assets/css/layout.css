@@ -523,6 +523,17 @@
 
   .mobile-menu {
     display: flex;
+    background: transparent;
+    border: none;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-menu:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 4px;
+    border-radius: 4px;
   }
 
   .theme-toggle {
