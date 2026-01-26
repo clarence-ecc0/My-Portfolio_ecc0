@@ -132,7 +132,9 @@ function initializeLightbox() {
     // Always re-attach event listeners to all triggers (including new ones)
     const lightboxTriggers = document.querySelectorAll('.lightbox-trigger, .gallery-trigger, .view-full-size');
     
-    lightboxTriggers.forEach(trigger => {
+    console.log(`🔍 Found ${lightboxTriggers.length} lightbox triggers`);
+    
+    lightboxTriggers.forEach((trigger, index) => {
         // Remove existing listener (if any) and add fresh one
         const newTrigger = trigger.cloneNode(true);
         trigger.parentNode.replaceChild(newTrigger, trigger);
@@ -143,10 +145,14 @@ function initializeLightbox() {
             // Check if it's a gallery trigger (multiple images)
             const galleryData = newTrigger.getAttribute('data-gallery');
             if (galleryData) {
-                const images = galleryData.split(',').map(img => img.trim());
+                console.log(`🖼️ Opening gallery ${index + 1}:`, galleryData.substring(0, 100) + '...');
+                // Split by ||| separator (safe for base64 data URLs)
+                const images = galleryData.split('|||').map(img => img.trim());
+                console.log(`   → ${images.length} images found`);
                 lightboxInstance.openLightbox(images, 0);
             } else {
                 const imageSrc = newTrigger.getAttribute('href');
+                console.log(`🖼️ Opening single image ${index + 1}:`, imageSrc ? imageSrc.substring(0, 50) : 'none');
                 lightboxInstance.openLightbox([imageSrc], 0);
             }
         });

@@ -599,7 +599,7 @@
               <a 
                 href="#" 
                 class="project-link gallery-trigger" 
-                data-gallery="assets/graphic_design/9stack_mockup/1.png, assets/graphic_design/9stack_mockup/2.png, assets/graphic_design/9stack_mockup/3.png, assets/graphic_design/9stack_mockup/4.png"
+                data-gallery="assets/graphic_design/9stack_mockup/1.png|||assets/graphic_design/9stack_mockup/2.png|||assets/graphic_design/9stack_mockup/3.png|||assets/graphic_design/9stack_mockup/4.png"
               >View Gallery (4 images)</a>
             </div>
 
@@ -623,7 +623,7 @@
               <a 
                 href="#" 
                 class="project-link gallery-trigger" 
-                data-gallery="assets/graphic_design/9stack brochure/1.png, assets/graphic_design/9stack brochure/2.png, assets/graphic_design/9stack brochure/3.png, assets/graphic_design/9stack brochure/4.png, assets/graphic_design/9stack brochure/5.png, assets/graphic_design/9stack brochure/6.png, assets/graphic_design/9stack brochure/7.png, assets/graphic_design/9stack brochure/8.png, assets/graphic_design/9stack brochure/9.png, assets/graphic_design/9stack brochure/10.png, assets/graphic_design/9stack brochure/11.png"
+                data-gallery="assets/graphic_design/9stack brochure/1.png|||assets/graphic_design/9stack brochure/2.png|||assets/graphic_design/9stack brochure/3.png|||assets/graphic_design/9stack brochure/4.png|||assets/graphic_design/9stack brochure/5.png|||assets/graphic_design/9stack brochure/6.png|||assets/graphic_design/9stack brochure/7.png|||assets/graphic_design/9stack brochure/8.png|||assets/graphic_design/9stack brochure/9.png|||assets/graphic_design/9stack brochure/10.png|||assets/graphic_design/9stack brochure/11.png"
               >View Gallery (11 images)</a>
             </div>
             
@@ -706,7 +706,7 @@
               <a 
                 href="#" 
                 class="project-link gallery-trigger" 
-                data-gallery="assets/graphic_design/Berachah2025/1.png, assets/graphic_design/Berachah2025/2.png, assets/graphic_design/Berachah2025/3.png, assets/graphic_design/Berachah2025/4.png, assets/graphic_design/Berachah2025/5.png"
+                data-gallery="assets/graphic_design/Berachah2025/1.png|||assets/graphic_design/Berachah2025/2.png|||assets/graphic_design/Berachah2025/3.png|||assets/graphic_design/Berachah2025/4.png|||assets/graphic_design/Berachah2025/5.png"
               >View Gallery (5 images)</a>
             </div>
             
@@ -762,7 +762,7 @@
               <a 
                 href="#" 
                 class="project-link gallery-trigger" 
-                data-gallery="assets/graphic_design/fish_farm/1.png, assets/graphic_design/fish_farm/2.png, assets/graphic_design/fish_farm/3.png"
+                data-gallery="assets/graphic_design/fish_farm/1.png|||assets/graphic_design/fish_farm/2.png|||assets/graphic_design/fish_farm/3.png"
               >View Gallery (3 images)</a>
             </div>
             
@@ -818,7 +818,7 @@
               <a 
                 href="#" 
                 class="project-link gallery-trigger" 
-                data-gallery="assets/graphic_design/9stack_pitch_deck/1.png, assets/graphic_design/9stack_pitch_deck/2.png, assets/graphic_design/9stack_pitch_deck/3.png, assets/graphic_design/9stack_pitch_deck/4.png, assets/graphic_design/9stack_pitch_deck/5.png, assets/graphic_design/9stack_pitch_deck/6.png, assets/graphic_design/9stack_pitch_deck/7.png, assets/graphic_design/9stack_pitch_deck/8.png, assets/graphic_design/9stack_pitch_deck/9.png, assets/graphic_design/9stack_pitch_deck/10.png, assets/graphic_design/9stack_pitch_deck/11.png, assets/graphic_design/9stack_pitch_deck/12.png, assets/graphic_design/9stack_pitch_deck/13.png"
+                data-gallery="assets/graphic_design/9stack_pitch_deck/1.png|||assets/graphic_design/9stack_pitch_deck/2.png|||assets/graphic_design/9stack_pitch_deck/3.png|||assets/graphic_design/9stack_pitch_deck/4.png|||assets/graphic_design/9stack_pitch_deck/5.png|||assets/graphic_design/9stack_pitch_deck/6.png|||assets/graphic_design/9stack_pitch_deck/7.png|||assets/graphic_design/9stack_pitch_deck/8.png|||assets/graphic_design/9stack_pitch_deck/9.png|||assets/graphic_design/9stack_pitch_deck/10.png|||assets/graphic_design/9stack_pitch_deck/11.png|||assets/graphic_design/9stack_pitch_deck/12.png|||assets/graphic_design/9stack_pitch_deck/13.png"
               >View Gallery (13 images)</a>
             </div>
             
@@ -1694,7 +1694,7 @@
         });
 
       // Portfolio Slideshow Gallery
-      function initializeSlideshow() {
+      window.initializeSlideshow = function() {
         const slidesWrapper = document.querySelector('.portfolio-slides-wrapper');
         const slides = document.querySelectorAll('.project-card');
         const prevBtn = document.querySelector('.slideshow-nav.prev');
@@ -1704,9 +1704,14 @@
         const paginationContainer = document.querySelector('.slideshow-pagination');
         
         if (!slidesWrapper || !slides.length) {
-          console.warn('⚠️ Slideshow elements not found');
-          return;
+          console.warn('⚠️ Slideshow elements not found:', { 
+            wrapper: !!slidesWrapper, 
+            slideCount: slides.length 
+          });
+          return null;
         }
+        
+        console.log(`🎬 Initializing slideshow with ${slides.length} slides`);
         
         let currentSlide = 0;
         let filteredSlides = Array.from(slides);
@@ -1938,7 +1943,7 @@
         }, 250);
       });
       
-      // Return cleanup function
+      // Return cleanup function with filter support
       return {
         stop: stopAutoPlay,
         refresh: () => {
@@ -1947,26 +1952,9 @@
           initPagination();
           updateSlidePosition(true);
           setBlurredBackgrounds();
-        }
-      };
-    } // End initializeSlideshow function
-    
-    // Call slideshow initialization
-    let slideshowInstance = initializeSlideshow();
-
-      // Portfolio Filter with Animation
-      const filterButtons = document.querySelectorAll(".filter-btn");
-      const projectCards = document.querySelectorAll(".project-card");
-
-      filterButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-          // Remove active class from all buttons
-          filterButtons.forEach((btn) => btn.classList.remove("active"));
-          // Add active class to clicked button
-          button.classList.add("active");
-
-          const filterValue = button.getAttribute("data-filter");
-          
+        },
+        // Expose filter function
+        filterProjects: (filterValue) => {
           // Filter slides - update filteredSlides array
           filteredSlides = Array.from(slides).filter(card => {
             const category = card.getAttribute('data-category');
@@ -1989,6 +1977,36 @@
           currentSlide = 0;
           initPagination();
           updateSlidePosition();
+          resetAutoPlay();
+        }
+      };
+    } // End initializeSlideshow function
+    
+    // Call slideshow initialization on first load (will be re-called by portfolio-sync)
+    if (document.querySelectorAll('.project-card').length > 0) {
+      let slideshowInstance = window.initializeSlideshow();
+      window.slideshowInstance = slideshowInstance;
+      console.log('🚀 Initial slideshow loaded');
+    } else {
+      console.log('⏳ Waiting for admin projects to load...');
+    }
+
+      // Portfolio Filter with Animation
+      const filterButtons = document.querySelectorAll(".filter-btn");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          const filterValue = button.getAttribute("data-filter");
+          
+          // Use the slideshow instance's filter function
+          if (slideshowInstance && slideshowInstance.filterProjects) {
+            slideshowInstance.filterProjects(filterValue);
+          }
         });
       });
     </script>

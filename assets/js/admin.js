@@ -248,6 +248,38 @@ function initializeAdmin() {
   [document.getElementById('themeToggleBtn'), document.getElementById('themeToggleAuth')].forEach(btn => {
     if (btn) btn.addEventListener('click', toggleTheme);
   });
+  
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const adminSidebar = document.getElementById('adminSidebar');
+  
+  if (mobileMenuToggle && adminSidebar) {
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileMenuToggle.classList.toggle('active');
+      adminSidebar.classList.toggle('mobile-open');
+    });
+    
+    // Close menu when clicking nav items on mobile
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          mobileMenuToggle.classList.remove('active');
+          adminSidebar.classList.remove('mobile-open');
+        }
+      });
+    });
+    
+    // Close menu when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && 
+          adminSidebar.classList.contains('mobile-open') &&
+          !adminSidebar.contains(e.target) && 
+          !mobileMenuToggle.contains(e.target)) {
+        mobileMenuToggle.classList.remove('active');
+        adminSidebar.classList.remove('mobile-open');
+      }
+    });
+  }
 }
 
 function setupEventListeners() {

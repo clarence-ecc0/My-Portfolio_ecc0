@@ -52,7 +52,20 @@ class PortfolioSync {
         const imageUrl = typeof img === 'string' ? img : (img.url || '');
         if (imageUrl) imageUrls.push(imageUrl);
       });
-      const imageDataList = imageUrls.join(', ');
+      
+      // Debug logging
+      if (imageUrls.length === 0) {
+        console.warn(`⚠️ Project "${title}" has images array but no valid URLs:`, images);
+      } else {
+        console.log(`✅ Project "${title}" gallery: ${imageUrls.length} images`, {
+          projectType: project.projectType,
+          imageCount: imageUrls.length,
+          firstImageType: imageUrls[0] ? (imageUrls[0].startsWith('data:') ? 'base64' : 'url') : 'none'
+        });
+      }
+      
+      // Join with ||| separator (safe for base64 data URLs which may contain commas)
+      const imageDataList = imageUrls.join('|||');
       viewLink = `<a href="#" class="project-link gallery-trigger" data-gallery="${imageDataList}">View Gallery (${imageUrls.length} images)</a>`;
     } else {
       // Single image
@@ -120,71 +133,64 @@ class PortfolioSync {
       return;
     }
 
-    // Remove existing project cards only (keep navigation)
+    // Remove ALL existing project cards (hardcoded + admin)
     const existingCards = slidesWrapper.querySelectorAll('.project-card');
+    console.log(`🗑️ Removing ${existingCards.length} existing cards`);
     existingCards.forEach(card => card.remove());
 
-    // Generate and insert project cards
+    // Generate and insert ALL project cards from admin panel
     const projectsHtml = projects.map(project => this.convertProjectToCard(project)).join('');
     
     if (projectsHtml) {
-      // Insert after navigation buttons
-      const navNext = slidesWrapper.querySelector('.slideshow-nav.next');
-      if (navNext && navNext.parentNode === slidesWrapper) {
-        navNext.insertAdjacentHTML('afterend', projectsHtml);
-      } else {
-        slidesWrapper.insertAdjacentHTML('beforeend', projectsHtml);
-      }
-
-      // Update total slide count
-      const totalSlidesSpan = slidesWrapper.querySelector('.total-slides');
-      if (totalSlidesSpan) {
-        totalSlidesSpan.textContent = projects.length;
-      }
+      // Insert directly into slides wrapper
+      slidesWrapper.insertAdjacentHTML('beforeend', projectsHtml);
 
       console.log(`✅ Rendered ${projects.length} projects from admin panel`);
       
-      // Reinitialize slideshow and gallery features
-      this.reinitializePortfolioFeatures();
+      // CRITICAL: Completely reinitialize slideshow
+      this.reinitializeSlideshow();
     }
   }
 
   /**
-   * Reinitialize portfolio features after rendering new projects
+   * Completely reinitialize the slideshow with new slides
    */
-  reinitializePortfolioFeatures() {
-    // Wait a moment for DOM updates
+  reinitializeSlideshow() {
+    console.log('🔄 Reinitializing slideshow with new projects...');
+    
+    // Wait for DOM to update
     setTimeout(() => {
-      // Reinitialize the slideshow
-      if (typeof initializeSlideshow === 'function') {
+      // Reinitialize slideshow completely
+      if (typeof window.initializeSlideshow === 'function') {
         try {
-          initializeSlideshow();
-          console.log('✅ Slideshow reinitialized');
+          // Call the global slideshow initialization function
+          const newInstance = window.initializeSlideshow();
+          window.slideshowInstance = newInstance;
+          console.log('✅ Slideshow reinitialized with', document.querySelectorAll('.project-card').length, 'slides');
         } catch (err) {
-          console.warn('⚠️ Slideshow initialization:', err);
+          console.error('❌ Slideshow initialization error:', err);
         }
+      } else {
+        console.warn('⚠️ initializeSlideshow function not found');
       }
-
-      // Reinitialize gallery triggers
-      if (typeof setupGalleryTriggers === 'function') {
+      
+      // Reinitialize lightbox/gallery triggers
+      if (typeof window.setupGalleryTriggers === 'function') {
         try {
-          setupGalleryTriggers();
+          window.setupGalleryTriggers();
           console.log('✅ Gallery triggers reinitialized');
         } catch (err) {
-          console.warn('⚠️ Gallery trigger initialization:', err);
+          console.error('❌ Gallery trigger initialization error:', err);
         }
-      }
-
-      // Reinitialize filter buttons
-      if (typeof setupFilterButtons === 'function') {
+      } else if (typeof window.initializeLightbox === 'function') {
         try {
-          setupFilterButtons();
-          console.log('✅ Filter buttons reinitialized');
+          window.initializeLightbox();
+          console.log('✅ Lightbox reinitialized');
         } catch (err) {
-          console.warn('⚠️ Filter button initialization:', err);
+          console.error('❌ Lightbox initialization error:', err);
         }
       }
-    }, 100);
+    }, 300); // Increased delay for DOM stability
   }
 
   /**
@@ -221,7 +227,7 @@ class PortfolioSync {
       } catch (err) {
         console.warn('⚠️ Error checking for updates:', err);
       }
-    }, 5000); // Check every 5 seconds
+    }, 2000); // Check every 2 seconds for faster updates
   }
 
   /**

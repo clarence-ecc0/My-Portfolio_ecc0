@@ -384,13 +384,37 @@ function migratePortfolioProjects() {
     galleryImages: project.images // For backward compatibility
   }));
 
+  // Get existing projects from localStorage (includes admin-added projects)
+  const existingProjectsRaw = localStorage.getItem('portfolio_projects');
+  let existingProjects = [];
+  
+  if (existingProjectsRaw) {
+    try {
+      existingProjects = JSON.parse(existingProjectsRaw);
+      console.log(`📦 Found ${existingProjects.length} existing projects in storage`);
+    } catch (err) {
+      console.warn('⚠️ Error parsing existing projects, will start fresh');
+    }
+  }
+
+  // Separate existing projects into migrated (id 1001-1030) and admin-added (id > 2000)
+  const adminAddedProjects = existingProjects.filter(p => {
+    // Admin panel uses Date.now() for IDs, which are very large numbers (> 1000000000000)
+    // Migration uses IDs from 1001-1030
+    return p.id > 2000;
+  });
+  
+  console.log(`📝 Preserving ${adminAddedProjects.length} admin-added projects`);
+
+  // Merge: migration projects + admin projects
+  const finalProjects = [...projectsToStore, ...adminAddedProjects];
+
   // Save to localStorage
   try {
     const migrationVersion = '1.2';
-    localStorage.setItem('portfolio_projects', JSON.stringify(projectsToStore));
+    localStorage.setItem('portfolio_projects', JSON.stringify(finalProjects));
     localStorage.setItem('portfolio_migration_version', migrationVersion);
-    console.log(`✅ Successfully migrated ${projectsToStore.length} projects to version ${migrationVersion}!`);
-    console.log('📊 Projects:', projectsToStore.length);
+    console.log(`✅ Successfully migrated ${projectsToStore.length} hardcoded + ${adminAddedProjects.length} admin = ${finalProjects.length} total projects!`);
     return true;
   } catch (err) {
     console.error('❌ Migration failed:', err);
@@ -404,34 +428,47 @@ function migratePortfolioProjects() {
   
   const migrationVersion = '1.2';
   const currentVersion = localStorage.getItem('portfolio_migration_version');
+  const migrationComplete = localStorage.getItem('portfolio_migration_complete');
   const existingProjects = localStorage.getItem('portfolio_projects');
   
-  // Force clear old data if version changed
-  if (currentVersion !== migrationVersion) {
-    console.log('🔄 Version mismatch (' + (currentVersion || 'none') + ' → ' + migrationVersion + '). Clearing old data...');
-    localStorage.removeItem('portfolio_projects');
-    localStorage.removeItem('portfolio_migration_version');
-    localStorage.removeItem('portfolio_migration_complete');
-  } else if (existingProjects) {
-    const projects = JSON.parse(existingProjects);
-    if (projects.length >= 30) {
-      console.log(`✅ Migration v${migrationVersion} already complete. ${projects.length} projects loaded.`);
-      return;
-    }
+  console.log('📊 Migration Status:', {
+    currentVersion,
+    migrationVersion,
+    migrationComplete,
+    projectCount: existingProjects ? JSON.parse(existingProjects).length : 0
+  });
+  
+  // If migration is already complete for this version, skip it entirely
+  if (migrationComplete === 'true' && currentVersion === migrationVersion) {
+    const projects = existingProjects ? JSON.parse(existingProjects) : [];
+    console.log(`✅ Migration v${migrationVersion} already complete. Skipping migration. ${projects.length} projects preserved.`);
+    return;
   }
   
-  // Run migration
-  console.log('⏳ Starting automatic migration...');
+  // First time migration or version upgrade
+  if (!currentVersion) {
+    console.log('🆕 First time migration - will merge with any existing admin projects');
+  } else if (currentVersion !== migrationVersion) {
+    console.log(`🔄 Version upgrade (${currentVersion} → ${migrationVersion}) - will preserve admin projects`);
+  }
+  
+  // Run migration (will merge with existing admin projects)
+  console.log('⏳ Running migration...');
   try {
     const success = migratePortfolioProjects();
     if (success) {
+      // Set completion flag BEFORE reload
       localStorage.setItem('portfolio_migration_complete', 'true');
-      console.log('🎉 Migration complete! Reload the page to see updated galleries.');
-      // Force page reload to refresh with new data
-      setTimeout(() => {
-        console.log('🔄 Reloading page to apply changes...');
-        location.reload();
-      }, 500);
+      localStorage.setItem('portfolio_migration_version', migrationVersion);
+      console.log('🎉 Migration complete! Completion flag set.');
+      
+      // Only reload on first migration, not on subsequent page loads
+      if (!migrationComplete) {
+        setTimeout(() => {
+          console.log('🔄 Reloading page to apply changes...');
+          location.reload();
+        }, 500);
+      }
     } else {
       console.error('❌ Migration failed. Check console for errors.');
     }
