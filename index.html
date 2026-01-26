@@ -296,7 +296,10 @@
           <li><a href="#portfolio" class="nav-link" aria-label="Navigate to portfolio section">Work</a></li>
           <li><a href="#contact" class="nav-link" aria-label="Navigate to contact section">Contact</a></li>
         </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        <div style="display: flex; align-items: center; gap: var(--space-lg);">
+          <a href="admin.html" class="theme-toggle" style="text-decoration: none; display: flex; align-items: center; justify-content: center;" title="Admin Panel" aria-label="Access admin panel">⚙️</a>
+          <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">🌙</button>
+        </div>
         <button class="mobile-menu" id="mobileMenu" aria-label="Toggle mobile menu" aria-expanded="false">
           <span></span>
           <span></span>
@@ -588,6 +591,30 @@
          <!-- EXAMPLE: Multi-image gallery project (Brochure/PDF) -->
           <!-- Only the blink/cover image shows in the portfolio -->
           <!-- Clicking it opens a gallery with all pages -->
+             <div class="project-card" data-category="graphic">
+            <div class="project-image">
+              <img src="assets/graphic_design/9stack_mockup/4.png" alt="9Stack Limited brand mockup" loading="lazy" />
+            </div>
+            <div class="project-overlay">
+              <a 
+                href="#" 
+                class="project-link gallery-trigger" 
+                data-gallery="assets/graphic_design/9stack_mockup/1.png, assets/graphic_design/9stack_mockup/2.png, assets/graphic_design/9stack_mockup/3.png, assets/graphic_design/9stack_mockup/4.png"
+              >View Gallery (4 images)</a>
+            </div>
+
+            <div class="project-content">
+              <h3>Brand mockup for 9Stack Limited</h3>
+              <p>Multi-page brochure with interactive gallery</p>
+              <div class="project-tags">
+                <span class="tag">Mockup</span>
+                <span class="tag">Multi-page</span>
+              </div>
+            </div>
+          </div>
+
+
+
           <div class="project-card" data-category="graphic">
             <div class="project-image">
               <img src="assets/graphic_design/9stack brochure/1.png" alt="9Stack Limited company brochure cover design" loading="lazy" />
@@ -1217,6 +1244,9 @@
               </div>
             </div>
           </div>
+          
+          <!-- Admin Projects Container -->
+          <div id="adminProjectsContainer"></div>
           </div><!-- End portfolio-slides-wrapper -->
         </div>
       </div>
@@ -1664,16 +1694,23 @@
         });
 
       // Portfolio Slideshow Gallery
-      const slidesWrapper = document.querySelector('.portfolio-slides-wrapper');
-      const slides = document.querySelectorAll('.project-card');
-      const prevBtn = document.querySelector('.slideshow-nav.prev');
-      const nextBtn = document.querySelector('.slideshow-nav.next');
-      const currentSlideSpan = document.querySelector('.current-slide');
-      const totalSlidesSpan = document.querySelector('.total-slides');
-      const paginationContainer = document.querySelector('.slideshow-pagination');
-      
-      let currentSlide = 0;
-      let filteredSlides = Array.from(slides);
+      function initializeSlideshow() {
+        const slidesWrapper = document.querySelector('.portfolio-slides-wrapper');
+        const slides = document.querySelectorAll('.project-card');
+        const prevBtn = document.querySelector('.slideshow-nav.prev');
+        const nextBtn = document.querySelector('.slideshow-nav.next');
+        const currentSlideSpan = document.querySelector('.current-slide');
+        const totalSlidesSpan = document.querySelector('.total-slides');
+        const paginationContainer = document.querySelector('.slideshow-pagination');
+        
+        if (!slidesWrapper || !slides.length) {
+          console.warn('⚠️ Slideshow elements not found');
+          return;
+        }
+        
+        let currentSlide = 0;
+        let filteredSlides = Array.from(slides);
+        let autoPlayInterval;
       
       // Get designs per page based on screen size
       function getDesignsPerPage() {
@@ -1790,7 +1827,6 @@
       }
       
       // Auto-advance slideshow
-      let autoPlayInterval;
       
       function startAutoPlay() {
         stopAutoPlay(); // Clear any existing interval
@@ -1901,6 +1937,22 @@
           resetAutoPlay();
         }, 250);
       });
+      
+      // Return cleanup function
+      return {
+        stop: stopAutoPlay,
+        refresh: () => {
+          currentSlide = 0;
+          filteredSlides = Array.from(document.querySelectorAll('.project-card'));
+          initPagination();
+          updateSlidePosition(true);
+          setBlurredBackgrounds();
+        }
+      };
+    } // End initializeSlideshow function
+    
+    // Call slideshow initialization
+    let slideshowInstance = initializeSlideshow();
 
       // Portfolio Filter with Animation
       const filterButtons = document.querySelectorAll(".filter-btn");
@@ -1945,6 +1997,12 @@
     <script src="assets/js/animations.js"></script>
     <script src="assets/js/lightbox.js"></script>
     <script src="assets/js/image-loader.js"></script>
+    
+    <!-- Portfolio Migration (One-time: Convert hardcoded projects to admin system) -->
+    <script src="assets/js/portfolio-migration.js"></script>
+    
+    <!-- Portfolio Sync System (Load projects from admin panel) -->
+    <script src="assets/js/portfolio-sync.js"></script>
   </body>
 </html>
 

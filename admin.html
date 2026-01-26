@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Admin - In-Game Editor</title>
+    <meta name="description" content="Portfolio manager with real-time preview and in-game editor for design projects" />
+    
+    <!-- Premium Design System CSS -->
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/admin-styles.css" />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body data-theme="dark" role="application" aria-label="Portfolio Admin Panel">
+    <!-- Auth Screen -->
+    <div id="authScreen" class="auth-screen active" role="main" aria-labelledby="authTitle">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1 id="authTitle">🔐 Admin Access</h1>
+                <p>Enter your admin PIN to access the portfolio editor</p>
+                <form id="authForm" onsubmit="authenticateAdmin(event)" method="dialog">
+                    <input 
+                        type="password" 
+                        id="adminPin" 
+                        placeholder="Enter 4-digit PIN" 
+                        maxlength="4"
+                        pattern="[0-9]{4}"
+                        inputmode="numeric"
+                        required
+                        class="auth-input"
+                        aria-label="Admin PIN"
+                        aria-describedby="authError"
+                    />
+                    <button type="submit" class="btn btn-primary" aria-label="Submit PIN for authentication">Access Admin Panel</button>
+                </form>
+                <p id="authError" class="auth-error" role="alert" aria-live="polite"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel Screen -->
+    <div id="adminScreen" class="admin-screen">
+        <!-- Header -->
+        <header class="admin-header" role="banner">
+            <div class="admin-header-content">
+                <h1 aria-label="Portfolio Manager">📊 Portfolio Manager</h1>
+                <button id="logoutBtn" class="btn btn-secondary" aria-label="Logout from admin panel">Logout</button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="admin-container">
+            <!-- Sidebar -->
+            <aside class="admin-sidebar" role="complementary" aria-label="Admin navigation">
+                <nav class="admin-nav">
+                    <button class="nav-item active" data-view="add-project" aria-label="Add new project section">
+                        ➕ Add New Project
+                    </button>
+                    <button class="nav-item" data-view="manage-projects" aria-label="Manage existing projects">
+                        📋 Manage Projects
+                    </button>
+                    <button class="nav-item" data-view="preview" aria-label="Live preview of projects">
+                        👁️ Live Preview
+                    </button>
+                    <button class="nav-item" data-view="settings" aria-label="Settings and data management">
+                        ⚙️ Settings
+                    </button>
+                </nav>
+            </aside>
+
+            <!-- Main Editor Area -->
+            <main class="admin-main">
+                <!-- Add/Edit Project View -->
+                <section id="addProjectView" class="admin-view active">
+                    <div class="view-header">
+                        <h2>Add or Edit Project</h2>
+                        <p class="view-subtitle">Fill in the details below. Changes appear in real-time!</p>
+                    </div>
+
+                    <form id="projectForm" class="project-form" novalidate>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projectTitle">Project Title <span class="required">*</span></label>
+                                <input type="text" id="projectTitle" placeholder="e.g., Brand mockup for 9Stack Limited" required aria-required="true" aria-describedby="titleHelp" />
+                                <small id="titleHelp" class="form-help">Give your project a clear name</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="projectCategory">Category <span class="required">*</span></label>
+                                <select id="projectCategory" required aria-required="true" aria-describedby="categoryHelp">
+                                    <option value="">Select Category</option>
+                                    <option value="graphic">Graphic Design</option>
+                                    <option value="ui-ux">UI/UX Design</option>
+                                    <option value="frontend">Frontend Development</option>
+                                </select>
+                                <small id="categoryHelp" class="form-help">Choose the project type</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectDescription">Description *</label>
+                            <textarea id="projectDescription" placeholder="Describe your project..." rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Cover Image *</label>
+                            <div class="image-upload">
+                                <input type="file" id="coverImage" accept="image/*" required class="file-input" />
+                                <div class="upload-area">
+                                    <span>📁 Click to upload or drag image here</span>
+                                </div>
+                                <div id="coverPreview" class="image-preview"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="galleryType">Project Type *</label>
+                            <select id="galleryType" onchange="updateGalleryUI()" required>
+                                <option value="">Select Type</option>
+                                <option value="single">Single Image</option>
+                                <option value="multi">Multi-Image Gallery</option>
+                            </select>
+                        </div>
+
+                        <!-- Multi-Image Gallery Section -->
+                        <div id="gallerySection" class="gallery-section hidden">
+                            <label>Gallery Images</label>
+                            <div class="gallery-images-container">
+                                <input type="file" id="galleryImages" accept="image/*" multiple class="file-input" />
+                                <div class="upload-area">
+                                    <span>📁 Click to upload multiple images for gallery</span>
+                                </div>
+                                <div id="galleryPreview" class="gallery-preview"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="projectTag1">Tag 1</label>
+                                <input type="text" id="projectTag1" placeholder="e.g., Brochure" />
+                            </div>
+                            <div class="form-group">
+                                <label for="projectTag2">Tag 2</label>
+                                <input type="text" id="projectTag2" placeholder="e.g., Multi-page" />
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">💾 Save Project</button>
+                            <button type="button" id="resetFormBtn" class="btn btn-secondary">Clear Form</button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Manage Projects View -->
+                <section id="manageProjectsView" class="admin-view">
+                    <div class="view-header">
+                        <h2>Manage Projects</h2>
+                        <p class="view-subtitle">Edit or delete your portfolio projects</p>
+                    </div>
+
+                    <div id="projectsList" class="projects-list">
+                        <p class="empty-state">No projects yet. Create one to get started!</p>
+                    </div>
+                </section>
+
+                <!-- Live Preview View -->
+                <section id="previewView" class="admin-view">
+                    <div class="view-header">
+                        <h2>Live Preview</h2>
+                        <p class="view-subtitle">See how your projects will look on the portfolio</p>
+                    </div>
+
+                    <div id="previewContainer" class="preview-container">
+                        <p class="empty-state">Projects will appear here as you add them</p>
+                    </div>
+                </section>
+
+                <!-- Settings View -->
+                <section id="settingsView" class="admin-view">
+                    <div class="view-header">
+                        <h2>Settings</h2>
+                        <p class="view-subtitle">Manage your portfolio settings</p>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>📊 Data Management</h3>
+                            <p>Total Projects: <strong id="totalProjects">0</strong></p>
+                            <button id="exportBtn" class="btn btn-secondary">📥 Export Data (JSON)</button>
+                            <button id="importBtn" class="btn btn-secondary">📤 Import Data (JSON)</button>
+                            <input type="file" id="importFile" accept=".json" style="display:none;" />
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>🔧 Reset</h3>
+                            <p>Clear all data and start fresh</p>
+                            <button id="clearAllBtn" class="btn btn-secondary btn-danger">🗑️ Clear All Data</button>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>🔐 Security</h3>
+                            <p>Change your admin PIN</p>
+                            <button id="changePinBtn" class="btn btn-secondary">🔑 Change PIN</button>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Live Editor Preview Pane -->
+            <aside class="admin-preview-pane">
+                <div class="preview-pane-header">
+                    <h3>📸 Live Preview</h3>
+                </div>
+                <div id="livePreview" class="live-preview-card">
+                    <p class="preview-empty">Fill in project details to see preview</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Modal for Edit/Delete -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3>Edit Project</h3>
+            <form id="editProjectForm" class="project-form" style="margin-top: 1.5rem;">
+                <!-- Form will be populated dynamically -->
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Change PIN -->
+    <div id="pinModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closePinModal()">&times;</button>
+            <h3>Change Admin PIN</h3>
+            <form id="changePinForm" onsubmit="changePin(event)" style="margin-top: 1.5rem;">
+                <div class="form-group">
+                    <label for="currentPin">Current PIN</label>
+                    <input type="password" id="currentPin" maxlength="4" pattern="[0-9]{4}" required />
+                </div>
+                <div class="form-group">
+                    <label for="newPin">New PIN</label>
+                    <input type="password" id="newPin" maxlength="4" pattern="[0-9]{4}" required />
+                </div>
+                <div class="form-group">
+                    <label for="confirmPin">Confirm PIN</label>
+                    <input type="password" id="confirmPin" maxlength="4" pattern="[0-9]{4}" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Update PIN</button>
+            </form>
+            <p id="pinError" class="auth-error"></p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Migration Test</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+      border-bottom: 3px solid #4CAF50;
+      padding-bottom: 10px;
+    }
+    .status {
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .success {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    .info {
+      background: #d1ecf1;
+      color: #0c5460;
+      border: 1px solid #bee5eb;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .danger {
+      background: #f44336;
+    }
+    .danger:hover {
+      background: #da190b;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .project-list {
+      list-style: none;
+      padding: 0;
+    }
+    .project-list li {
+      padding: 8px;
+      margin: 5px 0;
+      background: #f9f9f9;
+      border-left: 4px solid #4CAF50;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Portfolio Migration Diagnostics</h1>
+    
+    <div id="status"></div>
+    
+    <div>
+      <button onclick="checkMigration()">Check Migration Status</button>
+      <button onclick="runMigration()">Run Migration Now</button>
+      <button onclick="viewProjects()">View All Projects</button>
+      <button onclick="clearData()" class="danger">Clear All Data</button>
+    </div>
+    
+    <div id="output"></div>
+  </div>
+
+  <script src="assets/js/portfolio-migration.js"></script>
+
+  <script>
+    function checkMigration() {
+      const output = document.getElementById('output');
+      const status = document.getElementById('status');
+      
+      // Check migration flag
+      const migrationComplete = localStorage.getItem('portfolio_migration_complete');
+      const projects = localStorage.getItem('portfolio_projects');
+      
+      let html = '<h2>Migration Status</h2>';
+      
+      if (migrationComplete === 'true') {
+        status.innerHTML = '<div class="status success">✅ Migration Already Complete!</div>';
+        
+        if (projects) {
+          const projectList = JSON.parse(projects);
+          html += `<p><strong>Projects in localStorage:</strong> ${projectList.length}</p>`;
+          html += '<ul class="project-list">';
+          projectList.forEach(p => {
+            html += `<li><strong>${p.title}</strong> - ${p.category} (${p.projectType})</li>`;
+          });
+          html += '</ul>';
+        } else {
+          html += '<p class="error">⚠️ Migration flag set but no projects found!</p>';
+        }
+      } else {
+        status.innerHTML = '<div class="status error">❌ Migration Not Run Yet</div>';
+        html += '<p>Click "Run Migration Now" to migrate your projects.</p>';
+      }
+      
+      output.innerHTML = html;
+    }
+    
+    function runMigration() {
+      const output = document.getElementById('output');
+      const status = document.getElementById('status');
+      
+      // Clear existing flag
+      localStorage.removeItem('portfolio_migration_complete');
+      
+      status.innerHTML = '<div class="status info">⏳ Running migration...</div>';
+      
+      try {
+        const success = migratePortfolioProjects();
+        
+        if (success) {
+          localStorage.setItem('portfolio_migration_complete', 'true');
+          status.innerHTML = '<div class="status success">✅ Migration Complete!</div>';
+          
+          const projects = JSON.parse(localStorage.getItem('portfolio_projects'));
+          output.innerHTML = `
+            <h2>Migration Results</h2>
+            <p><strong>Projects migrated:</strong> ${projects.length}</p>
+            <p>Now open <a href="admin.html">admin.html</a> to manage them!</p>
+          `;
+        } else {
+          status.innerHTML = '<div class="status error">❌ Migration Failed</div>';
+          output.innerHTML = '<p>Check browser console for errors.</p>';
+        }
+      } catch (err) {
+        status.innerHTML = '<div class="status error">❌ Error: ' + err.message + '</div>';
+        output.innerHTML = '<pre>' + err.stack + '</pre>';
+      }
+    }
+    
+    function viewProjects() {
+      const output = document.getElementById('output');
+      const projects = localStorage.getItem('portfolio_projects');
+      
+      if (!projects) {
+        output.innerHTML = '<div class="status error">No projects found in localStorage</div>';
+        return;
+      }
+      
+      const projectList = JSON.parse(projects);
+      output.innerHTML = `
+        <h2>All Projects (${projectList.length})</h2>
+        <pre>${JSON.stringify(projectList, null, 2)}</pre>
+      `;
+    }
+    
+    function clearData() {
+      if (confirm('Are you sure? This will delete all migrated projects and reset the migration flag.')) {
+        localStorage.removeItem('portfolio_projects');
+        localStorage.removeItem('portfolio_migration_complete');
+        document.getElementById('status').innerHTML = '<div class="status info">🗑️ All data cleared</div>';
+        document.getElementById('output').innerHTML = '<p>Migration data has been reset. You can now run migration again.</p>';
+      }
+    }
+    
+    // Auto-check on load
+    window.addEventListener('DOMContentLoaded', checkMigration);
+  </script>
+</body>
+</html>
