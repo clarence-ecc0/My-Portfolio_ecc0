@@ -6,11 +6,40 @@
 const ADMIN_PIN = '1234'; // Default PIN - change this!
 const STORAGE_KEY = 'portfolio_projects';
 const PIN_KEY = 'admin_pin';
+const THEME_KEY = 'admin_theme';
 
 // State Management
 let projects = [];
 let currentEditingProject = null;
 let isAuthenticated = false;
+
+// Theme handling
+function updateThemeToggleButtons(theme) {
+  const buttons = [document.getElementById('themeToggleBtn'), document.getElementById('themeToggleAuth')];
+  const isDark = theme === 'dark';
+  buttons.forEach(btn => {
+    if (!btn) return;
+    btn.textContent = isDark ? '☀️' : '🌙';
+    btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+  });
+}
+
+function setTheme(theme = 'dark') {
+  document.body.setAttribute('data-theme', theme);
+  localStorage.setItem(THEME_KEY, theme);
+  updateThemeToggleButtons(theme);
+}
+
+function toggleTheme() {
+  const current = document.body.getAttribute('data-theme') || 'dark';
+  const next = current === 'dark' ? 'light' : 'dark';
+  setTheme(next);
+}
+
+function initTheme() {
+  const saved = localStorage.getItem(THEME_KEY) || 'dark';
+  setTheme(saved);
+}
 
 // Toast notification system
 function showNotification(message, type = 'success', duration = 3000) {
@@ -31,6 +60,7 @@ function showNotification(message, type = 'success', duration = 3000) {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+  initTheme();
   initializeAdmin();
   loadProjects();
   setupEventListeners();
@@ -59,6 +89,7 @@ function authenticateAdmin(e) {
     document.getElementById('authScreen').style.display = 'none';
     document.getElementById('adminScreen').style.display = 'grid';
     document.getElementById('adminPin').value = '';
+    document.querySelector('.auth-header-controls').classList.add('hidden');
     showNotification('✅ Authentication successful!', 'success');
     
     // Load and display projects after authentication
@@ -81,6 +112,7 @@ function logout() {
   document.getElementById('authScreen').style.display = 'flex';
   document.getElementById('adminScreen').style.display = 'none';
   document.getElementById('adminPin').value = '';
+  document.querySelector('.auth-header-controls').classList.remove('hidden');
   document.getElementById('adminPin').focus();
   showNotification('You have logged out', 'info');
 }
@@ -211,6 +243,11 @@ function initializeAdmin() {
   // Live preview updates
   document.getElementById('projectForm').addEventListener('input', updateLivePreview);
   document.getElementById('projectForm').addEventListener('change', updateLivePreview);
+
+  // Theme toggles (auth + header)
+  [document.getElementById('themeToggleBtn'), document.getElementById('themeToggleAuth')].forEach(btn => {
+    if (btn) btn.addEventListener('click', toggleTheme);
+  });
 }
 
 function setupEventListeners() {
@@ -554,12 +591,8 @@ function saveProjectToStorage(project, submitBtn = null) {
       showNotification('✅ Project added successfully!', 'success');
     }
     
-    // Save to localStorage with the correct key for portfolio sync
-    const PORTFOLIO_KEY = 'portfolio_projects';
-    localStorage.setItem(PORTFOLIO_KEY, JSON.stringify(projects));
-    
-    // Also save with old key for backward compatibility
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    // Persist and sync
+    persistProjects('save');
     
     // Reset form
     resetProjectForm();
@@ -671,10 +704,7 @@ function deleteProject(id) {
   if (confirm(`Delete "${project.title}"? This cannot be undone.`)) {
     try {
       projects = projects.filter(p => p.id !== parseInt(id) && p.id !== id);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
-      updateProjectCount();
-      renderProjectsList();
-      renderPreviewContainer();
+      persistProjects('delete');
       showNotification('✅ Project deleted', 'success');
     } catch (err) {
       showNotification(`❌ Error deleting project: ${err.message}`, 'error');
@@ -695,7 +725,8 @@ function renderPreviewContainer() {
   }
   
   container.innerHTML = projects.map(project => `
-    <div class="project-card">
+    <div class="project-card" data-id="${project.id}">
+      <div class="drag-handle" aria-label="Drag to reorder" title="Drag to reorder">⇅ Drag</div>
       <img src="${project.coverImage}" alt="${project.title}" class="project-card-image" />
       <div class="project-card-content">
         <div class="project-card-title">${project.title}</div>
@@ -706,6 +737,63 @@ function renderPreviewContainer() {
       </div>
     </div>
   `).join('');
+
+  enablePreviewDrag();
+}
+
+function enablePreviewDrag() {
+  const container = document.getElementById('previewContainer');
+  if (!container) return;
+  const cards = Array.from(container.querySelectorAll('.project-card'));
+  let dragSrcIndex = null;
+
+  cards.forEach((card, index) => {
+    card.setAttribute('draggable', 'true');
+    card.dataset.index = index;
+
+    card.addEventListener('dragstart', (e) => {
+      dragSrcIndex = index;
+      card.classList.add('dragging');
+      if (e.dataTransfer) {
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', 'drag');
+      }
+    });
+
+    card.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      card.classList.add('drag-over');
+      if (e.dataTransfer) {
+        e.dataTransfer.dropEffect = 'move';
+      }
+    });
+
+    card.addEventListener('dragleave', () => {
+      card.classList.remove('drag-over');
+    });
+
+    card.addEventListener('drop', (e) => {
+      e.preventDefault();
+      card.classList.remove('drag-over');
+
+      if (dragSrcIndex === null) return;
+      const dropIndex = parseInt(card.dataset.index, 10);
+      if (isNaN(dropIndex)) return;
+
+      const [moved] = projects.splice(dragSrcIndex, 1);
+      projects.splice(dropIndex, 0, moved);
+      persistProjects('reorder');
+      renderProjectsList();
+      renderPreviewContainer();
+      showNotification('✅ Order updated', 'success');
+    });
+
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
+      card.classList.remove('drag-over');
+      dragSrcIndex = null;
+    });
+  });
 }
 
 // ============================================
@@ -765,7 +853,7 @@ function importData(e) {
         }
         
         projects = imported;
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+        persistProjects('import');
         updateProjectCount();
         renderProjectsList();
         renderPreviewContainer();
@@ -792,7 +880,7 @@ function clearAllData() {
   
   try {
     projects = [];
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    persistProjects('clear');
     updateProjectCount();
     renderProjectsList();
     renderPreviewContainer();
@@ -880,5 +968,21 @@ function loadProjects() {
     console.error('Error loading projects:', err);
     projects = [];
     showNotification('⚠️ Error loading projects, starting fresh', 'warning');
+  }
+}
+
+function persistProjects(reason = 'update') {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
+    localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+
+    // Notify any open portfolio tabs
+    window.dispatchEvent(new StorageEvent('storage', {
+      key: 'portfolio_projects',
+      newValue: JSON.stringify(projects),
+      url: window.location.href
+    }));
+  } catch (err) {
+    console.error(`Error persisting projects (${reason}):`, err);
   }
 }

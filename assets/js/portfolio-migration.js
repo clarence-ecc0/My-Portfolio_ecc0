@@ -7,6 +7,15 @@
 function migratePortfolioProjects() {
   console.log('🔄 Starting portfolio migration...');
   
+  // Force re-migration by clearing old data (version 1.2 - fixed all gallery arrays)
+  const migrationVersion = '1.2';
+  const currentVersion = localStorage.getItem('portfolio_migration_version');
+  
+  if (currentVersion !== migrationVersion) {
+    console.log('🔄 Re-migrating portfolio to version ' + migrationVersion);
+    // Clear old data to force fresh migration
+  }
+  
   // All existing hardcoded projects from index.html
   const projectsToMigrate = [
     {
@@ -20,7 +29,8 @@ function migratePortfolioProjects() {
       images: [
         "assets/graphic_design/9stack_mockup/1.png",
         "assets/graphic_design/9stack_mockup/2.png",
-        "assets/graphic_design/9stack_mockup/3.png"
+        "assets/graphic_design/9stack_mockup/3.png",
+        "assets/graphic_design/9stack_mockup/4.png"
       ]
     },
     {
@@ -32,6 +42,7 @@ function migratePortfolioProjects() {
       projectType: "multi",
       coverImage: "assets/graphic_design/9stack brochure/1.png",
       images: [
+        "assets/graphic_design/9stack brochure/1.png",
         "assets/graphic_design/9stack brochure/2.png",
         "assets/graphic_design/9stack brochure/3.png",
         "assets/graphic_design/9stack brochure/4.png",
@@ -83,6 +94,7 @@ function migratePortfolioProjects() {
       projectType: "multi",
       coverImage: "assets/graphic_design/Berachah2025/1.png",
       images: [
+        "assets/graphic_design/Berachah2025/1.png",
         "assets/graphic_design/Berachah2025/2.png",
         "assets/graphic_design/Berachah2025/3.png",
         "assets/graphic_design/Berachah2025/4.png",
@@ -118,6 +130,7 @@ function migratePortfolioProjects() {
       projectType: "multi",
       coverImage: "assets/graphic_design/fish_farm/1.png",
       images: [
+        "assets/graphic_design/fish_farm/1.png",
         "assets/graphic_design/fish_farm/2.png",
         "assets/graphic_design/fish_farm/3.png"
       ]
@@ -151,6 +164,7 @@ function migratePortfolioProjects() {
       projectType: "multi",
       coverImage: "assets/graphic_design/9stack_pitch_deck/1.png",
       images: [
+        "assets/graphic_design/9stack_pitch_deck/1.png",
         "assets/graphic_design/9stack_pitch_deck/2.png",
         "assets/graphic_design/9stack_pitch_deck/3.png",
         "assets/graphic_design/9stack_pitch_deck/4.png",
@@ -372,8 +386,10 @@ function migratePortfolioProjects() {
 
   // Save to localStorage
   try {
+    const migrationVersion = '1.2';
     localStorage.setItem('portfolio_projects', JSON.stringify(projectsToStore));
-    console.log(`✅ Successfully migrated ${projectsToStore.length} projects!`);
+    localStorage.setItem('portfolio_migration_version', migrationVersion);
+    console.log(`✅ Successfully migrated ${projectsToStore.length} projects to version ${migrationVersion}!`);
     console.log('📊 Projects:', projectsToStore.length);
     return true;
   } catch (err) {
@@ -386,14 +402,20 @@ function migratePortfolioProjects() {
 (function() {
   console.log('🚀 Portfolio Migration Script Loaded');
   
-  const migrationRun = localStorage.getItem('portfolio_migration_complete');
+  const migrationVersion = '1.2';
+  const currentVersion = localStorage.getItem('portfolio_migration_version');
   const existingProjects = localStorage.getItem('portfolio_projects');
   
-  // Only skip if we have both the flag AND actual project data
-  if (migrationRun === 'true' && existingProjects) {
+  // Force clear old data if version changed
+  if (currentVersion !== migrationVersion) {
+    console.log('🔄 Version mismatch (' + (currentVersion || 'none') + ' → ' + migrationVersion + '). Clearing old data...');
+    localStorage.removeItem('portfolio_projects');
+    localStorage.removeItem('portfolio_migration_version');
+    localStorage.removeItem('portfolio_migration_complete');
+  } else if (existingProjects) {
     const projects = JSON.parse(existingProjects);
     if (projects.length >= 30) {
-      console.log(`✅ Migration already complete. ${projects.length} projects loaded.`);
+      console.log(`✅ Migration v${migrationVersion} already complete. ${projects.length} projects loaded.`);
       return;
     }
   }
@@ -404,8 +426,12 @@ function migratePortfolioProjects() {
     const success = migratePortfolioProjects();
     if (success) {
       localStorage.setItem('portfolio_migration_complete', 'true');
-      console.log('🎉 Migration complete! Your projects are now in the admin panel.');
-      console.log('📊 Refresh admin.html to see all projects.');
+      console.log('🎉 Migration complete! Reload the page to see updated galleries.');
+      // Force page reload to refresh with new data
+      setTimeout(() => {
+        console.log('🔄 Reloading page to apply changes...');
+        location.reload();
+      }, 500);
     } else {
       console.error('❌ Migration failed. Check console for errors.');
     }

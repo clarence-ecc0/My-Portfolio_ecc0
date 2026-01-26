@@ -46,8 +46,8 @@ class PortfolioSync {
     let viewLink = '';
 
     if (project.projectType === 'multi' && images.length > 0) {
-      // Multi-image gallery - include cover image + all gallery images
-      const imageUrls = [coverImage];
+      // Multi-image gallery - use images array as-is (should include all images in correct order)
+      const imageUrls = [];
       images.forEach(img => {
         const imageUrl = typeof img === 'string' ? img : (img.url || '');
         if (imageUrl) imageUrls.push(imageUrl);

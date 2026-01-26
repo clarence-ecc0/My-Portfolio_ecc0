@@ -19,28 +19,65 @@
     />
 </head>
 <body data-theme="dark" role="application" aria-label="Portfolio Admin Panel">
+    <!-- Fixed Header Controls -->
+    <div class="auth-header-controls">
+        <a href="index.html" class="btn btn-icon" aria-label="Go back to portfolio home" title="Back to Portfolio">
+            🏠
+        </a>
+        <button type="button" id="themeToggleAuth" class="btn btn-icon" aria-label="Toggle light or dark mode" title="Toggle Theme">
+            ☀️
+        </button>
+    </div>
+    
     <!-- Auth Screen -->
     <div id="authScreen" class="auth-screen active" role="main" aria-labelledby="authTitle">
+        <!-- Animated Background Elements -->
+        <div class="auth-bg-blob auth-bg-blob-1"></div>
+        <div class="auth-bg-blob auth-bg-blob-2"></div>
+        <div class="auth-bg-blob auth-bg-blob-3"></div>
+        
         <div class="auth-container">
             <div class="auth-card">
-                <h1 id="authTitle">🔐 Admin Access</h1>
-                <p>Enter your admin PIN to access the portfolio editor</p>
-                <form id="authForm" onsubmit="authenticateAdmin(event)" method="dialog">
-                    <input 
-                        type="password" 
-                        id="adminPin" 
-                        placeholder="Enter 4-digit PIN" 
-                        maxlength="4"
-                        pattern="[0-9]{4}"
-                        inputmode="numeric"
-                        required
-                        class="auth-input"
-                        aria-label="Admin PIN"
-                        aria-describedby="authError"
-                    />
-                    <button type="submit" class="btn btn-primary" aria-label="Submit PIN for authentication">Access Admin Panel</button>
+                <!-- Header -->
+                <div class="auth-header">
+                    <div class="auth-icon">🔐</div>
+                    <h1 id="authTitle">Admin Portal</h1>
+                    <p class="auth-subtitle">Manage your creative portfolio with ease</p>
+                </div>
+                
+                <!-- Form -->
+                <form id="authForm" onsubmit="authenticateAdmin(event)" method="dialog" class="auth-form">
+                    <div class="form-group">
+                        <label for="adminPin" class="form-label">Access Code</label>
+                        <div class="pin-input-wrapper">
+                            <input 
+                                type="password" 
+                                id="adminPin" 
+                                placeholder="••••" 
+                                maxlength="4"
+                                pattern="[0-9]{4}"
+                                inputmode="numeric"
+                                required
+                                class="auth-input"
+                                aria-label="Admin PIN"
+                                aria-describedby="authError"
+                            />
+                            <span class="pin-indicator"></span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-auth" aria-label="Submit PIN for authentication">
+                        <span>Unlock Admin Panel</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
                 </form>
+                
                 <p id="authError" class="auth-error" role="alert" aria-live="polite"></p>
+                
+                <!-- Footer -->
+                <div class="auth-footer">
+                    <p class="auth-help">Need help? Check your portfolio settings.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -51,7 +88,10 @@
         <header class="admin-header" role="banner">
             <div class="admin-header-content">
                 <h1 aria-label="Portfolio Manager">📊 Portfolio Manager</h1>
-                <button id="logoutBtn" class="btn btn-secondary" aria-label="Logout from admin panel">Logout</button>
+                <div class="header-actions">
+                    <button id="themeToggleBtn" class="btn btn-secondary" aria-label="Toggle light or dark mode">☀️ Light Mode</button>
+                    <button id="logoutBtn" class="btn btn-secondary" aria-label="Logout from admin panel">Logout</button>
+                </div>
             </div>
         </header>
 
