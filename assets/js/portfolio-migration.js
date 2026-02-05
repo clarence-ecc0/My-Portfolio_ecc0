@@ -4,7 +4,7 @@
  * Run this ONCE to migrate existing projects to admin system
  */
 
-function migratePortfolioProjects() {
+async function migratePortfolioProjects() {
   console.log('🔄 Starting portfolio migration...');
   
   // Force re-migration by clearing old data (version 1.2 - fixed all gallery arrays)
@@ -384,20 +384,35 @@ function migratePortfolioProjects() {
     galleryImages: project.images // For backward compatibility
   }));
 
-  // Get existing projects from localStorage (includes admin-added projects)
-  const existingProjectsRaw = localStorage.getItem('portfolio_projects');
+  // Get existing projects from IndexedDB (includes admin-added projects)
   let existingProjects = [];
   
-  if (existingProjectsRaw) {
+  if (window.storageManager && window.storageManager.db) {
     try {
-      existingProjects = JSON.parse(existingProjectsRaw);
-      console.log(`📦 Found ${existingProjects.length} existing projects in storage`);
+      existingProjects = await window.storageManager.loadProjects();
+      console.log(`📦 Found ${existingProjects.length} existing projects in IndexedDB`);
     } catch (err) {
-      console.warn('⚠️ Error parsing existing projects, will start fresh');
+      console.warn('⚠️ Error loading existing projects from IndexedDB:', err);
+    }
+  } else {
+    // Fallback to localStorage
+    const existingProjectsRaw = localStorage.getItem('portfolio_projects');
+    if (existingProjectsRaw) {
+      try {
+        existingProjects = JSON.parse(existingProjectsRaw);
+        console.log(`📦 Found ${existingProjects.length} existing projects in localStorage`);
+      } catch (err) {
+        console.warn('⚠️ Error parsing existing projects, will start fresh');
+      }
     }
   }
 
   // Separate existing projects into migrated (id 1001-1030) and admin-added (id > 2000)
+  console.log('🔍 Checking existing projects for admin-added items...');
+  existingProjects.forEach(p => {
+    console.log(`  Project "${p.title}" - ID: ${p.id} (${p.id > 2000 ? 'ADMIN' : 'MIGRATED'})`);
+  });
+  
   const adminAddedProjects = existingProjects.filter(p => {
     // Admin panel uses Date.now() for IDs, which are very large numbers (> 1000000000000)
     // Migration uses IDs from 1001-1030
@@ -405,6 +420,9 @@ function migratePortfolioProjects() {
   });
   
   console.log(`📝 Preserving ${adminAddedProjects.length} admin-added projects`);
+  if (adminAddedProjects.length > 0) {
+    console.log('Admin projects to preserve:', adminAddedProjects.map(p => p.title));
+  }
 
   // Merge: migration projects + admin projects
   const finalProjects = [...projectsToStore, ...adminAddedProjects];
@@ -412,9 +430,23 @@ function migratePortfolioProjects() {
   // Save to localStorage
   try {
     const migrationVersion = '1.2';
-    localStorage.setItem('portfolio_projects', JSON.stringify(finalProjects));
-    localStorage.setItem('portfolio_migration_version', migrationVersion);
-    console.log(`✅ Successfully migrated ${projectsToStore.length} hardcoded + ${adminAddedProjects.length} admin = ${finalProjects.length} total projects!`);
+    
+    // IMPORTANT: Use storage manager if available (IndexedDB)
+    if (window.storageManager && window.storageManager.db) {
+      console.log('💾 Using IndexedDB via storage manager...');
+      window.storageManager.saveProjects(finalProjects).then(success => {
+        if (success) {
+          localStorage.setItem('portfolio_migration_version', migrationVersion);
+          console.log(`✅ Successfully migrated ${projectsToStore.length} hardcoded + ${adminAddedProjects.length} admin = ${finalProjects.length} total projects to IndexedDB!`);
+        }
+      });
+    } else {
+      // Fallback to localStorage
+      console.log('💾 Using localStorage (IndexedDB not available)...');
+      localStorage.setItem('portfolio_projects', JSON.stringify(finalProjects));
+      localStorage.setItem('portfolio_migration_version', migrationVersion);
+      console.log(`✅ Successfully migrated ${projectsToStore.length} hardcoded + ${adminAddedProjects.length} admin = ${finalProjects.length} total projects!`);
+    }
     return true;
   } catch (err) {
     console.error('❌ Migration failed:', err);
@@ -426,53 +458,25 @@ function migratePortfolioProjects() {
 (function() {
   console.log('🚀 Portfolio Migration Script Loaded');
   
-  const migrationVersion = '1.2';
-  const currentVersion = localStorage.getItem('portfolio_migration_version');
+  // ⚠️ CRITICAL: The migration has already been completed.
+  // DO NOT run migration again - it will overwrite user's admin-added projects!
+  
   const migrationComplete = localStorage.getItem('portfolio_migration_complete');
-  const existingProjects = localStorage.getItem('portfolio_projects');
+  const migrationVersion = localStorage.getItem('portfolio_migration_version');
   
   console.log('📊 Migration Status:', {
-    currentVersion,
-    migrationVersion,
     migrationComplete,
-    projectCount: existingProjects ? JSON.parse(existingProjects).length : 0
+    migrationVersion
   });
   
-  // If migration is already complete for this version, skip it entirely
-  if (migrationComplete === 'true' && currentVersion === migrationVersion) {
-    const projects = existingProjects ? JSON.parse(existingProjects) : [];
-    console.log(`✅ Migration v${migrationVersion} already complete. Skipping migration. ${projects.length} projects preserved.`);
+  if (migrationComplete === 'true' && migrationVersion === '1.2') {
+    console.log('✅ Migration already complete. SKIPPING to preserve all user projects in IndexedDB.');
     return;
   }
   
-  // First time migration or version upgrade
-  if (!currentVersion) {
-    console.log('🆕 First time migration - will merge with any existing admin projects');
-  } else if (currentVersion !== migrationVersion) {
-    console.log(`🔄 Version upgrade (${currentVersion} → ${migrationVersion}) - will preserve admin projects`);
-  }
-  
-  // Run migration (will merge with existing admin projects)
-  console.log('⏳ Running migration...');
-  try {
-    const success = migratePortfolioProjects();
-    if (success) {
-      // Set completion flag BEFORE reload
-      localStorage.setItem('portfolio_migration_complete', 'true');
-      localStorage.setItem('portfolio_migration_version', migrationVersion);
-      console.log('🎉 Migration complete! Completion flag set.');
-      
-      // Only reload on first migration, not on subsequent page loads
-      if (!migrationComplete) {
-        setTimeout(() => {
-          console.log('🔄 Reloading page to apply changes...');
-          location.reload();
-        }, 500);
-      }
-    } else {
-      console.error('❌ Migration failed. Check console for errors.');
-    }
-  } catch (error) {
-    console.error('❌ Migration error:', error);
-  }
+  // First-time migration: Mark as complete without running
+  console.log('🚀 First-time setup: Marking migration as complete');
+  localStorage.setItem('portfolio_migration_complete', 'true');
+  localStorage.setItem('portfolio_migration_version', '1.2');
+  console.log('✅ Migration marked as complete. User projects are now protected.');
 })();

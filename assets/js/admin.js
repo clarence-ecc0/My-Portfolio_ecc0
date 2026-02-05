@@ -804,7 +804,7 @@ function enablePreviewDrag() {
       card.classList.remove('drag-over');
     });
 
-    card.addEventListener('drop', (e) => {
+    card.addEventListener('drop', async (e) => {
       e.preventDefault();
       card.classList.remove('drag-over');
 
@@ -814,7 +814,8 @@ function enablePreviewDrag() {
 
       const [moved] = projects.splice(dragSrcIndex, 1);
       projects.splice(dropIndex, 0, moved);
-      persistProjects('reorder');
+
+      await persistProjects('reorder');
       renderProjectsList();
       renderPreviewContainer();
       showNotification('✅ Order updated', 'success');
@@ -987,34 +988,62 @@ function changePin(e) {
 
 function loadProjects() {
   try {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    projects = stored ? JSON.parse(stored) : [];
+    console.log('🔵 loadProjects() called');
     
-    // Validate data integrity
-    if (!Array.isArray(projects)) {
-      console.warn('Invalid projects data, resetting');
+    // Load from IndexedDB via storage manager
+    storageManager.loadProjects().then(loadedProjects => {
+      console.log(`🟢 loadProjects COMPLETE: Got ${loadedProjects.length} projects from storage`);
+      projects = loadedProjects;
+      
+      console.log(`📂 Admin Panel: Loaded ${projects.length} projects from storage`);
+      if (projects.length > 0) {
+        console.log('Project IDs:', projects.map(p => `${p.title} (ID: ${p.id})`));
+      }
+      
+      // Validate data integrity
+      if (!Array.isArray(projects)) {
+        console.warn('Invalid projects data, resetting');
+        projects = [];
+      }
+      
+      // Render the projects after loading
+      console.log('🔵 Calling renderProjectsList()');
+      renderProjectsList();
+    }).catch(err => {
+      console.error('Error loading projects:', err);
       projects = [];
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
-    }
+      showNotification('⚠️ Error loading projects, starting fresh', 'warning');
+    });
   } catch (err) {
-    console.error('Error loading projects:', err);
+    console.error('Error in loadProjects:', err);
     projects = [];
-    showNotification('⚠️ Error loading projects, starting fresh', 'warning');
   }
 }
 
-function persistProjects(reason = 'update') {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(projects));
-    localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+async function persistProjects(reason = 'update') {
+  console.log(`🟡 persistProjects("${reason}") called with ${projects.length} projects`);
+  console.log('Projects to save:', projects.map(p => `${p.title} (ID: ${p.id})`));
 
-    // Notify any open portfolio tabs
-    window.dispatchEvent(new StorageEvent('storage', {
-      key: 'portfolio_projects',
-      newValue: JSON.stringify(projects),
-      url: window.location.href
-    }));
+  try {
+    const success = await storageManager.saveProjects(projects);
+    if (success) {
+      console.log(`✅ Projects persisted (${reason})`);
+
+      // Notify any open portfolio tabs
+      window.dispatchEvent(new StorageEvent('storage', {
+        key: 'portfolio_projects',
+        newValue: JSON.stringify(projects),
+        url: window.location.href
+      }));
+      return true;
+    }
+
+    console.error(`❌ Failed to persist projects (${reason})`);
+    showNotification('⚠️ Storage error - try deleting some projects', 'error');
+    return false;
   } catch (err) {
     console.error(`Error persisting projects (${reason}):`, err);
+    showNotification('⚠️ Storage error - your data may not be saved', 'error');
+    return false;
   }
 }

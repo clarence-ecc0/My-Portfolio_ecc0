@@ -7,23 +7,41 @@
 class PortfolioSync {
   constructor() {
     this.projects = [];
-    this.initializePortfolio();
+    console.log('🔵 PortfolioSync constructor called');
+    // DON'T call initializePortfolio here - wait for storage manager first
+  }
+
+  async initialize() {
+    console.log('🔵 PortfolioSync.initialize() called - waiting for storage manager');
+    // Wait for storage manager to be fully ready
+    if (typeof waitForStorageManager !== 'undefined') {
+      await waitForStorageManager();
+    }
+    console.log('🟢 Storage manager ready, initializing portfolio');
+    await this.initializePortfolio();
   }
 
   /**
-   * Load projects from localStorage (admin panel data)
+   * Load projects from IndexedDB via storage manager
    */
-  loadProjects() {
+  async loadProjects() {
     try {
-      const stored = localStorage.getItem('portfolio_projects');
-      if (!stored) {
-        console.log('ℹ️ No projects in localStorage yet. Migration may not have run.');
-        this.projects = [];
-        return [];
+      // Wait for storage manager to be ready
+      if (typeof waitForStorageManager !== 'undefined') {
+        await waitForStorageManager();
       }
-      this.projects = JSON.parse(stored);
-      console.log(`✅ Loaded ${this.projects.length} projects from admin panel`);
-      return this.projects;
+      
+      if (window.storageManager && window.storageManager.db) {
+        this.projects = await window.storageManager.loadProjects();
+        console.log(`✅ PortfolioSync: Loaded ${this.projects.length} projects from IndexedDB`);
+        return this.projects;
+      } else {
+        console.warn('⚠️ Storage manager not available, using localStorage');
+        const stored = localStorage.getItem('portfolio_projects');
+        this.projects = stored ? JSON.parse(stored) : [];
+        console.log(`✅ PortfolioSync: Loaded ${this.projects.length} projects from localStorage`);
+        return this.projects;
+      }
     } catch (error) {
       console.error('❌ Error loading projects:', error);
       return [];
@@ -119,8 +137,9 @@ class PortfolioSync {
   /**
    * Render projects in the portfolio grid
    */
-  renderProjects() {
-    const projects = this.loadProjects();
+  async renderProjects() {
+    const projects = await this.loadProjects();
+    console.log(`📋 renderProjects: Got ${projects.length} projects to render`);
     
     if (projects.length === 0) {
       console.log('ℹ️ No admin projects found - using default portfolio');
@@ -196,45 +215,52 @@ class PortfolioSync {
   /**
    * Initialize portfolio on page load
    */
-  initializePortfolio() {
+  async initializePortfolio() {
+    console.log('🔵 initializePortfolio() called');
+    
     // Wait for DOM to be ready
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        this.renderProjects();
+      document.addEventListener('DOMContentLoaded', async () => {
+        await this.renderProjects();
       });
     } else {
-      this.renderProjects();
+      await this.renderProjects();
     }
 
     // Listen for changes in localStorage (from admin panel)
-    window.addEventListener('storage', (event) => {
+    window.addEventListener('storage', async (event) => {
       if (event.key === 'portfolio_projects') {
         console.log('📦 Projects updated in admin panel, refreshing portfolio...');
-        this.renderProjects();
+        await this.renderProjects();
       }
     });
 
     // Also watch for same-tab changes (polling method)
-    let lastProjects = JSON.stringify(this.loadProjects());
-    setInterval(() => {
+    this.startPolling();
+  }
+
+  async startPolling() {
+    let lastProjects = JSON.stringify(await this.loadProjects());
+    setInterval(async () => {
       try {
-        const currentProjects = JSON.stringify(this.loadProjects());
+        const currentProjects = JSON.stringify(await this.loadProjects());
         if (currentProjects !== lastProjects) {
-          console.log('📦 Projects changed in admin panel, refreshing...');
+          console.log('📦 Projects changed, refreshing portfolio...');
           lastProjects = currentProjects;
-          this.renderProjects();
+          await this.renderProjects();
+          this.reinitializeSlideshow();
         }
       } catch (err) {
         console.warn('⚠️ Error checking for updates:', err);
       }
-    }, 2000); // Check every 2 seconds for faster updates
+    }, 2000); // Check every 2 seconds (reduced from 500ms to avoid spam)
   }
 
   /**
    * Get statistics about projects
    */
-  getStatistics() {
-    const projects = this.loadProjects();
+  async getStatistics() {
+    const projects = await this.loadProjects();
     const stats = {
       total: projects.length,
       byCategory: {},
@@ -256,8 +282,18 @@ class PortfolioSync {
   }
 }
 
-// Initialize on page load
+// Initialize on page load - but WAIT for storage manager first
 const portfolioSync = new PortfolioSync();
+
+// Call initialize after storage manager is ready
+(async function() {
+  console.log('🔵 Waiting for storage manager before initializing portfolio...');
+  if (typeof waitForStorageManager !== 'undefined') {
+    await waitForStorageManager();
+  }
+  console.log('🟢 Storage manager ready, calling portfolioSync.initialize()');
+  await portfolioSync.initialize();
+})();
 
 // Export for external use
 if (typeof module !== 'undefined' && module.exports) {
