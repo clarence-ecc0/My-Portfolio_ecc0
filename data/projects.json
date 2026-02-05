@@ -1,29 +1,5 @@
 [
   {
-    "id": 1001,
-    "title": "Brand mockup for 9Stack Limited",
-    "description": "Multi-page brochure with interactive gallery",
-    "category": "Graphic Design",
-    "tags": [
-      "Mockup",
-      "Multi-page"
-    ],
-    "projectType": "multi",
-    "coverImage": "assets/graphic_design/9stack_mockup/4.png",
-    "images": [
-      "assets/graphic_design/9stack_mockup/1.png",
-      "assets/graphic_design/9stack_mockup/2.png",
-      "assets/graphic_design/9stack_mockup/3.png"
-    ],
-    "galleryType": "multi",
-    "galleryImages": [
-      "assets/graphic_design/9stack_mockup/1.png",
-      "assets/graphic_design/9stack_mockup/2.png",
-      "assets/graphic_design/9stack_mockup/3.png"
-    ],
-    "order": 0
-  },
-  {
     "id": 1002,
     "title": "Brochure Design for 9Stack Limited",
     "description": "Multi-page brochure with interactive gallery",
@@ -58,6 +34,30 @@
       "assets/graphic_design/9stack brochure/9.png",
       "assets/graphic_design/9stack brochure/10.png",
       "assets/graphic_design/9stack brochure/11.png"
+    ],
+    "order": 0
+  },
+  {
+    "id": 1001,
+    "title": "Brand mockup for 9Stack Limited",
+    "description": "Multi-page brochure with interactive gallery",
+    "category": "Graphic Design",
+    "tags": [
+      "Mockup",
+      "Multi-page"
+    ],
+    "projectType": "multi",
+    "coverImage": "assets/graphic_design/9stack_mockup/4.png",
+    "images": [
+      "assets/graphic_design/9stack_mockup/1.png",
+      "assets/graphic_design/9stack_mockup/2.png",
+      "assets/graphic_design/9stack_mockup/3.png"
+    ],
+    "galleryType": "multi",
+    "galleryImages": [
+      "assets/graphic_design/9stack_mockup/1.png",
+      "assets/graphic_design/9stack_mockup/2.png",
+      "assets/graphic_design/9stack_mockup/3.png"
     ],
     "order": 1
   },
