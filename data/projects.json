@@ -38,6 +38,22 @@
     "order": 0
   },
   {
+    "id": 1003,
+    "title": "Numie Projects Ltd. design",
+    "description": "Design for architectural agency",
+    "category": "Graphic Design",
+    "tags": [
+      "Graphic Design",
+      "Welcome"
+    ],
+    "projectType": "single",
+    "coverImage": "assets/graphic_design/Numie_0.5.jpg",
+    "images": [],
+    "galleryType": "single",
+    "galleryImages": [],
+    "order": 1
+  },
+  {
     "id": 1001,
     "title": "Brand mockup for 9Stack Limited",
     "description": "Multi-page brochure with interactive gallery",
@@ -59,22 +75,6 @@
       "assets/graphic_design/9stack_mockup/2.png",
       "assets/graphic_design/9stack_mockup/3.png"
     ],
-    "order": 1
-  },
-  {
-    "id": 1003,
-    "title": "Numie Projects Ltd. design",
-    "description": "Design for architectural agency",
-    "category": "Graphic Design",
-    "tags": [
-      "Graphic Design",
-      "Welcome"
-    ],
-    "projectType": "single",
-    "coverImage": "assets/graphic_design/Numie_0.5.jpg",
-    "images": [],
-    "galleryType": "single",
-    "galleryImages": [],
     "order": 2
   },
   {
