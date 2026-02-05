@@ -26,6 +26,22 @@ class PortfolioSync {
    */
   async loadProjects() {
     try {
+      // Prefer server-backed projects when available
+      try {
+        const response = await fetch('/api/projects', { cache: 'no-store' });
+        if (response.ok) {
+          const data = await response.json();
+          const serverProjects = Array.isArray(data) ? data : data.projects;
+          if (Array.isArray(serverProjects)) {
+            this.projects = serverProjects;
+            console.log(`✅ PortfolioSync: Loaded ${this.projects.length} projects from server`);
+            return this.projects;
+          }
+        }
+      } catch (err) {
+        // Ignore and fall back to storage
+      }
+
       // Wait for storage manager to be ready
       if (typeof waitForStorageManager !== 'undefined') {
         await waitForStorageManager();

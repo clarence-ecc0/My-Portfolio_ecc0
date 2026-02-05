@@ -986,34 +986,64 @@ function changePin(e) {
 // DATA PERSISTENCE
 // ============================================
 
-function loadProjects() {
+async function fetchServerProjects() {
+  try {
+    const response = await fetch('/api/projects', { cache: 'no-store' });
+    if (!response.ok) return null;
+    const data = await response.json();
+    if (Array.isArray(data)) return data;
+    if (data && Array.isArray(data.projects)) return data.projects;
+    return null;
+  } catch (err) {
+    return null;
+  }
+}
+
+async function saveProjectsToServer(projectsToSave) {
+  try {
+    const response = await fetch('/api/projects', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ projects: projectsToSave })
+    });
+    return response.ok;
+  } catch (err) {
+    console.warn('⚠️ Server sync failed:', err);
+    return false;
+  }
+}
+
+async function loadProjects() {
   try {
     console.log('🔵 loadProjects() called');
-    
-    // Load from IndexedDB via storage manager
-    storageManager.loadProjects().then(loadedProjects => {
+
+    // Prefer server-backed projects when available
+    const serverProjects = await fetchServerProjects();
+    if (Array.isArray(serverProjects)) {
+      projects = serverProjects;
+      console.log(`🟢 Loaded ${projects.length} projects from server`);
+      await storageManager.saveProjects(projects);
+    } else {
+      // Load from IndexedDB via storage manager
+      const loadedProjects = await storageManager.loadProjects();
       console.log(`🟢 loadProjects COMPLETE: Got ${loadedProjects.length} projects from storage`);
       projects = loadedProjects;
-      
-      console.log(`📂 Admin Panel: Loaded ${projects.length} projects from storage`);
-      if (projects.length > 0) {
-        console.log('Project IDs:', projects.map(p => `${p.title} (ID: ${p.id})`));
-      }
-      
-      // Validate data integrity
-      if (!Array.isArray(projects)) {
-        console.warn('Invalid projects data, resetting');
-        projects = [];
-      }
-      
-      // Render the projects after loading
-      console.log('🔵 Calling renderProjectsList()');
-      renderProjectsList();
-    }).catch(err => {
-      console.error('Error loading projects:', err);
+    }
+
+    console.log(`📂 Admin Panel: Loaded ${projects.length} projects`);
+    if (projects.length > 0) {
+      console.log('Project IDs:', projects.map(p => `${p.title} (ID: ${p.id})`));
+    }
+
+    // Validate data integrity
+    if (!Array.isArray(projects)) {
+      console.warn('Invalid projects data, resetting');
       projects = [];
-      showNotification('⚠️ Error loading projects, starting fresh', 'warning');
-    });
+    }
+
+    // Render the projects after loading
+    console.log('🔵 Calling renderProjectsList()');
+    renderProjectsList();
   } catch (err) {
     console.error('Error in loadProjects:', err);
     projects = [];
@@ -1028,6 +1058,12 @@ async function persistProjects(reason = 'update') {
     const success = await storageManager.saveProjects(projects);
     if (success) {
       console.log(`✅ Projects persisted (${reason})`);
+
+      const serverSaved = await saveProjectsToServer(projects);
+      if (!serverSaved && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        console.warn('⚠️ Server sync failed on production');
+        showNotification('⚠️ Could not sync to server', 'warning');
+      }
 
       // Notify any open portfolio tabs
       window.dispatchEvent(new StorageEvent('storage', {
