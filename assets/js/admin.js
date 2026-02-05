@@ -1017,9 +1017,9 @@ async function loadProjects() {
   try {
     console.log('🔵 loadProjects() called');
 
-    // Prefer server-backed projects when available
+    // Prefer server-backed projects when available (but only if non-empty)
     const serverProjects = await fetchServerProjects();
-    if (Array.isArray(serverProjects)) {
+    if (Array.isArray(serverProjects) && serverProjects.length > 0) {
       projects = serverProjects;
       console.log(`🟢 Loaded ${projects.length} projects from server`);
       await storageManager.saveProjects(projects);

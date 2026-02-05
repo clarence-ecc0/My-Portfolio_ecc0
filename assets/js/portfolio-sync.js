@@ -26,13 +26,13 @@ class PortfolioSync {
    */
   async loadProjects() {
     try {
-      // Prefer server-backed projects when available
+      // Prefer server-backed projects when available (but only if non-empty)
       try {
         const response = await fetch('/api/projects', { cache: 'no-store' });
         if (response.ok) {
           const data = await response.json();
           const serverProjects = Array.isArray(data) ? data : data.projects;
-          if (Array.isArray(serverProjects)) {
+          if (Array.isArray(serverProjects) && serverProjects.length > 0) {
             this.projects = serverProjects;
             console.log(`✅ PortfolioSync: Loaded ${this.projects.length} projects from server`);
             return this.projects;
