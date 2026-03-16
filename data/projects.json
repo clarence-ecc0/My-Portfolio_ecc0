@@ -548,5 +548,27 @@
     "galleryType": "single",
     "galleryImages": [],
     "order": 29
+  },
+  {
+    "id": 1773663737003,
+    "title": "DMACHINE Valentine design",
+    "description": "Valentine graphic and price list for DMACHINE Visuals",
+    "category": "graphic",
+    "coverImage": "assets/graphic_design/DMACHINE_Valentine2026/1.png",
+    "galleryType": "multi",
+    "galleryImages": [
+      "assets/graphic_design/DMACHINE_Valentine2026/1.png",
+      "assets/graphic_design/DMACHINE_Valentine2026/2.png"
+    ],
+    "tags": [
+      "Graphic design",
+      "Valentine"
+    ],
+    "projectType": "multi",
+    "images": [
+      "assets/graphic_design/DMACHINE_Valentine2026/1.png",
+      "assets/graphic_design/DMACHINE_Valentine2026/2.png"
+    ],
+    "order": 30
   }
 ]
