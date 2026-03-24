@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="phpGrad" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#777BB4"/>
+      <stop offset="1" stop-color="#4F5B93"/>
+    </linearGradient>
+  </defs>
+  <rect x="6" y="6" width="52" height="52" rx="14" fill="url(#phpGrad)"/>
+  <ellipse cx="32" cy="32" rx="22" ry="12" fill="#FFFFFF" fill-opacity="0.92"/>
+  <text x="32" y="36" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#4F5B93">PHP</text>
+</svg>

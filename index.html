@@ -437,6 +437,7 @@
         <ul class="nav-links" role="list">
           <li><a href="#home" class="nav-link active" aria-label="Navigate to home section">Home</a></li>
           <li><a href="#about" class="nav-link" aria-label="Navigate to about section">About</a></li>
+          <li><a href="#credentials" class="nav-link" aria-label="Navigate to experience and education section">Experience</a></li>
           <li><a href="#portfolio" class="nav-link" aria-label="Navigate to portfolio section">Work</a></li>
           <li><a href="#contact" class="nav-link" aria-label="Navigate to contact section">Contact</a></li>
         </ul>
@@ -718,6 +719,71 @@
                 </div>
                 <span class="tech-name">Prototyping</span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience, Education & Certifications -->
+    <section id="credentials" class="section credentials">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Experience & Credentials</h2>
+          <p class="section-subtitle">
+            Professional experience, academic background, and certifications from my tech resume.
+          </p>
+        </div>
+
+        <div class="credentials-layout fade-in">
+          <article class="experience-panel slide-left">
+            <h3 class="credential-title">Experience</h3>
+            <div class="experience-timeline">
+              <div class="timeline-entry">
+                <h4 class="timeline-role">Graphic Design Intern</h4>
+                <p class="timeline-meta">Wale Lab <span class="meta-dot">&bull;</span> July 2025 - September 2025 <span class="meta-dot">&bull;</span> Remote</p>
+                <p class="timeline-detail">Developed visually compelling graphics and layouts for digital and print media, aligning with brand guidelines to enhance overall project impact for clients.</p>
+              </div>
+              <div class="timeline-entry">
+                <h4 class="timeline-role">Web Design Intern</h4>
+                <p class="timeline-meta">FlexiSAF Edusoft Limited <span class="meta-dot">&bull;</span> May 2025 - August 2025 <span class="meta-dot">&bull;</span> Remote</p>
+                <p class="timeline-detail">Assisted in designing and updating user-friendly web interfaces for educational platforms by applying responsive design principles and collaborating with cross-functional teams.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="education-panel scale-in">
+            <h3 class="credential-title">Education</h3>
+            <div class="education-list">
+              <div class="education-row">
+                <div>
+                  <h4 class="education-program">Computer Science</h4>
+                  <p class="education-meta">Nigerian University of Technology and Management <span class="meta-dot">&bull;</span> Apapa GRA, Lagos</p>
+                  <p class="education-extra">Current GPA: 4.6</p>
+                </div>
+                <span class="education-year">2028</span>
+              </div>
+              <div class="education-row">
+                <div>
+                  <h4 class="education-program">O-Level Certificate</h4>
+                  <p class="education-meta">Deeper Life High School <span class="meta-dot">&bull;</span> Kado, Abuja</p>
+                </div>
+                <span class="education-year">2024</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="certifications-strip fade-in">
+          <h3 class="credential-title">Certifications</h3>
+          <div class="certification-list">
+            <div class="certification-pill">
+              <span class="cert-name">Wale University Graphic Design Internship</span>
+              <span class="cert-meta">Wale University <span class="meta-dot">&bull;</span> 2025</span>
+            </div>
+            <div class="certification-pill">
+              <span class="cert-name">FlexiSAF Web Design Internship</span>
+              <span class="cert-meta">FlexiSAF Edusoft Limited <span class="meta-dot">&bull;</span> 2025</span>
             </div>
           </div>
         </div>
@@ -1871,11 +1937,13 @@
       window.initializeSlideshow = function() {
         const slidesWrapper = document.querySelector('.portfolio-slides-wrapper');
         const slides = document.querySelectorAll('.project-card');
+        const portfolioGrid = document.querySelector('.portfolio-grid');
         const prevBtn = document.querySelector('.slideshow-nav.prev');
         const nextBtn = document.querySelector('.slideshow-nav.next');
         const currentSlideSpan = document.querySelector('.current-slide');
         const totalSlidesSpan = document.querySelector('.total-slides');
         const paginationContainer = document.querySelector('.slideshow-pagination');
+        const slideCounter = document.querySelector('.slide-counter');
         
         if (!slidesWrapper || !slides.length) {
           console.warn('⚠️ Slideshow elements not found:', { 
@@ -2129,6 +2197,8 @@
         },
         // Expose filter function
         filterProjects: (filterValue) => {
+          const isFrontendList = filterValue === 'frontend';
+
           // Filter slides - update filteredSlides array
           filteredSlides = Array.from(slides).filter(card => {
             const category = card.getAttribute('data-category');
@@ -2146,6 +2216,20 @@
               slide.classList.add('filtered-out');
             }
           });
+
+          // Software Development uses a dedicated vertical list display.
+          if (portfolioGrid) {
+            portfolioGrid.classList.toggle('frontend-list-mode', isFrontendList);
+          }
+          if (slideCounter) {
+            slideCounter.style.display = isFrontendList ? 'none' : '';
+          }
+
+          if (isFrontendList) {
+            stopAutoPlay();
+            slidesWrapper.style.transform = 'none';
+            return;
+          }
           
           // Reset to first slide of filtered set
           currentSlide = 0;

@@ -576,6 +576,15 @@
     "title": "Callenda",
     "description": "Productivity platform with telephony-based voice reminders, analytics dashboards, and gamified task tracking.",
     "category": "Software Development",
+    "organization": "Nigerian University of Technology and Management",
+    "location": "Lagos, Nigeria",
+    "period": "2025",
+    "engagement": "Academic Project",
+    "techStack": [
+      "Python",
+      "Flask",
+      "CSS"
+    ],
     "tags": [
       "Python",
       "Productivity"
@@ -592,6 +601,16 @@
     "title": "My Portfolio Website",
     "description": "Dynamic portfolio website with intuitive navigation, optimized layout, and integrated social channels.",
     "category": "Software Development",
+    "organization": "Personal Project",
+    "location": "Remote",
+    "period": "September 2025 - January 2026",
+    "engagement": "Live Project",
+    "projectLink": "https://my-portfolio-ecc0.vercel.app/",
+    "techStack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
     "tags": [
       "HTML",
       "CSS"
@@ -606,8 +625,18 @@
   {
     "id": 1033,
     "title": "Beebling Chatbot Agent",
-    "description": "Customer-support chatbot agent designed in Engati to improve engagement and automate support responses.",
+    "description": "Designed and implemented a comprehensive chatbot agent for Beebly via Engati, enhancing customer engagement and streamlining automated support services.",
     "category": "Software Development",
+    "organization": "Nigerian University of Technology and Management",
+    "location": "Lagos, Nigeria",
+    "period": "April 2025 - June 2025",
+    "engagement": "Engati Chatbot Build",
+    "projectLink": "https://bit.ly/3Pr3aiO",
+    "techStack": [
+      "Python",
+      "PHP",
+      "CSS"
+    ],
     "tags": [
       "Chatbot",
       "Automation"
