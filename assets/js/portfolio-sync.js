@@ -135,6 +135,7 @@ class PortfolioSync {
         location: 'Lagos, Nigeria',
         period: '2025',
         engagement: 'Academic Project',
+        projectLink: 'https://bit.ly/4sA8P4K',
         techStack: ['Python', 'Flask', 'CSS'],
         tags: ['Python', 'Productivity'],
         projectType: 'single',
