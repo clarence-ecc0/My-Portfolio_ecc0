@@ -570,5 +570,53 @@
     "galleryType": "single",
     "galleryImages": [],
     "order": 30
+  },
+  {
+    "id": 1031,
+    "title": "Callenda",
+    "description": "Productivity platform with telephony-based voice reminders, analytics dashboards, and gamified task tracking.",
+    "category": "Software Development",
+    "tags": [
+      "Python",
+      "Productivity"
+    ],
+    "projectType": "single",
+    "coverImage": "assets/ui-ux/ui1.png",
+    "images": [],
+    "galleryType": "single",
+    "galleryImages": [],
+    "order": 31
+  },
+  {
+    "id": 1032,
+    "title": "My Portfolio Website",
+    "description": "Dynamic portfolio website with intuitive navigation, optimized layout, and integrated social channels.",
+    "category": "Software Development",
+    "tags": [
+      "HTML",
+      "CSS"
+    ],
+    "projectType": "single",
+    "coverImage": "assets/mypic.jpg",
+    "images": [],
+    "galleryType": "single",
+    "galleryImages": [],
+    "order": 32
+  },
+  {
+    "id": 1033,
+    "title": "Beebling Chatbot Agent",
+    "description": "Customer-support chatbot agent designed in Engati to improve engagement and automate support responses.",
+    "category": "Software Development",
+    "tags": [
+      "Chatbot",
+      "Automation"
+    ],
+    "projectType": "single",
+    "coverImage": "assets/ui-ux/ui2.jpg",
+    "images": [],
+    "galleryType": "single",
+    "galleryImages": [],
+    "order": 33
   }
 ]
