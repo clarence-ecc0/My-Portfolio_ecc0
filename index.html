@@ -1956,8 +1956,15 @@
         console.log(`🎬 Initializing slideshow with ${slides.length} slides`);
         
         let currentSlide = 0;
-        let filteredSlides = Array.from(slides);
+        let filteredSlides = Array.from(slides).filter(slide => slide.getAttribute('data-category') !== 'frontend');
         let autoPlayInterval;
+
+      function isSlideVisibleForFilter(filterValue, category) {
+        if (filterValue === 'all') {
+          return category !== 'frontend';
+        }
+        return filterValue === category;
+      }
       
       // Get designs per page based on screen size
       function getDesignsPerPage() {
@@ -2168,6 +2175,11 @@
       }
       
       // Initialize
+      slides.forEach(slide => {
+        const category = slide.getAttribute('data-category');
+        const isVisible = isSlideVisibleForFilter('all', category);
+        slide.classList.toggle('filtered-out', !isVisible);
+      });
       initPagination();
       updateSlidePosition();
       startAutoPlay();
@@ -2190,7 +2202,8 @@
         stop: stopAutoPlay,
         refresh: () => {
           currentSlide = 0;
-          filteredSlides = Array.from(document.querySelectorAll('.project-card'));
+          filteredSlides = Array.from(document.querySelectorAll('.project-card'))
+            .filter(card => card.getAttribute('data-category') !== 'frontend');
           initPagination();
           updateSlidePosition(true);
           setBlurredBackgrounds();
@@ -2202,13 +2215,13 @@
           // Filter slides - update filteredSlides array
           filteredSlides = Array.from(slides).filter(card => {
             const category = card.getAttribute('data-category');
-            return filterValue === 'all' || filterValue === category;
+            return isSlideVisibleForFilter(filterValue, category);
           });
           
           // Mark slides as filtered or not (don't use display:none!)
           slides.forEach(slide => {
             const category = slide.getAttribute('data-category');
-            const isVisible = filterValue === 'all' || filterValue === category;
+            const isVisible = isSlideVisibleForFilter(filterValue, category);
             
             if (isVisible) {
               slide.classList.remove('filtered-out');
@@ -2241,9 +2254,13 @@
     } // End initializeSlideshow function
     
     // Call slideshow initialization on first load (will be re-called by portfolio-sync)
+    let slideshowInstance = null;
     if (document.querySelectorAll('.project-card').length > 0) {
-      let slideshowInstance = window.initializeSlideshow();
+      slideshowInstance = window.initializeSlideshow();
       window.slideshowInstance = slideshowInstance;
+      if (slideshowInstance && slideshowInstance.filterProjects) {
+        slideshowInstance.filterProjects('all');
+      }
       console.log('🚀 Initial slideshow loaded');
     } else {
       console.log('⏳ Waiting for admin projects to load...');
@@ -2260,10 +2277,12 @@
           button.classList.add("active");
 
           const filterValue = button.getAttribute("data-filter");
+          const activeSlideshowInstance = window.slideshowInstance || slideshowInstance;
           
           // Use the slideshow instance's filter function
-          if (slideshowInstance && slideshowInstance.filterProjects) {
-            slideshowInstance.filterProjects(filterValue);
+          if (activeSlideshowInstance && activeSlideshowInstance.filterProjects) {
+            activeSlideshowInstance.filterProjects(filterValue);
+            slideshowInstance = activeSlideshowInstance;
           }
         });
       });

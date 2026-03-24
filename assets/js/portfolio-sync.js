@@ -466,6 +466,14 @@ class PortfolioSync {
           // Call the global slideshow initialization function
           const newInstance = window.initializeSlideshow();
           window.slideshowInstance = newInstance;
+
+          // Keep the currently selected filter active after reinitialization.
+          const activeFilterButton = document.querySelector('.filter-btn.active');
+          const activeFilter = activeFilterButton ? activeFilterButton.getAttribute('data-filter') : 'all';
+          if (newInstance && typeof newInstance.filterProjects === 'function') {
+            newInstance.filterProjects(activeFilter || 'all');
+          }
+
           console.log('✅ Slideshow reinitialized with', document.querySelectorAll('.project-card').length, 'slides');
         } catch (err) {
           console.error('❌ Slideshow initialization error:', err);
