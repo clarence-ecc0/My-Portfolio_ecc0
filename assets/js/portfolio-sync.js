@@ -127,6 +127,23 @@ class PortfolioSync {
     const safeProjects = Array.isArray(projects) ? [...projects] : [];
     const fallbackSoftwareProjects = [
       {
+        id: 1034,
+        title: 'Fakebook',
+        description: 'Entry-level PHP web app featuring user signup and login, database-backed credential storage, and personalized user pages after authentication.',
+        category: 'Software Development',
+        organization: 'Personal Project',
+        period: 'March 2026',
+        engagement: 'Entry-Level PHP Project',
+        projectLink: 'https://bit.ly/3PzWb7g',
+        techStack: ['PHP', 'MySQL', 'HTML', 'CSS'],
+        tags: ['PHP', 'Authentication'],
+        projectType: 'single',
+        coverImage: 'assets/mypic.jpg',
+        images: [],
+        galleryType: 'single',
+        galleryImages: []
+      },
+      {
         id: 1031,
         title: 'Callenda',
         description: 'Productivity platform with telephony-based voice reminders, analytics dashboards, and gamified task tracking.',

@@ -572,6 +572,32 @@
     "order": 30
   },
   {
+    "id": 1034,
+    "title": "Fakebook",
+    "description": "Entry-level PHP web app featuring user signup and login, database-backed credential storage, and personalized user pages after authentication.",
+    "category": "Software Development",
+    "organization": "Personal Project",
+    "period": "March 2026",
+    "engagement": "Entry-Level PHP Project",
+    "projectLink": "https://bit.ly/3PzWb7g",
+    "techStack": [
+      "PHP",
+      "MySQL",
+      "HTML",
+      "CSS"
+    ],
+    "tags": [
+      "PHP",
+      "Authentication"
+    ],
+    "projectType": "single",
+    "coverImage": "assets/mypic.jpg",
+    "images": [],
+    "galleryType": "single",
+    "galleryImages": [],
+    "order": 31
+  },
+  {
     "id": 1031,
     "title": "Callenda",
     "description": "Productivity platform with telephony-based voice reminders, analytics dashboards, and gamified task tracking.",
@@ -595,7 +621,7 @@
     "images": [],
     "galleryType": "single",
     "galleryImages": [],
-    "order": 31
+    "order": 32
   },
   {
     "id": 1032,
@@ -621,7 +647,7 @@
     "images": [],
     "galleryType": "single",
     "galleryImages": [],
-    "order": 32
+    "order": 33
   },
   {
     "id": 1033,
@@ -647,6 +673,6 @@
     "images": [],
     "galleryType": "single",
     "galleryImages": [],
-    "order": 33
+    "order": 34
   }
 ]

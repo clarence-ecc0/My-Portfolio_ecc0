@@ -645,10 +645,10 @@
 
 .portfolio-grid.frontend-list-mode {
   position: relative;
-  height: auto;
-  min-height: 0;
-  max-height: none;
-  overflow: visible;
+  height: 90vh;
+  min-height: 750px;
+  max-height: 1200px;
+  overflow: hidden;
   padding: var(--space-xl);
   background:
     radial-gradient(circle at 8% 14%, rgba(110, 231, 255, 0.12) 0%, transparent 32%),
@@ -658,6 +658,21 @@
   box-shadow:
     0 30px 80px rgba(5, 10, 20, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.portfolio-grid.frontend-list-mode::after {
+  content: '▾';
+  position: absolute;
+  left: 50%;
+  bottom: 0.65rem;
+  transform: translateX(-50%);
+  z-index: 4;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: rgba(226, 232, 240, 0.78);
+  pointer-events: none;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  animation: frontend-scroll-cue 1.8s ease-in-out infinite;
 }
 
 [data-theme="light"] .portfolio-grid.frontend-list-mode {
@@ -671,10 +686,67 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
+[data-theme="light"] .portfolio-grid.frontend-list-mode::after {
+  color: rgba(30, 41, 59, 0.55);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.65);
+}
+
 .portfolio-grid.frontend-list-mode .portfolio-slides-wrapper {
   display: block;
-  height: auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 0.45rem;
+  padding-bottom: calc(var(--space-xl) + 0.8rem);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.45) transparent;
   transform: none !important;
+}
+
+.portfolio-grid.frontend-list-mode .portfolio-slides-wrapper::-webkit-scrollbar {
+  width: 8px;
+}
+
+.portfolio-grid.frontend-list-mode .portfolio-slides-wrapper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.portfolio-grid.frontend-list-mode .portfolio-slides-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.36), rgba(167, 139, 250, 0.32));
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.portfolio-grid.frontend-list-mode .portfolio-slides-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(125, 211, 252, 0.55), rgba(167, 139, 250, 0.5));
+  background-clip: content-box;
+}
+
+[data-theme="light"] .portfolio-grid.frontend-list-mode .portfolio-slides-wrapper {
+  scrollbar-color: rgba(100, 116, 139, 0.45) transparent;
+}
+
+[data-theme="light"] .portfolio-grid.frontend-list-mode .portfolio-slides-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.38), rgba(249, 115, 22, 0.3));
+  background-clip: content-box;
+}
+
+[data-theme="light"] .portfolio-grid.frontend-list-mode .portfolio-slides-wrapper::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.5), rgba(249, 115, 22, 0.44));
+  background-clip: content-box;
+}
+
+@keyframes frontend-scroll-cue {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    opacity: 0.9;
+    transform: translateX(-50%) translateY(4px);
+  }
 }
 
 .portfolio-grid.frontend-list-mode .slideshow-nav,
@@ -1474,6 +1546,11 @@
     height: 80vh;
     min-height: 650px;
   }
+
+  .portfolio-grid.frontend-list-mode {
+    height: 80vh;
+    min-height: 650px;
+  }
   
   .project-card {
     flex: 0 0 50%;
@@ -1529,6 +1606,11 @@
     height: 70vh;
     min-height: 500px;
     border-radius: var(--radius-xl);
+  }
+
+  .portfolio-grid.frontend-list-mode {
+    height: 70vh;
+    min-height: 500px;
   }
   
   .project-card {
@@ -1601,6 +1683,15 @@
     padding: var(--space-lg);
   }
 
+  .portfolio-grid.frontend-list-mode .portfolio-slides-wrapper {
+    padding-right: 0.2rem;
+    padding-bottom: calc(var(--space-lg) + 0.8rem);
+  }
+
+  .portfolio-grid.frontend-list-mode::after {
+    bottom: 0.45rem;
+  }
+
   .portfolio-grid.frontend-list-mode .project-card.software-project-card .software-project-content {
     padding: var(--space-lg);
   }
@@ -1631,6 +1722,11 @@
 
 @media (max-width: 480px) {
   .portfolio-grid {
+    height: 65vh;
+    min-height: 450px;
+  }
+
+  .portfolio-grid.frontend-list-mode {
     height: 65vh;
     min-height: 450px;
   }
