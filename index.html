@@ -246,148 +246,6 @@
         display: flex;
       }
       
-      /* Resume Modal Styles */
-      .resume-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: var(--color-bg-overlay, rgba(0, 0, 0, 0.95));
-        z-index: 99999;
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        animation: fadeIn 0.3s ease;
-        overflow-y: auto;
-      }
-      
-      .resume-modal.active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .resume-modal-content {
-        background: var(--color-card-bg, rgba(255, 255, 255, 0.05));
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid var(--color-border-medium, rgba(255, 255, 255, 0.2));
-        border-radius: var(--radius-lg, 16px);
-        padding: 1.5rem;
-        max-width: 380px;
-        width: 90%;
-        position: relative;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        animation: zoomIn 0.3s ease;
-        margin: auto;
-      }
-      
-      .resume-modal-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        width: 36px;
-        height: 36px;
-        background: var(--color-glass-strong, rgba(255, 255, 255, 0.1));
-        backdrop-filter: blur(8px);
-        border: 1px solid var(--color-border-medium, rgba(255, 255, 255, 0.2));
-        border-radius: 50%;
-        color: var(--color-text-primary, white);
-        font-size: 1.3rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        padding: 0;
-      }
-      
-      .resume-modal-close:hover {
-        background: var(--color-accent-primary, #8b5cf6);
-        transform: rotate(90deg);
-      }
-      
-      .resume-modal-content h3 {
-        color: var(--color-text-primary, white);
-        font-size: 1.2rem;
-        margin: 0 0 1.5rem 0;
-        text-align: center;
-      }
-      
-      .resume-options {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-      
-      .resume-option {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1rem;
-        background: var(--color-glass-light, rgba(255, 255, 255, 0.08));
-        border: 1px solid var(--color-border-light, rgba(255, 255, 255, 0.15));
-        border-radius: var(--radius-md, 12px);
-        color: var(--color-text-primary, white);
-        text-decoration: none;
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-      
-      .resume-option:hover {
-        background: var(--color-accent-primary, #8b5cf6);
-        border-color: var(--color-accent-primary, #8b5cf6);
-        transform: translateX(6px);
-      }
-      
-      .resume-option-icon {
-        font-size: 2rem;
-        min-width: 50px;
-        text-align: center;
-      }
-      
-      .resume-option-text {
-        flex: 1;
-      }
-      
-      .resume-option-text h4 {
-        margin: 0;
-        margin-bottom: 0.15rem;
-        font-size: 1rem;
-        font-weight: 600;
-      }
-      
-      .resume-option-text p {
-        margin: 0;
-        font-size: 0.8rem;
-        opacity: 0.8;
-      }
-      
-      /* Mobile Responsiveness */
-      @media (max-width: 640px) {
-        .resume-modal-content {
-          padding: 1.25rem;
-        }
-        
-        .resume-option {
-          gap: 0.75rem;
-          padding: 0.9rem;
-        }
-        
-        .resume-option-icon {
-          font-size: 1.75rem;
-          min-width: 45px;
-        }
-        
-        .resume-option-text h4 {
-          font-size: 0.95rem;
-        }
-        
-        .resume-option-text p {
-          font-size: 0.75rem;
-        }
-      }
       
       
       /* Project Filter Animation */
@@ -453,39 +311,7 @@
       </div>
     </nav>
 
-    <!-- Resume Modal -->
-    <div class="resume-modal" id="resumeModal">
-      <div class="resume-modal-content">
-        <button class="resume-modal-close" id="resumeModalClose">&times;</button>
-        <h3>Choose Resume Type</h3>
-        <div class="resume-options">
-          <a 
-            href="https://drive.google.com/file/d/18o0jc-_E_TICUNssEuACpMCtjtG3uCy2/view?usp=sharing"
-            class="resume-option"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="resume-option-icon">🎨</div>
-            <div class="resume-option-text">
-              <h4>Graphic Design Resume</h4>
-              <p>Design & Creative Work</p>
-            </div>
-          </a>
-          <a 
-            href="https://drive.google.com/file/d/1D2HTM0tWuXiv_nDuOdloxgfFzL-2YIv9/view?usp=sharing"
-            class="resume-option"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="resume-option-icon">👨‍💻</div>
-            <div class="resume-option-text">
-              <h4>Tech Resume</h4>
-              <p>Software Development & Technical Skills</p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -507,10 +333,10 @@
             Let's Talk
             <span>💬</span>
           </a>
-          <button class="btn btn-secondary" id="resumeButton">
+          <a href="https://drive.google.com/file/d/1tivfkDUCVlv1jDM1oE91O8rG0nUYPgtB/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
             View Resume
             <span>📄</span>
-          </button>
+          </a>
         </div>
       </div>
     </section>
@@ -2302,37 +2128,7 @@
     <!-- Portfolio Sync System (Load projects from admin panel) -->
     <script src="assets/js/portfolio-sync.js"></script>
     
-    <!-- Resume Modal Handler -->
-    <script>
-      // Get modal elements
-      const resumeButton = document.getElementById('resumeButton');
-      const resumeModal = document.getElementById('resumeModal');
-      const resumeModalClose = document.getElementById('resumeModalClose');
-      
-      // Open modal when button is clicked
-      resumeButton.addEventListener('click', () => {
-        resumeModal.classList.add('active');
-      });
-      
-      // Close modal when close button is clicked
-      resumeModalClose.addEventListener('click', () => {
-        resumeModal.classList.remove('active');
-      });
-      
-      // Close modal when clicking outside the modal content
-      resumeModal.addEventListener('click', (e) => {
-        if (e.target === resumeModal) {
-          resumeModal.classList.remove('active');
-        }
-      });
-      
-      // Close modal on Escape key press
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && resumeModal.classList.contains('active')) {
-          resumeModal.classList.remove('active');
-        }
-      });
-    </script>
+
   </body>
 </html>
 
