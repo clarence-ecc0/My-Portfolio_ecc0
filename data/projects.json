@@ -100,22 +100,6 @@
     "order": 3
   },
   {
-    "id": 1004,
-    "title": "New year celebration",
-    "description": "Celebration flyer for 2026",
-    "category": "Graphic Design",
-    "tags": [
-      "Graphic Design",
-      "Welcome"
-    ],
-    "projectType": "single",
-    "coverImage": "assets/graphic_design/2026_design_with texture@2x.jpg",
-    "images": [],
-    "galleryType": "single",
-    "galleryImages": [],
-    "order": 4
-  },
-  {
     "id": 1005,
     "title": "Logo Design",
     "description": "Logo design for DMACHINE Visuals",
@@ -126,6 +110,22 @@
     ],
     "projectType": "single",
     "coverImage": "assets/graphic_design/David's logo_mockup_small.png",
+    "images": [],
+    "galleryType": "single",
+    "galleryImages": [],
+    "order": 4
+  },
+  {
+    "id": 1004,
+    "title": "New year celebration",
+    "description": "Celebration flyer for 2026",
+    "category": "Graphic Design",
+    "tags": [
+      "Graphic Design",
+      "Welcome"
+    ],
+    "projectType": "single",
+    "coverImage": "assets/graphic_design/2026_design_with texture@2x.jpg",
     "images": [],
     "galleryType": "single",
     "galleryImages": [],
